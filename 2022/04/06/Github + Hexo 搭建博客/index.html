@@ -94,22 +94,20 @@
 
 
 
-<meta name="description" content="前言本文内容主要讲解如何利用 Hexo + Github 搭建个人博客，内容包含基本工具（Node.js、Git、Github、Hexo）的安装使用、如何利用Hexo进行发布、修改、删除文章、图片添加水印等细节。 准备工作在开始一切之前，你必须已经：  有一个github账号，没有的话去注册一个； 安装了node.js、npm； 安装了git for windows（或者其它git客户端）  本文">
+<meta name="description" content="前言本blog利用 Hexo + Github 搭建个人博客，内容包含基本工具（Node.js、Git、Github、Hexo）、利用Hexo进行发布、修改、删除文章 环境在开始一切之前，你必须已经： -   有一个github账号，没有的话去注册一个 安装了node.js、npm 安装了git for windows（或者其它git客户端）  本文所使用的环境：  Windows11 &amp;#110">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo搭建博客">
+<meta property="og:title" content="Hexo + Github">
 <meta property="og:url" content="http://example.com/2022/04/06/Github%20+%20Hexo%20%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/index.html">
 <meta property="og:site_name" content="Lemna&#39;s Blog">
-<meta property="og:description" content="前言本文内容主要讲解如何利用 Hexo + Github 搭建个人博客，内容包含基本工具（Node.js、Git、Github、Hexo）的安装使用、如何利用Hexo进行发布、修改、删除文章、图片添加水印等细节。 准备工作在开始一切之前，你必须已经：  有一个github账号，没有的话去注册一个； 安装了node.js、npm； 安装了git for windows（或者其它git客户端）  本文">
+<meta property="og:description" content="前言本blog利用 Hexo + Github 搭建个人博客，内容包含基本工具（Node.js、Git、Github、Hexo）、利用Hexo进行发布、修改、删除文章 环境在开始一切之前，你必须已经： -   有一个github账号，没有的话去注册一个 安装了node.js、npm 安装了git for windows（或者其它git客户端）  本文所使用的环境：  Windows11 &amp;#110">
 <meta property="og:locale">
-<meta property="og:image" content="http://example.com/2022/04/06/Github%20+%20Hexo%20%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/image-20220406143912347.png">
 <meta property="article:published_time" content="2022-04-06T02:49:04.000Z">
-<meta property="article:modified_time" content="2022-04-06T06:48:24.609Z">
+<meta property="article:modified_time" content="2022-04-08T06:09:07.714Z">
 <meta property="article:author" content="Kousq">
 <meta property="article:tag" content="tag1">
 <meta property="article:tag" content="tag2">
 <meta property="article:tag" content="tag3">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/04/06/Github%20+%20Hexo%20%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/image-20220406143912347.png">
 
 
 
@@ -144,7 +142,7 @@
 
 
 
-  <title>Hexo搭建博客 | Lemna's Blog</title>
+  <title>Hexo + Github | Lemna's Blog</title>
   
 
 
@@ -284,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hexo搭建博客</h1>
+          <h1 class="post-title" itemprop="name headline">Hexo + Github</h1>
         
 
         <div class="post-meta">
@@ -356,26 +354,30 @@
       
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文内容主要讲解如何利用 Hexo + Github 搭建个人博客，内容包含基本工具（Node.js、Git、Github、Hexo）的安装使用、如何利用Hexo进行发布、修改、删除文章、图片添加水印等细节。</p>
-<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>在开始一切之前，你必须已经：</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本blog利用 Hexo + Github 搭建个人博客，内容包含基本工具（Node.js、Git、Github、Hexo）、利用Hexo进行发布、修改、删除文章</p>
+<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>在开始一切之前，你必须已经：</p>
+<p>- </p>
 <ul>
-<li>有一个github账号，没有的话去注册一个；</li>
-<li>安装了node.js、npm；</li>
+<li>有一个github账号，没有的话去注册一个</li>
+<li>安装了node.js、npm</li>
 <li>安装了git for windows（或者其它git客户端）</li>
 </ul>
 <p>本文所使用的环境：</p>
 <ul>
 <li>Windows11</li>
-<li><a href="mailto:&#110;&#111;&#100;&#x65;&#x2e;&#106;&#115;&#64;&#118;&#x31;&#54;&#46;&#49;&#x34;&#x2e;&#50;">&#110;&#111;&#100;&#x65;&#x2e;&#106;&#115;&#64;&#118;&#x31;&#54;&#46;&#49;&#x34;&#x2e;&#50;</a> —— git命令行输入<code>node -v</code></li>
-<li><a href="mailto:&#103;&#x69;&#x74;&#64;&#x32;&#46;&#x33;&#x33;&#46;&#x30;&#x2e;&#119;&#105;&#x6e;&#x64;&#x6f;&#119;&#115;&#x2e;&#x32;">&#103;&#x69;&#x74;&#64;&#x32;&#46;&#x33;&#x33;&#46;&#x30;&#x2e;&#119;&#105;&#x6e;&#x64;&#x6f;&#119;&#115;&#x2e;&#x32;</a> —— git命令行输入<code>git version</code></li>
-<li><a href="mailto:&#x68;&#x65;&#x78;&#x6f;&#64;&#54;&#46;&#49;&#x2e;&#x30;">&#x68;&#x65;&#x78;&#x6f;&#64;&#54;&#46;&#49;&#x2e;&#x30;</a> —— git命令行输入<code>hexo -v</code>或<code>hexo version</code></li>
+<li><a href="mailto:&#110;&#x6f;&#x64;&#x65;&#x2e;&#106;&#115;&#64;&#x76;&#x31;&#x36;&#x2e;&#49;&#x34;&#x2e;&#x32;">&#110;&#x6f;&#x64;&#x65;&#x2e;&#106;&#115;&#64;&#x76;&#x31;&#x36;&#x2e;&#49;&#x34;&#x2e;&#x32;</a> —— git命令行输入<code>node -v</code></li>
+<li><a href="mailto:&#x67;&#x69;&#x74;&#64;&#50;&#46;&#51;&#x33;&#46;&#48;&#x2e;&#x77;&#105;&#110;&#x64;&#111;&#119;&#115;&#x2e;&#x32;">&#x67;&#x69;&#x74;&#64;&#50;&#46;&#51;&#x33;&#46;&#48;&#x2e;&#x77;&#105;&#110;&#x64;&#111;&#119;&#115;&#x2e;&#x32;</a> —— git命令行输入<code>git version</code></li>
+<li><a href="mailto:&#104;&#101;&#120;&#x6f;&#64;&#54;&#46;&#49;&#x2e;&#x30;">&#104;&#101;&#120;&#x6f;&#64;&#54;&#46;&#49;&#x2e;&#x30;</a> —— git命令行输入<code>hexo -v</code>或<code>hexo version</code></li>
 </ul>
-<h1 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h1><p>官网下载：Node.js </p>
-<p>安装直接点击 Next 即可 最后测试是否安装成功： </p>
-<p>用 <code>win + R</code> 打开命令行提示符，输入 <code>cmd</code>，之后输入命令：<code>node -v</code>、<code>npm -v</code>，如果显示版本号即安装成功！</p>
-<p><img src="/2022/04/06/Github%20+%20Hexo%20%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/image-20220406143912347.png" alt="image-20220406143912347"></p>
-<h1 id="添加国内镜像源"><a href="#添加国内镜像源" class="headerlink" title="添加国内镜像源"></a>添加国内镜像源</h1><p>可以切换使用阿里的国内镜像对 npm 进行加速</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置自定义镜像命令 </span></span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org </span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看npm源地址 </span></span><br><span class="line">npm config list </span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除自己设置的镜像命令 </span></span><br><span class="line">npm config <span class="built_in">rm</span> registry</span><br></pre></td></tr></table></figure>
+<h1 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h1><ul>
+<li>安装Node.js</li>
+<li>添加国内镜像源对npm加速</li>
+<li>安装Git</li>
+<li>注册Github</li>
+<li>安装Hexo</li>
+<li>连接Github与本地</li>
+</ul>
+<h1 id="文章基本操作"><a href="#文章基本操作" class="headerlink" title="文章基本操作"></a>文章基本操作</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 新建文章 </span><br><span class="line">hexo new post &quot;article title&quot; </span><br><span class="line"># 生成静态页面 </span><br><span class="line">hexo g </span><br><span class="line"># 本地预览 </span><br><span class="line">hexo s </span><br><span class="line"># 部署到网站 </span><br><span class="line">hexo d</span><br><span class="line"># 清空缓存并生成新的静态页面 </span><br><span class="line">hexo clean &amp;&amp; hexo g</span><br><span class="line"></span><br><span class="line">修改对应文章内容，然后执行命令 hexo d -g 即可。</span><br><span class="line">删除目录 source\_posts 下对应文章文件，然后执行命令 hexo d -g 即可。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
       
@@ -537,7 +539,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Node-js"><span class="nav-number">3.</span> <span class="nav-text">安装Node.js</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%90"><span class="nav-number">4.</span> <span class="nav-text">添加国内镜像源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83"><span class="nav-number">2.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.</span> <span class="nav-text">安装步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">4.</span> <span class="nav-text">文章基本操作</span></a></li></ol></div>
             
 
           </div>
