@@ -94,12 +94,12 @@
 
 
 
-<meta name="description" content="前言本blog利用 Hexo + Github 搭建个人博客，内容包含基本工具（Node.js、Git、Github、Hexo）、利用Hexo进行发布、修改、删除文章 环境在开始一切之前，你必须已经：  有一个github账号，没有的话去注册一个 安装了node.js、npm 安装了git for windows（或者其它git客户端）  本文所使用的环境：  Windows11 &amp;#x6e;&amp;#">
+<meta name="description" content="前言本blog利用 Hexo + Github 搭建个人博客，内容包含基本工具（Node.js、Git、Github、Hexo）、利用Hexo进行发布、修改、删除文章 环境在开始一切之前，你必须已经：  有一个github账号，没有的话去注册一个 安装了node.js、npm 安装了git for windows（或者其它git客户端）  本文所使用的环境：  Windows11 &amp;#110;&amp;#">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo + Github">
 <meta property="og:url" content="http://example.com/2022/04/06/Github%20+%20Hexo%20%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/index.html">
 <meta property="og:site_name" content="Lemna&#39;s Blog">
-<meta property="og:description" content="前言本blog利用 Hexo + Github 搭建个人博客，内容包含基本工具（Node.js、Git、Github、Hexo）、利用Hexo进行发布、修改、删除文章 环境在开始一切之前，你必须已经：  有一个github账号，没有的话去注册一个 安装了node.js、npm 安装了git for windows（或者其它git客户端）  本文所使用的环境：  Windows11 &amp;#x6e;&amp;#">
+<meta property="og:description" content="前言本blog利用 Hexo + Github 搭建个人博客，内容包含基本工具（Node.js、Git、Github、Hexo）、利用Hexo进行发布、修改、删除文章 环境在开始一切之前，你必须已经：  有一个github账号，没有的话去注册一个 安装了node.js、npm 安装了git for windows（或者其它git客户端）  本文所使用的环境：  Windows11 &amp;#110;&amp;#">
 <meta property="og:locale">
 <meta property="article:published_time" content="2022-04-06T02:49:04.000Z">
 <meta property="article:modified_time" content="2022-04-08T06:11:27.680Z">
@@ -336,6 +336,11 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
 
           
 
@@ -364,9 +369,9 @@
 <p>本文所使用的环境：</p>
 <ul>
 <li>Windows11</li>
-<li><a href="mailto:&#x6e;&#111;&#100;&#x65;&#46;&#106;&#115;&#64;&#x76;&#x31;&#54;&#x2e;&#x31;&#52;&#x2e;&#50;">&#x6e;&#111;&#100;&#x65;&#46;&#106;&#115;&#64;&#x76;&#x31;&#54;&#x2e;&#x31;&#52;&#x2e;&#50;</a> —— git命令行输入<code>node -v</code></li>
-<li><a href="mailto:&#103;&#105;&#116;&#64;&#x32;&#46;&#51;&#x33;&#x2e;&#x30;&#x2e;&#119;&#105;&#x6e;&#100;&#111;&#119;&#x73;&#46;&#50;">&#103;&#105;&#116;&#64;&#x32;&#46;&#51;&#x33;&#x2e;&#x30;&#x2e;&#119;&#105;&#x6e;&#100;&#111;&#119;&#x73;&#46;&#50;</a> —— git命令行输入<code>git version</code></li>
-<li><a href="mailto:&#x68;&#x65;&#x78;&#x6f;&#x40;&#x36;&#46;&#x31;&#46;&#48;">&#x68;&#x65;&#x78;&#x6f;&#x40;&#x36;&#46;&#x31;&#46;&#48;</a> —— git命令行输入<code>hexo -v</code>或<code>hexo version</code></li>
+<li><a href="mailto:&#110;&#111;&#x64;&#101;&#46;&#106;&#x73;&#x40;&#118;&#49;&#x36;&#x2e;&#x31;&#x34;&#46;&#50;">&#110;&#111;&#x64;&#101;&#46;&#106;&#x73;&#x40;&#118;&#49;&#x36;&#x2e;&#x31;&#x34;&#46;&#50;</a> —— git命令行输入<code>node -v</code></li>
+<li><a href="mailto:&#103;&#105;&#x74;&#64;&#x32;&#x2e;&#x33;&#51;&#46;&#x30;&#46;&#x77;&#105;&#110;&#100;&#x6f;&#119;&#115;&#46;&#50;">&#103;&#105;&#x74;&#64;&#x32;&#x2e;&#x33;&#51;&#46;&#x30;&#46;&#x77;&#105;&#110;&#100;&#x6f;&#119;&#115;&#46;&#50;</a> —— git命令行输入<code>git version</code></li>
+<li><a href="mailto:&#104;&#x65;&#120;&#111;&#64;&#54;&#x2e;&#x31;&#x2e;&#x30;">&#104;&#x65;&#120;&#111;&#64;&#54;&#x2e;&#x31;&#x2e;&#x30;</a> —— git命令行输入<code>hexo -v</code>或<code>hexo version</code></li>
 </ul>
 <h1 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h1><ul>
 <li>安装Node.js</li>
@@ -569,19 +574,28 @@
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
-
 
         
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
 
         
       </div>
