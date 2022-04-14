@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
@@ -28,7 +28,7 @@
 <meta property="og:description" content="前言本blog利用 Hexo + Github 搭建个人博客，内容包含基本工具（Node.js、Git、Github、Hexo）、利用Hexo进行发布、修改、删除文章">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-04-06T02:49:04.000Z">
-<meta property="article:modified_time" content="2022-04-13T09:30:13.864Z">
+<meta property="article:modified_time" content="2022-04-14T08:09:23.263Z">
 <meta property="article:author" content="Kousq">
 <meta property="article:tag" content="tag1">
 <meta property="article:tag" content="tag2">
@@ -183,7 +183,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-13 17:30:13" itemprop="dateModified" datetime="2022-04-13T17:30:13+08:00">2022-04-13</time>
+                <time title="修改时间：2022-04-14 16:09:23" itemprop="dateModified" datetime="2022-04-14T16:09:23+08:00">2022-04-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -202,6 +202,18 @@
               </span>
               <span class="post-meta-item-text">阅读次数：</span>
               <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>2.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -225,9 +237,10 @@
 <p>本文所使用的环境：</p>
 <ul>
 <li>Windows11</li>
-<li><a href="mailto:&#x6e;&#x6f;&#100;&#x65;&#x2e;&#106;&#x73;&#x40;&#x76;&#49;&#54;&#x2e;&#x31;&#x34;&#x2e;&#50;">&#x6e;&#x6f;&#100;&#x65;&#x2e;&#106;&#x73;&#x40;&#x76;&#49;&#54;&#x2e;&#x31;&#x34;&#x2e;&#50;</a> —— git命令行输入<code>node -v</code></li>
-<li><a href="mailto:&#103;&#105;&#x74;&#x40;&#50;&#x2e;&#51;&#x33;&#x2e;&#48;&#x2e;&#x77;&#x69;&#110;&#x64;&#111;&#119;&#x73;&#46;&#50;">&#103;&#105;&#x74;&#x40;&#50;&#x2e;&#51;&#x33;&#x2e;&#48;&#x2e;&#x77;&#x69;&#110;&#x64;&#111;&#119;&#x73;&#46;&#50;</a> —— git命令行输入<code>git version</code></li>
-<li><a href="mailto:&#104;&#101;&#120;&#x6f;&#64;&#x36;&#x2e;&#x31;&#x2e;&#48;">&#104;&#101;&#120;&#x6f;&#64;&#x36;&#x2e;&#x31;&#x2e;&#48;</a> —— git命令行输入<code>hexo -v</code>或<code>hexo version</code></li>
+<li><a href="mailto:&#x6e;&#x6f;&#100;&#101;&#x2e;&#106;&#x73;&#x40;&#118;&#x31;&#54;&#x2e;&#x31;&#52;&#46;&#50;">&#x6e;&#x6f;&#100;&#101;&#x2e;&#106;&#x73;&#x40;&#118;&#x31;&#54;&#x2e;&#x31;&#52;&#46;&#50;</a> —— git命令行输入<code>node -v</code></li>
+<li><a href="mailto:&#x67;&#x69;&#116;&#64;&#x32;&#46;&#x33;&#51;&#46;&#x30;&#46;&#119;&#x69;&#x6e;&#x64;&#111;&#119;&#x73;&#x2e;&#x32;">&#x67;&#x69;&#116;&#64;&#x32;&#46;&#x33;&#51;&#46;&#x30;&#46;&#119;&#x69;&#x6e;&#x64;&#111;&#119;&#x73;&#x2e;&#x32;</a> —— git命令行输入<code>git version</code></li>
+<li><a href="mailto:&#104;&#101;&#120;&#x6f;&#x40;&#x36;&#46;&#x31;&#x2e;&#48;">&#104;&#101;&#120;&#x6f;&#x40;&#x36;&#46;&#x31;&#x2e;&#48;</a> —— git命令行输入<code>hexo -v</code>或<code>hexo version</code></li>
+<li><a href="mailto:&#110;&#x65;&#x78;&#116;&#64;&#x37;&#x2e;&#x38;&#x2e;&#48;">&#110;&#x65;&#x78;&#116;&#64;&#x37;&#x2e;&#x38;&#x2e;&#48;</a></li>
 </ul>
 <h1 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h1><ul>
 <li>安装Node.js</li>
@@ -238,6 +251,12 @@
 <li>连接Github与本地</li>
 </ul>
 <h1 id="文章基本操作"><a href="#文章基本操作" class="headerlink" title="文章基本操作"></a>文章基本操作</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 新建文章 </span><br><span class="line">hexo new post &quot;article title&quot; </span><br><span class="line"># 生成静态页面 </span><br><span class="line">hexo g </span><br><span class="line"># 本地预览 </span><br><span class="line">hexo s </span><br><span class="line"># 部署到网站 </span><br><span class="line">hexo d</span><br><span class="line"># 清空缓存并生成新的静态页面 </span><br><span class="line">hexo clean &amp;&amp; hexo g</span><br><span class="line"></span><br><span class="line">修改文章：修改对应文章内容，然后执行命令 </span><br><span class="line">hexo d -g </span><br><span class="line"></span><br><span class="line">删除文章：</span><br><span class="line">删除目录 source\_posts 下对应文章文件，然后执行命令 hexo d -g 即可。</span><br></pre></td></tr></table></figure>
+
+<h1 id="常见配置修改"><a href="#常见配置修改" class="headerlink" title="常见配置修改"></a>常见配置修改</h1><h2 id="字数统计"><a href="#字数统计" class="headerlink" title="字数统计"></a>字数统计</h2><p>在旧版本中的post_wordcount配置似乎已经不可用，因此需要使用symbols_count_time替代</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 卸载原有依赖 不卸载对新插件有影响</span><br><span class="line">npm uninstall hexo-wordcount</span><br><span class="line"># 安装新依赖</span><br><span class="line">npm i hexo-symbols-count-time</span><br><span class="line"></span><br><span class="line">新的配置在symbols_count_time下：配置文件在主题下，themes\next\_config.yml</span><br><span class="line">symbols_count_time:</span><br><span class="line">  # 换行显示字数统计和阅读市场</span><br><span class="line">  separated_meta: true</span><br><span class="line">  # 文章底部显示</span><br><span class="line">  item_text_post: true</span><br><span class="line">  # 博客底部显示 默认为false</span><br><span class="line">  item_text_total: true</span><br></pre></td></tr></table></figure>
+
+<h2 id="隐藏网页底部-powered-By-Hexo-x2F-强力驱动"><a href="#隐藏网页底部-powered-By-Hexo-x2F-强力驱动" class="headerlink" title="隐藏网页底部 powered By Hexo &#x2F; 强力驱动"></a>隐藏网页底部 powered By Hexo &#x2F; 强力驱动</h2><p>打开 themes&#x2F;next&#x2F;layout&#x2F;_partials&#x2F;footer.swig，找到：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if theme.footer.powered.enable %&#125;</span><br><span class="line">&lt;div class=&quot;powered-by&quot;&gt;&#123;#</span><br><span class="line">#&#125;&#123;&#123; __(&#x27;footer.powered&#x27;, &#x27;&lt;a class=&quot;theme-link&quot; target=&quot;_blank&quot;&#x27; + nofollow + &#x27; href=&quot;https://hexo.io&quot;&gt;Hexo&lt;/a&gt;&#x27;) &#125;&#125;&#123;% if theme.footer.powered.version %&#125; v&#123;&#123; hexo_env(&#x27;version&#x27;) &#125;&#125;&#123;% endif %&#125;&#123;#</span><br><span class="line">#&#125;&lt;/div&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line">&#123;% if theme.footer.powered.enable and theme.footer.theme.enable %&#125;</span><br><span class="line">&lt;span class=&quot;post-meta-divider&quot;&gt;|&lt;/span&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line">&#123;% if theme.footer.theme.enable %&#125;</span><br><span class="line">&lt;div class=&quot;theme-info&quot;&gt;&#123;#</span><br><span class="line">#&#125;&#123;&#123; __(&#x27;footer.theme&#x27;) &#125;&#125; – &#123;#</span><br><span class="line">#&#125;&lt;a class=&quot;theme-link&quot; target=&quot;_blank&quot;&#123;&#123; nofollow &#125;&#125; href=&quot;https://theme-next.org&quot;&gt;&#123;#</span><br><span class="line">#&#125;NexT.&#123;&#123; theme.scheme &#125;&#125;&#123;#</span><br><span class="line">#&#125;&lt;/a&gt;&#123;% if theme.footer.theme.version %&#125; v&#123;&#123; version &#125;&#125;&#123;% endif %&#125;&#123;#</span><br><span class="line">#&#125;&lt;/div&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">把这段代码首尾分别加上：&lt;!-- 和--&gt;，或者直接删除</span><br></pre></td></tr></table></figure>
 
 
     </div>
@@ -321,7 +340,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83"><span class="nav-number">2.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.</span> <span class="nav-text">安装步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">4.</span> <span class="nav-text">文章基本操作</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83"><span class="nav-number">2.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.</span> <span class="nav-text">安装步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">4.</span> <span class="nav-text">文章基本操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%85%8D%E7%BD%AE%E4%BF%AE%E6%94%B9"><span class="nav-number">5.</span> <span class="nav-text">常见配置修改</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E6%95%B0%E7%BB%9F%E8%AE%A1"><span class="nav-number">5.1.</span> <span class="nav-text">字数统计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%90%E8%97%8F%E7%BD%91%E9%A1%B5%E5%BA%95%E9%83%A8-powered-By-Hexo-x2F-%E5%BC%BA%E5%8A%9B%E9%A9%B1%E5%8A%A8"><span class="nav-number">5.2.</span> <span class="nav-text">隐藏网页底部 powered By Hexo &#x2F; 强力驱动</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -378,6 +397,16 @@
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Kousq</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">10k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">9 分钟</span>
 </div>
 
 <!--
