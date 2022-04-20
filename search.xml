@@ -15,10 +15,10 @@
 <p>本文所使用的环境：</p>
 <ul>
 <li>Windows11</li>
-<li><span class="exturl" data-url="bWFpbHRvOiYjeDZlOyYjeDZmOyYjeDY0OyYjMTAxOyYjNDY7JiN4NmE7JiMxMTU7JiM2NDsmIzExODsmIzQ5OyYjeDM2OyYjeDJlOyYjNDk7JiM1MjsmI3gyZTsmI3gzMjs=">&#x6e;&#x6f;&#x64;&#101;&#46;&#x6a;&#115;&#64;&#118;&#49;&#x36;&#x2e;&#49;&#52;&#x2e;&#x32;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>node -v</code></li>
-<li><span class="exturl" data-url="bWFpbHRvOiYjeDY3OyYjeDY5OyYjeDc0OyYjeDQwOyYjNTA7JiN4MmU7JiN4MzM7JiM1MTsmIzQ2OyYjNDg7JiM0NjsmI3g3NzsmIzEwNTsmIzExMDsmIzEwMDsmI3g2ZjsmIzExOTsmI3g3MzsmIzQ2OyYjNTA7">&#x67;&#x69;&#x74;&#x40;&#50;&#x2e;&#x33;&#51;&#46;&#48;&#46;&#x77;&#105;&#110;&#100;&#x6f;&#119;&#x73;&#46;&#50;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>git version</code></li>
-<li><span class="exturl" data-url="bWFpbHRvOiYjeDY4OyYjeDY1OyYjeDc4OyYjMTExOyYjeDQwOyYjNTQ7JiM0NjsmI3gzMTsmI3gyZTsmIzQ4Ow==">&#x68;&#x65;&#x78;&#111;&#x40;&#54;&#46;&#x31;&#x2e;&#48;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>hexo -v</code>或<code>hexo version</code></li>
-<li><span class="exturl" data-url="bWFpbHRvOiYjMTEwOyYjMTAxOyYjeDc4OyYjeDc0OyYjeDQwOyYjNTU7JiN4MmU7JiN4Mzg7JiN4MmU7JiM0ODs=">&#110;&#101;&#x78;&#x74;&#x40;&#55;&#x2e;&#x38;&#x2e;&#48;<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="bWFpbHRvOiYjeDZlOyYjeDZmOyYjMTAwOyYjeDY1OyYjNDY7JiN4NmE7JiN4NzM7JiN4NDA7JiN4NzY7JiM0OTsmI3gzNjsmIzQ2OyYjeDMxOyYjNTI7JiN4MmU7JiN4MzI7">&#x6e;&#x6f;&#100;&#x65;&#46;&#x6a;&#x73;&#x40;&#x76;&#49;&#x36;&#46;&#x31;&#52;&#x2e;&#x32;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>node -v</code></li>
+<li><span class="exturl" data-url="bWFpbHRvOiYjMTAzOyYjeDY5OyYjMTE2OyYjeDQwOyYjeDMyOyYjNDY7JiM1MTsmI3gzMzsmI3gyZTsmIzQ4OyYjeDJlOyYjMTE5OyYjMTA1OyYjMTEwOyYjeDY0OyYjeDZmOyYjMTE5OyYjeDczOyYjNDY7JiM1MDs=">&#103;&#x69;&#116;&#x40;&#x32;&#46;&#51;&#x33;&#x2e;&#48;&#x2e;&#119;&#105;&#110;&#x64;&#x6f;&#119;&#x73;&#46;&#50;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>git version</code></li>
+<li><span class="exturl" data-url="bWFpbHRvOiYjeDY4OyYjMTAxOyYjMTIwOyYjeDZmOyYjNjQ7JiN4MzY7JiN4MmU7JiM0OTsmIzQ2OyYjeDMwOw==">&#x68;&#101;&#120;&#x6f;&#64;&#x36;&#x2e;&#49;&#46;&#x30;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>hexo -v</code>或<code>hexo version</code></li>
+<li><span class="exturl" data-url="bWFpbHRvOiYjeDZlOyYjMTAxOyYjeDc4OyYjMTE2OyYjeDQwOyYjeDM3OyYjNDY7JiN4Mzg7JiN4MmU7JiM0ODs=">&#x6e;&#101;&#x78;&#116;&#x40;&#x37;&#46;&#x38;&#x2e;&#48;<i class="fa fa-external-link-alt"></i></span></li>
 </ul>
 <h1 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h1><ul>
 <li>安装Node.js</li>
@@ -68,6 +68,171 @@
       </tags>
   </entry>
   <entry>
+    <title>MySQL InnoDB Cluster 部署手册</title>
+    <url>/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本次部署在IPV6和IPV4双栈网络环境下部署。采用InnoDB Cluster，每台服务器实例都运行MySQL Group Replication。MGR有两种模式，一种是Single-Primary，一种是Multi-Primary，即单主或者多主，本文使用的是Single-Primary模式</p>
+<span id="more"></span>
+
+<h1 id="逻辑部署图"><a href="#逻辑部署图" class="headerlink" title="逻辑部署图"></a>逻辑部署图</h1><p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/1637581706651-129d00f6-1a4f-46d8-b0d0-84f3500efc09.jpeg"></p>
+<ol>
+<li>上面这张图看着比较清楚，通过MySQL Shell可以配置出一个高可用自动进行故障转移的MySQL InnoDB Cluster，在后续运维过程中也可以通过MySQL Shell对集群进行状态监控及管理维护。通过MySQL Router向应用层屏蔽底层集群的细节，以应用层将普通的MySQL协议访问集群。</li>
+<li>MySQL Group Replication 是最新GA的同步复制方式，具有以下特点：</li>
+</ol>
+<ul>
+<li><p>支持单主和多主模式</p>
+</li>
+<li><p>基于Paxos算法，实现数据复制的一致性</p>
+</li>
+<li><p>插件化设计，支持插件检测，新增节点小于集群当前节点主版本号，拒绝加入集群，大于则加入，但无法作为主节点</p>
+</li>
+<li><p>没有第三方组件依赖</p>
+</li>
+<li><p>支持全链路SSL通讯</p>
+</li>
+<li><p>支持IP白名单</p>
+</li>
+<li><p>不依赖网络多播</p>
+</li>
+</ul>
+<h2 id="搭建MySQL-InnoDB-Cluster"><a href="#搭建MySQL-InnoDB-Cluster" class="headerlink" title="搭建MySQL InnoDB Cluster"></a>搭建MySQL InnoDB Cluster</h2><h2 id="部署环境"><a href="#部署环境" class="headerlink" title="部署环境"></a>部署环境</h2><table>
+<thead>
+<tr>
+<th>主机名</th>
+<th>主机名称</th>
+<th>操作系统</th>
+<th>MySQL版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10.19.36.42</td>
+<td>t1</td>
+<td>CentOS Linux release 7.6.1810 (Core)</td>
+<td>mysql-8.0.25-linux-glibc2.12-x86_64、mysql-router-8.0.25-linux-glibc2.12-x86_64、mysql-shell-8.0.25-linux-glibc2.12-x86-64bit</td>
+</tr>
+<tr>
+<td>10.19.36.43</td>
+<td>t2</td>
+<td>CentOS Linux release 7.6.1810 (Core)</td>
+<td>mysql-8.0.25-linux-glibc2.12-x86_64</td>
+</tr>
+<tr>
+<td>10.19.36.44</td>
+<td>t3</td>
+<td>CentOS Linux release 7.6.1810 (Core)</td>
+<td>mysql-8.0.25-linux-glibc2.12-x86_64</td>
+</tr>
+</tbody></table>
+<h2 id="网络环境"><a href="#网络环境" class="headerlink" title="网络环境"></a>网络环境</h2><p>默认已具备IPV6网络的环境，此次部署三台服务器为IPV4和IPV6双栈网络，IPV6的子网掩码为fec0::&#x2F;48</p>
+<table>
+<thead>
+<tr>
+<th>IPV4</th>
+<th>IPV6</th>
+<th>Hostname</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10.19.36.42</td>
+<td>fec0::a13:242a</td>
+<td>t1</td>
+</tr>
+<tr>
+<td>10.19.36.43</td>
+<td>fec0::a13:242b</td>
+<td>t2</td>
+</tr>
+<tr>
+<td>10.19.36.44</td>
+<td>fec0::a13:242c</td>
+<td>t3</td>
+</tr>
+</tbody></table>
+<h2 id="配置主机名称映射"><a href="#配置主机名称映射" class="headerlink" title="配置主机名称映射"></a>配置主机名称映射</h2><p>为保证三台虚拟机上可正常通过名称解析到对方的IP，这里将<strong>主机名称映射必做写入三台主机的hosts文件中</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cat &lt;&lt; EOF &gt;&gt; /etc/hosts</span><br><span class="line">fec0::a13:242a t1</span><br><span class="line">fec0::a13:242b t2</span><br><span class="line">fec0::a13:242c t3</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<p><strong>注：</strong>如果不配置此项，后续将节点添加至集群中，会报无法解析IP对应的主机名，从而未配置的主机无法添加至集群中。</p>
+<h2 id="MySQL-部署"><a href="#MySQL-部署" class="headerlink" title="MySQL 部署"></a>MySQL 部署</h2><p>可以参考上一篇文章<span class="exturl" data-url="aHR0cDovL2xlbW5hLmNjL3Bvc3QvU2hlbGwlRTglODQlOUElRTYlOUMlQUMlRTglODclQUElRTUlOEElQTglRTklODMlQTglRTclQkQlQjIlRTQlQkElOEMlRTglQkYlOUIlRTUlODglQjZNeVNRTCVFNiU5NSVCMCVFNiU4RCVBRSVFNSVCQSU5My8=">Shell脚本自动部署二进制MySQL数据库<i class="fa fa-external-link-alt"></i></span></p>
+<p>需要注意的是需要将<strong>my.cnf</strong>文件中做略微修改来适配IPV6环境</p>
+<p>1、添加  <strong>bind_address&#x3D; ::</strong>   匹配IPV6和IPV4双栈</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[client]</span><br><span class="line">port=3336</span><br><span class="line">socket=/home/mysqlg1/mysql-8.0.25-linux-glibc2.12-x86_64/mysqld.sock</span><br><span class="line"><span class="comment">#default-character-set=utf8</span></span><br><span class="line">[mysqld]</span><br><span class="line"><span class="comment">#匹配双栈</span></span><br><span class="line">bind_address= ::</span><br><span class="line">port= 3336</span><br><span class="line"><span class="comment">#数据库最大连接数</span></span><br><span class="line">max_connections = 3000 </span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>2、将之前IPV4的地址改成IPV6；打开访问数据库白名单，配置为IPV6的子网掩码</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">##########################mgr set##############################</span></span><br><span class="line"><span class="comment">#数据库会根据port自动生成，在port后面增加0；不建议随便改</span></span><br><span class="line">mysqlx_port=33660</span><br><span class="line">mysqlx_socket=/home/mysqlg1/mysql-8.0.25-linux-glibc2.12-x86_64/mysqlx.sock</span><br><span class="line">loose-group_replication_group_name=<span class="string">&quot;aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa&quot;</span></span><br><span class="line">loose-group_replication_start_on_boot=off</span><br><span class="line"><span class="comment">#数据组复制端口，建议在port后面加1；此为IP为本机IP地址</span></span><br><span class="line">loose-group_replication_local_address= <span class="string">&quot;[fec0::a13:242a]:33661&quot;</span></span><br><span class="line"><span class="comment">#复制组的集群信息</span></span><br><span class="line"><span class="comment">#集群中所有数据库节点需要配置（此处无须配置本机的端口）</span></span><br><span class="line">loose-group_replication_group_seeds= <span class="string">&quot;[fec0::a13:242b]:33661,[fec0::a13:242c]:33661&quot;</span></span><br><span class="line">loose-group_replication_bootstrap_group= off</span><br><span class="line"><span class="comment">#访问数据库白名单，配置IPV6的子网掩码</span></span><br><span class="line">loose-group_replication_ip_whitelist=<span class="string">&quot;fec0::/48&quot;</span> </span><br><span class="line">loose-group_replication_single_primary_mode = on</span><br><span class="line">loose-group_replication_transaction_size_limit=1500000000</span><br></pre></td></tr></table></figure>
+
+<h2 id="MySQL-Shell配置集群"><a href="#MySQL-Shell配置集群" class="headerlink" title="MySQL Shell配置集群"></a>MySQL Shell配置集群</h2><p>此处默认您已将三个服务器的MySQL数据库都已搭建完成，MySQL数据库端口为3366，root密码为123456</p>
+<p>MYSQL CLUSTER集群通过MYSQL SHELL进行初始化，并创建集群</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tar –vxf mysql-shell-8.0.25-linux-glibc2.12-x86-64bit.tar.gz</span><br><span class="line">cd mysql-shell-8.0.25-linux-glibc2.12-x86-64bit</span><br></pre></td></tr></table></figure>
+
+<h3 id="通过MYSQL-SHELL检查主机状态"><a href="#通过MYSQL-SHELL检查主机状态" class="headerlink" title="通过MYSQL SHELL检查主机状态"></a>通过MYSQL SHELL检查主机状态</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./bin/mysqlsh --no-password</span><br><span class="line">dba.checkInstanceConfiguration(<span class="string">&#x27;root@t1:3366&#x27;</span>,&#123;<span class="string">&#x27;password&#x27;</span>: <span class="string">&#x27;123456&#x27;</span>, <span class="string">&#x27;interactive&#x27;</span>: <span class="literal">false</span>&#125;)</span><br><span class="line">dba.checkInstanceConfiguration(<span class="string">&#x27;root@t2:3366&#x27;</span>,&#123;<span class="string">&#x27;password&#x27;</span>: <span class="string">&#x27;123456&#x27;</span>, <span class="string">&#x27;interactive&#x27;</span>: <span class="literal">false</span>&#125;)</span><br><span class="line">dba.checkInstanceConfiguration(<span class="string">&#x27;root@t3:3366&#x27;</span>,&#123;<span class="string">&#x27;password&#x27;</span>: <span class="string">&#x27;123456&#x27;</span>, <span class="string">&#x27;interactive&#x27;</span>: <span class="literal">false</span>&#125;)</span><br><span class="line">node: 返回 ok说明实例正常</span><br></pre></td></tr></table></figure>
+
+<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420153656973.png"></p>
+<h3 id="创建MYSQL-Cluster名称"><a href="#创建MYSQL-Cluster名称" class="headerlink" title="创建MYSQL Cluster名称"></a>创建MYSQL Cluster名称</h3><p>MYSQL SHELL只需要在任意一塔主机机上进行操作就可以了。</p>
+<p>创建MYSQL CLUSTER集群</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./bin/mysqlsh --no-password</span><br><span class="line">#登录任意一台主机MYSQL服务</span><br><span class="line">shell.connect(&#x27;root@[fec0::a13:242a]:3366&#x27;, &#x27;123456&#x27;)  </span><br><span class="line">dba.createCluster(&#x27;mycluster&#x27;, &#123;&#x27;localAddress&#x27;: &#x27;[fec0::a13:242a]&#x27;&#125;) </span><br><span class="line">#创建集群名称为&#x27;mycluster&#x27;，指定MYSQL的IP地址</span><br></pre></td></tr></table></figure>
+
+<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420153806063.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#进入&#x27; mycluster &#x27;集群 执行该命令以后才能配置集群</span><br><span class="line">var cluster=dba.getCluster(&#x27;mycluster&#x27;)</span><br><span class="line">#检查集群状态</span><br><span class="line">cluster.status();</span><br></pre></td></tr></table></figure>
+
+<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420153845769.png"></p>
+<h3 id="增加slave1节点"><a href="#增加slave1节点" class="headerlink" title="增加slave1节点"></a>增加slave1节点</h3><p>节点加入的时候会导致原来的数据库shutdown，如果没有设置全局环境变量，就需要手动启动下</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./bin/mysqlsh --no-password</span><br><span class="line"><span class="comment">#需要连接到主节点进行操作</span></span><br><span class="line">var cluster=dba.getCluster(<span class="string">&#x27;mycluster&#x27;</span>)</span><br><span class="line">shell.connect(<span class="string">&#x27;root@[fec0::a13:242a]:3366&#x27;</span>, <span class="string">&#x27;123456&#x27;</span>)</span><br><span class="line"><span class="comment">#（秒，默认60），在恢复操作期间等待事务应用的时间，如果向运行一段时间的集群中新增节点时，建议此时间设置大点，否则如下节点增加集群会报超时错误。</span></span><br><span class="line">shell.options[<span class="string">&#x27;dba.restartWaitTimeout&#x27;</span>]=7200 </span><br><span class="line">cluster.addInstance(<span class="string">&#x27;root@[fec0::a13:242b]:3366&#x27;</span>, &#123;<span class="string">&#x27;localAddress&#x27;</span>: <span class="string">&#x27;[fec0::a13:242b]&#x27;</span>, <span class="string">&#x27;password&#x27;</span>: <span class="string">&#x27;123456&#x27;</span>,<span class="string">&#x27;recoveryMethod&#x27;</span>:<span class="string">&#x27;clone&#x27;</span>,<span class="string">&#x27;waitRecovery&#x27;</span>:<span class="string">&#x27;1&#x27;</span>&#125;)</span><br><span class="line">cluster.status();</span><br></pre></td></tr></table></figure>
+
+<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420154002968.png"></p>
+<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420154018985.png"></p>
+<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420154025830.png"></p>
+<h3 id="增加slave2节点"><a href="#增加slave2节点" class="headerlink" title="增加slave2节点"></a>增加slave2节点</h3><p>节点加入的时候会导致原来的数据库shutdown，如果没有设置全局环境变量，就需要手动启动下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./bin/mysqlsh --no-password</span><br><span class="line">#需要连接到主节点进行操作</span><br><span class="line">var cluster=dba.getCluster(&#x27;mycluster&#x27;)</span><br><span class="line">shell.connect(&#x27;root@[fec0::a13:242a]:3366&#x27;, &#x27;123456&#x27;)</span><br><span class="line">#（秒，默认60），在恢复操作期间等待事务应用的时间，如果向运行一段时间的集群中新增节点时，建议此时间设置大点，否则如下节点增加集群会报超时错误。</span><br><span class="line">shell.options[&#x27;dba.restartWaitTimeout&#x27;]=7200 </span><br><span class="line">cluster.addInstance(&#x27;root@[fec0::a13:242c]:3366&#x27;, &#123;&#x27;localAddress&#x27;: &#x27;[fec0::a13:242c]&#x27;, &#x27;password&#x27;: &#x27;123456&#x27;,&#x27;recoveryMethod&#x27;:&#x27;clone&#x27;,&#x27;waitRecovery&#x27;:&#x27;1&#x27;&#125;)</span><br><span class="line">cluster.status();</span><br></pre></td></tr></table></figure>
+
+<h3 id="检查集群状态"><a href="#检查集群状态" class="headerlink" title="检查集群状态"></a>检查集群状态</h3><p><code>cluster.status();</code></p>
+<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420154253447.png"></p>
+<h2 id="MySQL-Router"><a href="#MySQL-Router" class="headerlink" title="MySQL Router"></a>MySQL Router</h2><h3 id="MySQL-Router-说明"><a href="#MySQL-Router-说明" class="headerlink" title="MySQL Router 说明"></a>MySQL Router 说明</h3><p>​        MySQL Router是MySQL官方推出的一个轻量级MySQL中间件是处于应用client和dbserver之间的轻量级代理程序，它能检测，分析和转发查询到后端数据库实例，并把结果返回给client。是mysql-proxy的一个替代品.但是和mysql-proxy有区别。mysqlroute使用了两个端口进行读写分离</p>
+<table>
+<thead>
+<tr>
+<th>默认端口号</th>
+<th>作用</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>6446</td>
+<td>默认是读写端口</td>
+<td>mode  &#x3D; read-write默认情况下第一台主数据库为写主库，当第一台主数据库DOWN机后，第二台数据库被提升为主库,如果第一台不出问题，第二台是不会被使用的。可以作高可用使用</td>
+</tr>
+<tr>
+<td>6447</td>
+<td>默认是读端口</td>
+<td>如果设置以后，根据设置的列表进行轮询使用</td>
+</tr>
+</tbody></table>
+<p>​        MySQL Router接受前端应用程序请求后，根据不同的端口来区分读写，把连接读写端口的所有写和查询发往主库，把连接只读端口的查询以轮询方式发往多个从库，从而实现读写分离的目的。读写返回的结果会交给MySQL Router,由MySQL Router返回给客户端的应用程序。<br>​        我理解的是mysql-proxy在使用的时候与连接单台数据库操作一样，而mysql route则是把多台主机的读写集中在一起，进行读写分离，在使用的时候还是需要程序进行改动。</p>
+<h3 id="初始化MySQL-Router"><a href="#初始化MySQL-Router" class="headerlink" title="初始化MySQL Router"></a>初始化MySQL Router</h3><p>​        MYSQL router是基于MYSQL服务之上的路由层，用于应用程序来访问数据库，向应用层屏蔽底层集群的细节，可以实现读写分析，我们还可以在三台虚拟机上均部署mysql-router，用于高可用。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 以当前集群信息创建mysql-router的配置信息，注意这里密码 123456</span><br><span class="line">$tar –vxf mysql-router-8.0.25-linux-glibc2.12-x86_64.tar</span><br><span class="line">$ cd mysql-router-8.0.25-linux-glibc2.12-x86_64</span><br></pre></td></tr></table></figure>
+
+<p>初始化router的配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">在当前用户下生产router的启动脚本和配置文件</span><br><span class="line">./bin/mysqlrouter --bootstrap root:123456@[fec0::a13:242a]:3366 --directory=$&#123;MYSQLRT_HOME&#125;/aiclster1 --conf-use-sockets --force --user=$&#123;USER&#125;</span><br><span class="line">注：</span><br><span class="line">如上root为MYSQL MGR数据库的管理员账号，123456为数据库管理员密码。</span><br><span class="line">如上的[fec0::a13:242a]数据库MGR的主节点的IP地址，3366为数据库MGR主节点的服务端口；</span><br><span class="line">如上的aiclster1建议设置为数据库MGR的的集群名称，方便后续应用识别使用；</span><br><span class="line">执行如上命令后，如果能够正常连接到MYSQL MGR的主节点，则会显示如下的信息，至少会在指定目录中生成mysqlrouter.conf文件；否则会提示连接数据库失败；</span><br></pre></td></tr></table></figure>
+
+<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420162628768.png"></p>
+<h3 id="修改MySQL-Router配置"><a href="#修改MySQL-Router配置" class="headerlink" title="修改MySQL Router配置"></a>修改MySQL Router配置</h3><p><strong>添加双栈</strong></p>
+<p><strong>mysql-router-8.0.25-linux-glibc2.12-x86_64&#x2F;aiclster1&#x2F;mysqlrouter.conf</strong>  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">........  </span><br><span class="line">bind_address = ::</span><br><span class="line">........  </span><br><span class="line"># 修改mysqlrouter.conf原文件中bind_address=0.0.0.0为::</span><br><span class="line">即 %s/bind_address=0.0.0.0/bind_address=::/g  </span><br></pre></td></tr></table></figure>
+
+<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420162833513.png"></p>
+<h3 id="启动-MySQL-Router"><a href="#启动-MySQL-Router" class="headerlink" title="启动 MySQL Router"></a>启动 MySQL Router</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cd /home/mysqlg1/mysql-router</span><br><span class="line">$ ./start.sh</span><br><span class="line">检查端口和进程</span><br><span class="line">ps -ef |grep router</span><br></pre></td></tr></table></figure>
+
+<h3 id="部署验证"><a href="#部署验证" class="headerlink" title="部署验证"></a>部署验证</h3><p>至此整套MySQL InnoDB Cluster就部署好了，我们在其它节点以MySQL协议即可访问该MySQL集群。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql -hfec0::a13:242a -P6446 -uroot -p123456</span><br><span class="line">或者</span><br><span class="line">mysql -h10.19.36.42 -P6446 -uroot -p123456</span><br></pre></td></tr></table></figure>
+
+<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420162953966.png"></p>
+]]></content>
+      <categories>
+        <category>默认分类</category>
+      </categories>
+      <tags>
+        <tag>MYSQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Shell脚本自动部署二进制MySQL数据库</title>
     <url>/post/Shell%E8%84%9A%E6%9C%AC%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E4%BA%8C%E8%BF%9B%E5%88%B6MySQL%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该Shell脚本为MYSQL CLUSTER集群中自动部署二进制包MySQL数据库，配置参数为集群参数，可修改成单节点配置，脚本还有功能尚未完成，但依旧不影响使用。</p>
@@ -94,8 +259,8 @@
         <category>默认分类</category>
       </categories>
       <tags>
-        <tag>SHELL</tag>
         <tag>MYSQL</tag>
+        <tag>SHELL</tag>
       </tags>
   </entry>
 </search>
