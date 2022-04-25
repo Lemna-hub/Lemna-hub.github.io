@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="google-site-verification" content="1wv3Df6eyBy9RAW_7RytkeX7XPyWL0e8Bjabg6MMyeE">
+  <meta name="baidu-site-verification" content="code-HKCppcpIDG">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lemna-hub.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="前言find命令用来在指定目录下查找文件。任何位于参数之前的字符串都将被视为欲查找的目录名。如果使用该命令时，不设置任何参数，则find命令将在当前目录下查找子目录与文件。并且将查找到的子目录和文件全部进行显示。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux find 命令">
+<meta property="og:url" content="https://lemna-hub.github.io/post/Linux-find-%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="Lemna&#39;s Blog">
+<meta property="og:description" content="前言find命令用来在指定目录下查找文件。任何位于参数之前的字符串都将被视为欲查找的目录名。如果使用该命令时，不设置任何参数，则find命令将在当前目录下查找子目录与文件。并且将查找到的子目录和文件全部进行显示。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-25T06:25:25.000Z">
+<meta property="article:modified_time" content="2022-04-25T07:02:04.055Z">
+<meta property="article:author" content="Kousq">
+<meta property="article:tag" content="Linux 命令">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://lemna-hub.github.io/post/Linux-find-%E5%91%BD%E4%BB%A4/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Linux find 命令 | Lemna's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Lemna's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lemna-hub.github.io/post/Linux-find-%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_1.jpg">
+      <meta itemprop="name" content="Kousq">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lemna's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linux find 命令
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-25 14:25:25 / 修改时间：15:02:04" itemprop="dateCreated datePublished" datetime="2022-04-25T14:25:25+08:00">2022-04-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><strong>find命令</strong>用来在指定目录下查找文件。任何位于参数之前的字符串都将被视为欲查找的目录名。如果使用该命令时，不设置任何参数，则find命令将在当前目录下查找子目录与文件。并且将查找到的子目录和文件全部进行显示。</p>
+<span id="more"></span>
+
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><p><code>find (选项) (参数)</code></p>
+<p>查找目录：find &#x2F;（查找范围） -name ‘查找关键字’ -type d<br>查找文件：find &#x2F;（查找范围） -name 查找关键字 -print</p>
+<h1 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">-amin&lt;分钟&gt;：查找在指定时间曾被存取过的文件或目录，单位以分钟计算；</span><br><span class="line">-anewer&lt;参考文件或目录&gt;：查找其存取时间较指定文件或目录的存取时间更接近现在的文件或目录；</span><br><span class="line">-atime&lt;24小时数&gt;：查找在指定时间曾被存取过的文件或目录，单位以24小时计算；</span><br><span class="line">-cmin&lt;分钟&gt;：查找在指定时间之时被更改过的文件或目录；</span><br><span class="line">-cnewer&lt;参考文件或目录&gt;查找其更改时间较指定文件或目录的更改时间更接近现在的文件或目录；</span><br><span class="line">-ctime&lt;24小时数&gt;：查找在指定时间之时被更改的文件或目录，单位以24小时计算；</span><br><span class="line">-daystart：从本日开始计算时间；</span><br><span class="line">-depth：从指定目录下最深层的子目录开始查找；</span><br><span class="line">-expty：寻找文件大小为0 Byte的文件，或目录下没有任何子目录或文件的空目录；</span><br><span class="line">-<span class="built_in">exec</span>&lt;执行指令&gt;：假设find指令的回传值为True，就执行该指令；</span><br><span class="line">-<span class="literal">false</span>：将find指令的回传值皆设为False；</span><br><span class="line">-fls&lt;列表文件&gt;：此参数的效果和指定“-<span class="built_in">ls</span>”参数类似，但会把结果保存为指定的列表文件；</span><br><span class="line">-follow：排除符号连接；</span><br><span class="line">-fprint&lt;列表文件&gt;：此参数的效果和指定“-<span class="built_in">print</span>”参数类似，但会把结果保存成指定的列表文件；</span><br><span class="line">-fprint0&lt;列表文件&gt;：此参数的效果和指定“-print0”参数类似，但会把结果保存成指定的列表文件；</span><br><span class="line">-fprintf&lt;列表文件&gt;&lt;输出格式&gt;：此参数的效果和指定“-<span class="built_in">printf</span>”参数类似，但会把结果保存成指定的列表文件；</span><br><span class="line">-fstype&lt;文件系统类型&gt;：只寻找该文件系统类型下的文件或目录；</span><br><span class="line">-gid&lt;群组识别码&gt;：查找符合指定之群组识别码的文件或目录；</span><br><span class="line">-group&lt;群组名称&gt;：查找符合指定之群组名称的文件或目录；</span><br><span class="line">-<span class="built_in">help</span>或——<span class="built_in">help</span>：在线帮助；</span><br><span class="line">-ilname&lt;范本样式&gt;：此参数的效果和指定“-lname”参数类似，但忽略字符大小写的差别；</span><br><span class="line">-iname&lt;范本样式&gt;：此参数的效果和指定“-name”参数类似，但忽略字符大小写的差别；</span><br><span class="line">-inum&lt;inode编号&gt;：查找符合指定的inode编号的文件或目录；</span><br><span class="line">-ipath&lt;范本样式&gt;：此参数的效果和指定“-path”参数类似，但忽略字符大小写的差别；</span><br><span class="line">-iregex&lt;范本样式&gt;：此参数的效果和指定“-regexe”参数类似，但忽略字符大小写的差别；</span><br><span class="line">-links&lt;连接数目&gt;：查找符合指定的硬连接数目的文件或目录；</span><br><span class="line">-iname&lt;范本样式&gt;：指定字符串作为寻找符号连接的范本样式；</span><br><span class="line">-<span class="built_in">ls</span>：假设find指令的回传值为Ture，就将文件或目录名称列出到标准输出；</span><br><span class="line">-maxdepth&lt;目录层级&gt;：设置最大目录层级；</span><br><span class="line">-mindepth&lt;目录层级&gt;：设置最小目录层级；</span><br><span class="line">-mmin&lt;分钟&gt;：查找在指定时间曾被更改过的文件或目录，单位以分钟计算；</span><br><span class="line">-mount：此参数的效果和指定“-xdev”相同；</span><br><span class="line">-mtime&lt;24小时数&gt;：查找在指定时间曾被更改过的文件或目录，单位以24小时计算；</span><br><span class="line">-name&lt;范本样式&gt;：指定字符串作为寻找文件或目录的范本样式；</span><br><span class="line">-newer&lt;参考文件或目录&gt;：查找其更改时间较指定文件或目录的更改时间更接近现在的文件或目录；</span><br><span class="line">-nogroup：找出不属于本地主机群组识别码的文件或目录；</span><br><span class="line">-noleaf：不去考虑目录至少需拥有两个硬连接存在；</span><br><span class="line">-nouser：找出不属于本地主机用户识别码的文件或目录；</span><br><span class="line">-ok&lt;执行指令&gt;：此参数的效果和指定“-<span class="built_in">exec</span>”类似，但在执行指令之前会先询问用户，若回答“y”或“Y”，则放弃执行命令；</span><br><span class="line">-path&lt;范本样式&gt;：指定字符串作为寻找目录的范本样式；</span><br><span class="line">-perm&lt;权限数值&gt;：查找符合指定的权限数值的文件或目录；</span><br><span class="line">-<span class="built_in">print</span>：假设find指令的回传值为Ture，就将文件或目录名称列出到标准输出。格式为每列一个名称，每个名称前皆有“./”字符串；</span><br><span class="line">-print0：假设find指令的回传值为Ture，就将文件或目录名称列出到标准输出。格式为全部的名称皆在同一行；</span><br><span class="line">-<span class="built_in">printf</span>&lt;输出格式&gt;：假设find指令的回传值为Ture，就将文件或目录名称列出到标准输出。格式可以自行指定；</span><br><span class="line">-prune：不寻找字符串作为寻找文件或目录的范本样式;</span><br><span class="line">-regex&lt;范本样式&gt;：指定字符串作为寻找文件或目录的范本样式；</span><br><span class="line">-size&lt;文件大小&gt;：查找符合指定的文件大小的文件；</span><br><span class="line">-<span class="literal">true</span>：将find指令的回传值皆设为True；</span><br><span class="line">-typ&lt;文件类型&gt;：只寻找符合指定的文件类型的文件；</span><br><span class="line">-uid&lt;用户识别码&gt;：查找符合指定的用户识别码的文件或目录；</span><br><span class="line">-used&lt;日数&gt;：查找文件或目录被更改之后在指定时间曾被存取过的文件或目录，单位以日计算；</span><br><span class="line">-user&lt;拥有者名称&gt;：查找符和指定的拥有者名称的文件或目录；</span><br><span class="line">-version或——version：显示版本信息；</span><br><span class="line">-xdev：将范围局限在先行的文件系统中；</span><br><span class="line">-xtype&lt;文件类型&gt;：此参数的效果和指定“-<span class="built_in">type</span>”参数类似，差别在于它针对符号连接检查。</span><br></pre></td></tr></table></figure>
+
+<h1 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h1><p>起始目录：查找文件的起始目录</p>
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><h2 id="根据文件或者正则表达式进行匹配"><a href="#根据文件或者正则表达式进行匹配" class="headerlink" title="根据文件或者正则表达式进行匹配"></a>根据文件或者正则表达式进行匹配</h2><p>列出当前目录及子目录下所有文件和文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find .</span><br></pre></td></tr></table></figure>
+
+<p>在<code>/home</code>目录下查找以.txt结尾的文件名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /home -name &quot;*.txt&quot;</span><br></pre></td></tr></table></figure>
+
+<p>同上，但忽略大小写</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /home -iname &quot;*.txt&quot;</span><br></pre></td></tr></table></figure>
+
+<p>当前目录及子目录下查找所有以.txt和.pdf结尾的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">find . \( -name &quot;*.txt&quot; -o -name &quot;*.pdf&quot; \)</span><br><span class="line"></span><br><span class="line">或</span><br><span class="line"></span><br><span class="line">find . -name &quot;*.txt&quot; -o -name &quot;*.pdf&quot; </span><br></pre></td></tr></table></figure>
+
+<p>匹配文件路径或者文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /usr/ -path &quot;*local*&quot;</span><br></pre></td></tr></table></figure>
+
+<p>基于正则表达式匹配文件路径</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -regex &quot;.*\(\.txt\|\.pdf\)$&quot;</span><br></pre></td></tr></table></figure>
+
+<p>同上，但忽略大小写</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -iregex &quot;.*\(\.txt\|\.pdf\)$&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="否定参数"><a href="#否定参数" class="headerlink" title="否定参数"></a>否定参数</h2><p>找出&#x2F;home下不是以.txt结尾的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /home ! -name &quot;*.txt&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="根据文件类型进行搜索"><a href="#根据文件类型进行搜索" class="headerlink" title="根据文件类型进行搜索"></a>根据文件类型进行搜索</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type 类型参数</span><br></pre></td></tr></table></figure>
+
+<p>类型参数列表：</p>
+<ul>
+<li><strong>f</strong> 普通文件</li>
+<li><strong>l</strong> 符号连接</li>
+<li><strong>d</strong> 目录</li>
+<li><strong>c</strong> 字符设备</li>
+<li><strong>b</strong> 块设备</li>
+<li><strong>s</strong> 套接字</li>
+<li><strong>p</strong> Fifo</li>
+</ul>
+<h2 id="基于目录深度搜索"><a href="#基于目录深度搜索" class="headerlink" title="基于目录深度搜索"></a>基于目录深度搜索</h2><p>向下最大深度限制为3</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -maxdepth 3 -type f</span><br></pre></td></tr></table></figure>
+
+<p>搜索出深度距离当前目录至少2个子目录的所有文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -mindepth 2 -type f</span><br></pre></td></tr></table></figure>
+
+<h2 id="根据文件时间戳进行搜索"><a href="#根据文件时间戳进行搜索" class="headerlink" title="根据文件时间戳进行搜索"></a>根据文件时间戳进行搜索</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f 时间戳</span><br></pre></td></tr></table></figure>
+
+<p>UNIX&#x2F;Linux文件系统每个文件都有三种时间戳：</p>
+<ul>
+<li><strong>访问时间</strong>（-atime&#x2F;天，-amin&#x2F;分钟）：用户最近一次访问时间。</li>
+<li><strong>修改时间</strong>（-mtime&#x2F;天，-mmin&#x2F;分钟）：文件最后一次修改时间。</li>
+<li><strong>变化时间</strong>（-ctime&#x2F;天，-cmin&#x2F;分钟）：文件数据元（例如权限等）最后一次修改时间。</li>
+</ul>
+<p>搜索最近七天内被访问过的所有文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -atime -7</span><br></pre></td></tr></table></figure>
+
+<p>搜索恰好在七天前被访问过的所有文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -atime 7</span><br></pre></td></tr></table></figure>
+
+<p>搜索超过七天内被访问过的所有文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -atime +7</span><br></pre></td></tr></table></figure>
+
+<p>搜索访问时间超过10分钟的所有文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -amin +10</span><br></pre></td></tr></table></figure>
+
+<p>找出比<span class="exturl" data-url="aHR0cDovL21hbi5saW51eGRlLm5ldC9maWxl">file<i class="fa fa-external-link-alt"></i></span>.log修改时间更长的所有文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -newer file.log</span><br></pre></td></tr></table></figure>
+
+<h2 id="根据文件大小进行匹配"><a href="#根据文件大小进行匹配" class="headerlink" title="根据文件大小进行匹配"></a>根据文件大小进行匹配</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -size 文件大小单元</span><br></pre></td></tr></table></figure>
+
+<p>文件大小单元：</p>
+<ul>
+<li><strong>b</strong> —— 块（512字节）</li>
+<li><strong>c</strong> —— 字节</li>
+<li><strong>w</strong> —— 字（2字节）</li>
+<li><strong>k</strong> —— 千字节</li>
+<li><strong>M</strong> —— 兆字节</li>
+<li><strong>G</strong> —— 吉字节</li>
+</ul>
+<p>搜索大于10KB的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -size +10k</span><br></pre></td></tr></table></figure>
+
+<p>搜索小于10KB的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -size -10k</span><br></pre></td></tr></table></figure>
+
+<p>搜索等于10KB的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -size 10k</span><br></pre></td></tr></table></figure>
+
+<p>搜索当前文件夹下大于1G的占用磁盘空间的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -size +1G -exec du -h &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除匹配文件"><a href="#删除匹配文件" class="headerlink" title="删除匹配文件"></a>删除匹配文件</h2><p>删除当前目录下所有.txt文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -name &quot;*.txt&quot; -delete</span><br></pre></td></tr></table></figure>
+
+<h2 id="根据文件权限-x2F-所有权进行匹配"><a href="#根据文件权限-x2F-所有权进行匹配" class="headerlink" title="根据文件权限&#x2F;所有权进行匹配"></a>根据文件权限&#x2F;所有权进行匹配</h2><p>当前目录下搜索出权限为777的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -perm 777</span><br></pre></td></tr></table></figure>
+
+<p>找出当前目录下权限不是644的<span class="exturl" data-url="aHR0cDovL21hbi5saW51eGRlLm5ldC9waHA=">php<i class="fa fa-external-link-alt"></i></span>文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -name &quot;*.php&quot; ! -perm 644</span><br></pre></td></tr></table></figure>
+
+<p>找出当前目录用户tom拥有的所有文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -user tom</span><br></pre></td></tr></table></figure>
+
+<p>找出当前目录用户组sunk拥有的所有文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -group sunk</span><br></pre></td></tr></table></figure>
+
+<h2 id="借助-exec选项与其他命令结合使用"><a href="#借助-exec选项与其他命令结合使用" class="headerlink" title="借助-exec选项与其他命令结合使用"></a>借助<code>-exec</code>选项与其他命令结合使用</h2><p>找出当前目录下所有root的文件，并把所有权更改为用户tom</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find .-type f -user root -exec chown tom &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+
+<p>上例中，**{}** 用于与**-exec**选项结合使用来匹配所有文件，然后会被替换为相应的文件名。</p>
+<p>找出自己家目录下所有的.txt文件并删除</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find $HOME/. -name &quot;*.txt&quot; -ok rm &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+
+<p>上例中，**-ok<strong>和</strong>-exec**行为一样，不过它会给出提示，是否执行相应的操作。</p>
+<p>查找&#x2F;home&#x2F;sftpuser目录下7天之前的.tar文件，并删除</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /home/sftpuser -mtime +7 -name &quot;*.tar&quot; -exec rm -rf &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+
+<p>查找当前目录下所有.txt文件并把他们拼接起来写入到all.txt文件中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -name &quot;*.txt&quot; -exec cat &#123;&#125; \;&gt; all.txt</span><br></pre></td></tr></table></figure>
+
+<p>将30天前的.log文件移动到old目录中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -mtime +30 -name &quot;*.log&quot; -exec cp &#123;&#125; old \;</span><br></pre></td></tr></table></figure>
+
+<p>找出当前目录下所有.txt文件并以“File:文件名”的形式打印出来</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -name &quot;*.txt&quot; -exec printf &quot;File: %s\n&quot; &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+
+<p>因为单行命令中-exec参数中无法使用多个命令，以下方法可以实现在-exec之后接受多条命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-exec ./text.sh &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+
+<h2 id="搜索但跳出指定的目录"><a href="#搜索但跳出指定的目录" class="headerlink" title="搜索但跳出指定的目录"></a>搜索但跳出指定的目录</h2><p>查找当前目录或者子目录下所有.txt文件，但是跳过子目录sk</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -path &quot;./sk&quot; -prune -o -name &quot;*.txt&quot; -print</span><br></pre></td></tr></table></figure>
+
+<h2 id="find其他技巧收集"><a href="#find其他技巧收集" class="headerlink" title="find其他技巧收集"></a>find其他技巧收集</h2><p>要列出所有长度为零的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -empty</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux-%E5%91%BD%E4%BB%A4/" rel="tag"># Linux 命令</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/post/Linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="prev" title="Linux 常用命令">
+      <i class="fa fa-chevron-left"></i> Linux 常用命令
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%89%E9%A1%B9"><span class="nav-number">3.</span> <span class="nav-text">选项</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B"><span class="nav-number">5.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E6%96%87%E4%BB%B6%E6%88%96%E8%80%85%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BF%9B%E8%A1%8C%E5%8C%B9%E9%85%8D"><span class="nav-number">5.1.</span> <span class="nav-text">根据文件或者正则表达式进行匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%A6%E5%AE%9A%E5%8F%82%E6%95%B0"><span class="nav-number">5.2.</span> <span class="nav-text">否定参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%E8%BF%9B%E8%A1%8C%E6%90%9C%E7%B4%A2"><span class="nav-number">5.3.</span> <span class="nav-text">根据文件类型进行搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%9B%AE%E5%BD%95%E6%B7%B1%E5%BA%A6%E6%90%9C%E7%B4%A2"><span class="nav-number">5.4.</span> <span class="nav-text">基于目录深度搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E6%96%87%E4%BB%B6%E6%97%B6%E9%97%B4%E6%88%B3%E8%BF%9B%E8%A1%8C%E6%90%9C%E7%B4%A2"><span class="nav-number">5.5.</span> <span class="nav-text">根据文件时间戳进行搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%E8%BF%9B%E8%A1%8C%E5%8C%B9%E9%85%8D"><span class="nav-number">5.6.</span> <span class="nav-text">根据文件大小进行匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E5%8C%B9%E9%85%8D%E6%96%87%E4%BB%B6"><span class="nav-number">5.7.</span> <span class="nav-text">删除匹配文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90-x2F-%E6%89%80%E6%9C%89%E6%9D%83%E8%BF%9B%E8%A1%8C%E5%8C%B9%E9%85%8D"><span class="nav-number">5.8.</span> <span class="nav-text">根据文件权限&#x2F;所有权进行匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%80%9F%E5%8A%A9-exec%E9%80%89%E9%A1%B9%E4%B8%8E%E5%85%B6%E4%BB%96%E5%91%BD%E4%BB%A4%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8"><span class="nav-number">5.9.</span> <span class="nav-text">借助-exec选项与其他命令结合使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E4%BD%86%E8%B7%B3%E5%87%BA%E6%8C%87%E5%AE%9A%E7%9A%84%E7%9B%AE%E5%BD%95"><span class="nav-number">5.10.</span> <span class="nav-text">搜索但跳出指定的目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#find%E5%85%B6%E4%BB%96%E6%8A%80%E5%B7%A7%E6%94%B6%E9%9B%86"><span class="nav-number">5.11.</span> <span class="nav-text">find其他技巧收集</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kousq"
+      src="/images/avatar_1.jpg">
+  <p class="site-author-name" itemprop="name">Kousq</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kousq</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">28k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">25 分钟</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> 强力驱动
+  </div>-->
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
