@@ -15,10 +15,10 @@
 <p>本文所使用的环境：</p>
 <ul>
 <li>Windows11</li>
-<li><span class="exturl" data-url="bWFpbHRvOiYjeDZlOyYjeDZmOyYjMTAwOyYjMTAxOyYjeDJlOyYjMTA2OyYjeDczOyYjeDQwOyYjeDc2OyYjNDk7JiN4MzY7JiM0NjsmI3gzMTsmI3gzNDsmIzQ2OyYjeDMyOw==">&#x6e;&#x6f;&#100;&#101;&#x2e;&#106;&#x73;&#x40;&#x76;&#49;&#x36;&#46;&#x31;&#x34;&#46;&#x32;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>node -v</code></li>
-<li><span class="exturl" data-url="bWFpbHRvOiYjMTAzOyYjeDY5OyYjeDc0OyYjNjQ7JiN4MzI7JiN4MmU7JiN4MzM7JiM1MTsmI3gyZTsmI3gzMDsmI3gyZTsmIzExOTsmIzEwNTsmI3g2ZTsmI3g2NDsmI3g2ZjsmI3g3NzsmI3g3MzsmIzQ2OyYjNTA7">&#103;&#x69;&#x74;&#64;&#x32;&#x2e;&#x33;&#51;&#x2e;&#x30;&#x2e;&#119;&#105;&#x6e;&#x64;&#x6f;&#x77;&#x73;&#46;&#50;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>git version</code></li>
-<li><span class="exturl" data-url="bWFpbHRvOiYjeDY4OyYjMTAxOyYjMTIwOyYjMTExOyYjeDQwOyYjNTQ7JiN4MmU7JiN4MzE7JiM0NjsmI3gzMDs=">&#x68;&#101;&#120;&#111;&#x40;&#54;&#x2e;&#x31;&#46;&#x30;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>hexo -v</code>或<code>hexo version</code></li>
-<li><span class="exturl" data-url="bWFpbHRvOiYjMTEwOyYjeDY1OyYjMTIwOyYjeDc0OyYjeDQwOyYjeDM3OyYjeDJlOyYjeDM4OyYjNDY7JiM0ODs=">&#110;&#x65;&#120;&#x74;&#x40;&#x37;&#x2e;&#x38;&#46;&#48;<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="bWFpbHRvOiYjeDZlOyYjeDZmOyYjeDY0OyYjMTAxOyYjeDJlOyYjMTA2OyYjMTE1OyYjeDQwOyYjMTE4OyYjeDMxOyYjeDM2OyYjeDJlOyYjeDMxOyYjeDM0OyYjeDJlOyYjNTA7">&#x6e;&#x6f;&#x64;&#101;&#x2e;&#106;&#115;&#x40;&#118;&#x31;&#x36;&#x2e;&#x31;&#x34;&#x2e;&#50;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>node -v</code></li>
+<li><span class="exturl" data-url="bWFpbHRvOiYjeDY3OyYjMTA1OyYjeDc0OyYjNjQ7JiN4MzI7JiN4MmU7JiN4MzM7JiN4MzM7JiM0NjsmIzQ4OyYjNDY7JiMxMTk7JiMxMDU7JiMxMTA7JiN4NjQ7JiN4NmY7JiN4Nzc7JiN4NzM7JiM0NjsmIzUwOw==">&#x67;&#105;&#x74;&#64;&#x32;&#x2e;&#x33;&#x33;&#46;&#48;&#46;&#119;&#105;&#110;&#x64;&#x6f;&#x77;&#x73;&#46;&#50;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>git version</code></li>
+<li><span class="exturl" data-url="bWFpbHRvOiYjMTA0OyYjeDY1OyYjMTIwOyYjMTExOyYjeDQwOyYjNTQ7JiN4MmU7JiM0OTsmIzQ2OyYjNDg7">&#104;&#x65;&#120;&#111;&#x40;&#54;&#x2e;&#49;&#46;&#48;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>hexo -v</code>或<code>hexo version</code></li>
+<li><span class="exturl" data-url="bWFpbHRvOiYjeDZlOyYjeDY1OyYjeDc4OyYjMTE2OyYjeDQwOyYjNTU7JiM0NjsmIzU2OyYjNDY7JiN4MzA7">&#x6e;&#x65;&#x78;&#116;&#x40;&#55;&#46;&#56;&#46;&#x30;<i class="fa fa-external-link-alt"></i></span></li>
 </ul>
 <h1 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h1><ul>
 <li>安装Node.js</li>
