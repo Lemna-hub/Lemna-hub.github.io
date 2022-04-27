@@ -15,10 +15,10 @@
 <p>本文所使用的环境：</p>
 <ul>
 <li>Windows11</li>
-<li><span class="exturl" data-url="bWFpbHRvOiYjMTEwOyYjeDZmOyYjeDY0OyYjMTAxOyYjeDJlOyYjeDZhOyYjeDczOyYjNjQ7JiN4NzY7JiN4MzE7JiN4MzY7JiN4MmU7JiN4MzE7JiN4MzQ7JiN4MmU7JiM1MDs=">&#110;&#x6f;&#x64;&#101;&#x2e;&#x6a;&#x73;&#64;&#x76;&#x31;&#x36;&#x2e;&#x31;&#x34;&#x2e;&#50;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>node -v</code></li>
-<li><span class="exturl" data-url="bWFpbHRvOiYjMTAzOyYjMTA1OyYjeDc0OyYjNjQ7JiM1MDsmI3gyZTsmIzUxOyYjNTE7JiN4MmU7JiN4MzA7JiN4MmU7JiMxMTk7JiMxMDU7JiN4NmU7JiMxMDA7JiMxMTE7JiN4Nzc7JiMxMTU7JiM0NjsmI3gzMjs=">&#103;&#105;&#x74;&#64;&#50;&#x2e;&#51;&#51;&#x2e;&#x30;&#x2e;&#119;&#105;&#x6e;&#100;&#111;&#x77;&#115;&#46;&#x32;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>git version</code></li>
-<li><span class="exturl" data-url="bWFpbHRvOiYjMTA0OyYjeDY1OyYjeDc4OyYjeDZmOyYjeDQwOyYjNTQ7JiM0NjsmI3gzMTsmIzQ2OyYjeDMwOw==">&#104;&#x65;&#x78;&#x6f;&#x40;&#54;&#46;&#x31;&#46;&#x30;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>hexo -v</code>或<code>hexo version</code></li>
-<li><span class="exturl" data-url="bWFpbHRvOiYjMTEwOyYjMTAxOyYjMTIwOyYjeDc0OyYjNjQ7JiM1NTsmI3gyZTsmI3gzODsmIzQ2OyYjNDg7">&#110;&#101;&#120;&#x74;&#64;&#55;&#x2e;&#x38;&#46;&#48;<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="bWFpbHRvOiYjeDZlOyYjeDZmOyYjeDY0OyYjMTAxOyYjNDY7JiMxMDY7JiN4NzM7JiN4NDA7JiMxMTg7JiN4MzE7JiM1NDsmIzQ2OyYjeDMxOyYjeDM0OyYjeDJlOyYjNTA7">&#x6e;&#x6f;&#x64;&#101;&#46;&#106;&#x73;&#x40;&#118;&#x31;&#54;&#46;&#x31;&#x34;&#x2e;&#50;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>node -v</code></li>
+<li><span class="exturl" data-url="bWFpbHRvOiYjeDY3OyYjMTA1OyYjeDc0OyYjeDQwOyYjeDMyOyYjNDY7JiM1MTsmIzUxOyYjeDJlOyYjNDg7JiM0NjsmIzExOTsmIzEwNTsmIzExMDsmIzEwMDsmI3g2ZjsmIzExOTsmIzExNTsmIzQ2OyYjNTA7">&#x67;&#105;&#x74;&#x40;&#x32;&#46;&#51;&#51;&#x2e;&#48;&#46;&#119;&#105;&#110;&#100;&#x6f;&#119;&#115;&#46;&#50;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>git version</code></li>
+<li><span class="exturl" data-url="bWFpbHRvOiYjMTA0OyYjMTAxOyYjMTIwOyYjMTExOyYjNjQ7JiM1NDsmIzQ2OyYjNDk7JiM0NjsmIzQ4Ow==">&#104;&#101;&#120;&#111;&#64;&#54;&#46;&#49;&#46;&#48;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>hexo -v</code>或<code>hexo version</code></li>
+<li><span class="exturl" data-url="bWFpbHRvOiYjeDZlOyYjeDY1OyYjMTIwOyYjMTE2OyYjeDQwOyYjeDM3OyYjNDY7JiM1NjsmI3gyZTsmI3gzMDs=">&#x6e;&#x65;&#120;&#116;&#x40;&#x37;&#46;&#56;&#x2e;&#x30;<i class="fa fa-external-link-alt"></i></span></li>
 </ul>
 <h1 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h1><ul>
 <li>安装Node.js</li>
@@ -544,6 +544,447 @@
       </tags>
   </entry>
   <entry>
+    <title>Nginx 进阶</title>
+    <url>/post/Nginx-%E8%BF%9B%E9%98%B6/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>之前介绍了Nginx的部署安装，现在具体介绍一下Nginx用法</p>
+<span id="more"></span>
+
+<h1 id="Nginx-概述"><a href="#Nginx-概述" class="headerlink" title="Nginx 概述"></a>Nginx 概述</h1><p>Nginx 是开源、高性能、高可靠的 Web 和反向代理服务器，而且支持热部署，几乎可以做到 7 * 24 小时不间断运行，即使运行几个月也不需要重新启动，还能在不间断服务的情况下对软件版本进行热更新。性能是 Nginx 最重要的考量，其占用内存少、并发能力强、能支持高达 5w 个并发连接数，最重要的是， Nginx 是免费的并可以商业化，配置使用也比较简单。</p>
+<h1 id="Nginx-特点"><a href="#Nginx-特点" class="headerlink" title="Nginx 特点"></a>Nginx 特点</h1><blockquote>
+<p>高并发、高性能；<br>模块化架构使得它的扩展性非常好；<br>异步非阻塞的事件驱动模型这点和 Node.js 相似；<br>相对于其它服务器来说它可以连续几个月甚至更长而不需要重启服务器使得它具有高可靠性；<br>热部署、平滑升级；<br>完全开源，生态繁荣。</p>
+</blockquote>
+<h1 id="Nginx-作用"><a href="#Nginx-作用" class="headerlink" title="Nginx 作用"></a>Nginx 作用</h1><blockquote>
+<p>Nginx 的最重要的几个使用场景：</p>
+</blockquote>
+<blockquote>
+<p>静态资源服务，通过本地文件系统提供服务；</p>
+</blockquote>
+<blockquote>
+<p>反向代理服务，延伸出包括缓存、负载均衡等；</p>
+</blockquote>
+<blockquote>
+<p>API 服务， OpenResty。</p>
+</blockquote>
+<h1 id="Nginx-安装"><a href="#Nginx-安装" class="headerlink" title="Nginx 安装"></a>Nginx 安装</h1><p>不再赘述，可参考之前文章</p>
+<h1 id="Nginx-核心配置"><a href="#Nginx-核心配置" class="headerlink" title="Nginx 核心配置"></a>Nginx 核心配置</h1><h2 id="配置文件结构"><a href="#配置文件结构" class="headerlink" title="配置文件结构"></a>配置文件结构</h2><p>Nginx 的典型配置示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"># main段配置信息</span><br><span class="line">user  nginx;                        # 运行用户，默认即是nginx，可以不进行设置</span><br><span class="line">worker_processes  auto;             # Nginx 进程数，一般设置为和 CPU 核数一样</span><br><span class="line">error_log  /var/log/nginx/error.log warn;   # Nginx 的错误日志存放目录</span><br><span class="line">pid        /var/run/nginx.pid;      # Nginx 服务启动时的 pid 存放位置</span><br><span class="line"></span><br><span class="line"># events段配置信息</span><br><span class="line">events &#123;</span><br><span class="line">    use epoll;     # 使用epoll的I/O模型(如果你不知道Nginx该使用哪种轮询方法，会自动选择一个最适合你操作系统的)</span><br><span class="line">    worker_connections 1024;   # 每个进程允许最大并发数</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># http段配置信息</span><br><span class="line"># 配置使用最频繁的部分，代理、缓存、日志定义等绝大多数功能和第三方模块的配置都在这里设置</span><br><span class="line">http &#123; </span><br><span class="line">    # 设置日志模式</span><br><span class="line">    log_format  main  &#x27;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#x27;</span><br><span class="line">                      &#x27;$status $body_bytes_sent &quot;$http_referer&quot; &#x27;</span><br><span class="line">                      &#x27;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#x27;;</span><br><span class="line"></span><br><span class="line">    access_log  /var/log/nginx/access.log  main;   # Nginx访问日志存放位置</span><br><span class="line"></span><br><span class="line">    sendfile            on;   # 开启高效传输模式</span><br><span class="line">    tcp_nopush          on;   # 减少网络报文段的数量</span><br><span class="line">    tcp_nodelay         on;</span><br><span class="line">    keepalive_timeout   65;   # 保持连接的时间，也叫超时时间，单位秒</span><br><span class="line">    types_hash_max_size 2048;</span><br><span class="line"></span><br><span class="line">    include             /etc/nginx/mime.types;      # 文件扩展名与类型映射表</span><br><span class="line">    default_type        application/octet-stream;   # 默认文件类型</span><br><span class="line"></span><br><span class="line">    include /etc/nginx/conf.d/*.conf;   # 加载子配置项</span><br><span class="line"></span><br><span class="line">    # server段配置信息</span><br><span class="line">    server &#123;</span><br><span class="line">      listen       80;       # 配置监听的端口</span><br><span class="line">      server_name  localhost;    # 配置的域名</span><br><span class="line"></span><br><span class="line">      # location段配置信息</span><br><span class="line">      location / &#123;</span><br><span class="line">        root   /usr/share/nginx/html;  # 网站根目录</span><br><span class="line">        index  index.html index.htm;   # 默认首页文件</span><br><span class="line">        deny 172.168.22.11;   # 禁止访问的ip地址，可以为all</span><br><span class="line">        allow 172.168.33.44；# 允许访问的ip地址，可以为all</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      error_page 500 502 503 504 /50x.html;  # 默认50x对应的访问页面</span><br><span class="line">      error_page 400 404 error.html;   # 同上</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>main</strong>：全局配置，对全局生效；</li>
+<li><strong>events</strong>：配置影响 Nginx 服务器与用户的网络连接；</li>
+<li><strong>http</strong>：配置代理，缓存，日志定义等绝大多数功能和第三方模块的配置；</li>
+<li><strong>server</strong>：配置虚拟主机的相关参数，一个 http 块中可以有多个 server 块；</li>
+<li><strong>location</strong>：用于配置匹配的 uri ；</li>
+<li><strong>upstream</strong>：配置后端服务器具体地址，负载均衡配置不可或缺的部分。</li>
+</ul>
+<p>用一张图清晰的展示它的层级结构：</p>
+<p><img src="/post/Nginx-%E8%BF%9B%E9%98%B6/640.jpeg"></p>
+<h2 id="配置文件-main-段核心参数"><a href="#配置文件-main-段核心参数" class="headerlink" title="配置文件 main 段核心参数"></a>配置文件 main 段核心参数</h2><p><strong>user</strong>：指定运行 Nginx 的 woker 子进程的属主和属组，其中组可以不指定</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">user USERNAME [GROUP]</span><br><span class="line">user nginx lion; # 用户是nginx;组是lion</span><br></pre></td></tr></table></figure>
+
+<p><strong>pid</strong>：指定运行 Nginx master 主进程的 pid 文件存放路径。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pid /opt/nginx/logs/nginx.pid # master主进程的的pid存放在nginx.pid的文件</span><br></pre></td></tr></table></figure>
+
+<p><strong>worker_rlimit_nofile_number</strong>：指定 worker 子进程可以打开的最大文件句柄数。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">worker_rlimit_nofile 20480; # 可以理解成每个worker子进程的最大连接数量。</span><br></pre></td></tr></table></figure>
+
+<p><strong>worker_rlimit_core</strong>：指定 worker 子进程异常终止后的 core 文件，用于记录分析问题。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">worker_rlimit_core 50M; # 存放大小限制</span><br><span class="line">working_directory /opt/nginx/tmp; # 存放目录</span><br></pre></td></tr></table></figure>
+
+<p><strong>worker_processes_number</strong>：指定 Nginx 启动的 worker 子进程数量。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">worker_processes 4; # 指定具体子进程数量</span><br><span class="line">worker_processes auto; # 与当前cpu物理核心数一致</span><br></pre></td></tr></table></figure>
+
+<p><strong>worker_cpu_affinity</strong>：将每个 worker 子进程与我们的 cpu 物理核心绑定。</p>
+<p><strong>worker_priority</strong>：指定 worker 子进程的 nice 值，以调整运行 Nginx 的优先级，通常设定为负值，以优先调用 Nginx 。</p>
+<p>Linux 默认进程的优先级值是120，值越小越优先；nice 定范围为 -20 到 +19 。</p>
+<p>[备注] 应用的默认优先级值是120加上 nice 值等于它最终的值，这个值越小，优先级越高。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">worker_priority -10;   # 120-10=110，110就是最终的优先级</span><br></pre></td></tr></table></figure>
+
+<p><strong>worker_shutdown_timeout</strong>：指定 worker 子进程优雅退出时的超时时间。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">worker_shutdown_timeout 5s;</span><br></pre></td></tr></table></figure>
+
+<p><strong>timer_resolution</strong>：worker 子进程内部使用的计时器精度，调整时间间隔越大，系统调用越少，有利于性能提升；反之，系统调用越多，性能下降。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">timer_resolution 100ms;</span><br></pre></td></tr></table></figure>
+
+<p><strong>daemon</strong>：指定 Nginx 的运行方式，前台还是后台，前台用于调试，后台用于生产。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">daemon off;    # 默认是on，后台运行模式</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置文件-events-段核心参数"><a href="#配置文件-events-段核心参数" class="headerlink" title="配置文件 events 段核心参数"></a>配置文件 events 段核心参数</h2><p><strong>use</strong>：Nginx 使用何种事件驱动模型。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">use method; # 不推荐配置它，让nginx自己选择</span><br><span class="line">method 可选值为：select、poll、kqueue、epoll、/dev/poll、eventport</span><br></pre></td></tr></table></figure>
+
+<p><strong>worker_connections</strong>：worker 子进程能够处理的最大并发连接数。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">worker_connections 1024 # 每个子进程的最大连接数为1024</span><br></pre></td></tr></table></figure>
+
+<p><strong>accept_mutex</strong>：是否打开负载均衡互斥锁。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">accept_mutex on   # 默认是off关闭的，这里推荐打开</span><br></pre></td></tr></table></figure>
+
+<p><strong>server_name 指令</strong></p>
+<p>指定虚拟主机域名。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server_name name1 name2 name3</span><br><span class="line">示例：</span><br><span class="line">server_name www.nginx.com;</span><br></pre></td></tr></table></figure>
+
+<p>域名匹配的四种写法：</p>
+<blockquote>
+<p>精确匹配：server_name <span class="exturl" data-url="aHR0cDovL3d3dy5uZ2lueC5jb20v">www.nginx.com<i class="fa fa-external-link-alt"></i></span> ;</p>
+</blockquote>
+<blockquote>
+<p>左侧通配：server_name *.nginx.com ;</p>
+</blockquote>
+<blockquote>
+<p>右侧统配：server_name <span class="exturl" data-url="aHR0cDovL3d3dy5uZ2lueC8=">www.nginx<i class="fa fa-external-link-alt"></i></span>.* ;</p>
+</blockquote>
+<blockquote>
+<p>正则匹配：server_name ~^www.nginx.*$ ;</p>
+</blockquote>
+<p>匹配优先级：<strong>精确匹配</strong> &gt; <strong>左侧通配符匹配</strong> &gt; <strong>右侧通配符匹配</strong> &gt; <strong>正则表达式匹配</strong>。</p>
+<p><strong>root</strong></p>
+<p>指定静态资源目录位置，它可以写在 http 、 server 、 location 等配置中。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">root path</span><br><span class="line"></span><br><span class="line">例如：</span><br><span class="line">location /image &#123;</span><br><span class="line">  root /opt/nginx/static;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">当用户访问 www.test.com/image/1.png 时，实际在服务器找的路径是 /opt/nginx/static/image/1.png</span><br></pre></td></tr></table></figure>
+
+<p>[注意] root 会将定义路径与 URI 叠加， alias 则只取定义路径。</p>
+<p><strong>alias</strong></p>
+<p>它也是指定静态资源目录位置，它只能写在 location 中。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">location /image &#123;</span><br><span class="line">  alias /opt/nginx/static/image/;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">当用户访问 www.test.com/image/1.png 时，实际在服务器找的路径是 /opt/nginx/static/image/1.png</span><br></pre></td></tr></table></figure>
+
+<p>[注意] 使用 alias 末尾一定要添加 &#x2F; ，并且它只能位于 location 中。</p>
+<p><strong>location</strong></p>
+<p>配置路径。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">location [ = | ~ | ~* | ^~ ] uri &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>匹配规则：</p>
+<blockquote>
+<p>&#x3D; 精确匹配；<br>~ 正则匹配，区分大小写；<br><del>* 正则匹配，不区分大小写；<br>^</del> 匹配到即停止搜索；</p>
+</blockquote>
+<p>匹配优先级：&#x3D; &gt; ^~ &gt;  ~ &gt; ~* &gt; 不带任何字符。</p>
+<p>实例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">  listen  80;</span><br><span class="line">  server_name  www.nginx-test.com;</span><br><span class="line"></span><br><span class="line">  # 只有当访问 www.nginx-test.com/match_all/ 时才会匹配到/usr/share/nginx/html/match_all/index.html</span><br><span class="line">  location = /match_all/ &#123;</span><br><span class="line">      root  /usr/share/nginx/html</span><br><span class="line">      index index.html</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  # 当访问 www.nginx-test.com/1.jpg 等路径时会去 /usr/share/nginx/images/1.jpg 找对应的资源</span><br><span class="line">  location ~ \.(jpeg|jpg|png|svg)$ &#123;</span><br><span class="line">    root /usr/share/nginx/images;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  # 当访问 www.nginx-test.com/bbs/ 时会匹配上 /usr/share/nginx/html/bbs/index.html</span><br><span class="line">  location ^~ /bbs/ &#123;</span><br><span class="line">    root /usr/share/nginx/html;</span><br><span class="line">    index index.html index.htm;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>location 中的反斜线</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">location /test &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location /test/ &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>不带 &#x2F; 当访问 <span class="exturl" data-url="aHR0cDovL3d3dy5uZ2lueC10ZXN0LmNvbS90ZXN0">www.nginx-test.com/test<i class="fa fa-external-link-alt"></i></span> 时， Nginx 先找是否有 test 目录，如果有则找 test 目录下的 index.html ；如果没有 test 目录， nginx 则会找是否有 test 文件；</li>
+<li>带 &#x2F; 当访问 <span class="exturl" data-url="aHR0cDovL3d3dy5uZ2lueC10ZXN0LmNvbS90ZXN0">www.nginx-test.com/test<i class="fa fa-external-link-alt"></i></span> 时， Nginx 先找是否有 test 目录，如果有则找 test 目录下的 index.html ，如果没有它也不会去找是否存在 test 文件。</li>
+</ul>
+<ol start="2">
+<li>return</li>
+</ol>
+<p>停止处理请求，直接返回响应码或重定向到其他 URL ；执行 return 指令后， location 中后续指令将不会被执行。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">return code [text];</span><br><span class="line">return code URL;</span><br><span class="line">return URL;</span><br><span class="line"></span><br><span class="line">例如：</span><br><span class="line">location / &#123;</span><br><span class="line">  return 404; # 直接返回状态码</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location / &#123;</span><br><span class="line">  return 404 &quot;pages not found&quot;; # 返回状态码 + 一段文本</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location / &#123;</span><br><span class="line">  return 302 /bbs ; # 返回状态码 + 重定向地址</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location / &#123;</span><br><span class="line">  return https://www.baidu.com ; # 返回重定向地址</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>rewrite</strong></p>
+<p>根据指定正则表达式匹配规则，重写 URL 。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">语法：rewrite 正则表达式 要替换的内容 [flag];</span><br><span class="line">上下文：server、location、if</span><br><span class="line">示例：rewirte /images/(.*\.jpg)$ /pic/$1; # $1是前面括号(.*\.jpg)的反向引用</span><br></pre></td></tr></table></figure>
+
+<p>flag 可选值的含义：</p>
+<p>last 重写后的 URL 发起新请求，再次进入 server 段，重试 location 的中的匹配；<br>break 直接使用重写后的 URL ，不再匹配其它 location 中语句；<br>redirect 返回 302 临时重定向；<br>permanent 返回 301 永久重定向。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  server_name fe.lion.club; # 要在本地hosts文件进行配置</span><br><span class="line">  root html;</span><br><span class="line">  location /search &#123;</span><br><span class="line">    rewrite ^/(.*) https://www.baidu.com redirect;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  location /images &#123;</span><br><span class="line">    rewrite /images/(.*) /pics/$1;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  location /pics &#123;</span><br><span class="line">    rewrite /pics/(.*) /photos/$1;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  location /photos &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>按照这个配置我们来分析：</p>
+<p>当访问 fe.lion.club&#x2F;search 时，会自动帮我们重定向到 <span class="exturl" data-url="aHR0cHM6Ly93d3cuYmFpZHUuY29tOy8=">https://www.baidu.com；<i class="fa fa-external-link-alt"></i></span><br>当访问 fe.lion.club&#x2F;images&#x2F;1.jpg 时，第一步重写 URL 为 fe.lion.club&#x2F;pics&#x2F;1.jpg ，找到 pics 的 location ，继续重写 URL 为 fe.lion.club&#x2F;photos&#x2F;1.jpg ，找到 &#x2F;photos 的 location 后，去 html&#x2F;photos 目录下寻找 1.jpg 静态资源。</p>
+<p><strong>if 指令</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">语法：if (condition) &#123;...&#125;</span><br><span class="line">上下文：server、location</span><br><span class="line">示例：</span><br><span class="line">if($http_user_agent ~ Chrome)&#123;</span><br><span class="line">  rewrite /(.*)/browser/$1 break;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">condition 判断条件：</span><br><span class="line">$variable 仅为变量时，值为空或以0开头字符串都会被当做 false 处理；</span><br><span class="line">= 或 != 相等或不等；</span><br><span class="line">~ 正则匹配；</span><br><span class="line">! ~ 非正则匹配；</span><br><span class="line">~* 正则匹配，不区分大小写；</span><br><span class="line">-f 或 ! -f 检测文件存在或不存在；</span><br><span class="line">-d 或 ! -d 检测目录存在或不存在；</span><br><span class="line">-e 或 ! -e 检测文件、目录、符号链接等存在或不存在；</span><br><span class="line">-x 或 ! -x 检测文件可以执行或不可执行；</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">实例：</span><br><span class="line">server &#123;</span><br><span class="line">  listen 8080;</span><br><span class="line">  server_name localhost;</span><br><span class="line">  root html;</span><br><span class="line"></span><br><span class="line">  location / &#123;</span><br><span class="line">    if ( $uri = &quot;/images/&quot; )&#123;</span><br><span class="line">      rewrite (.*) /pics/ break;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">当访问 localhost:8080/images/ 时，会进入 if 判断里面执行 rewrite 命令。</span><br></pre></td></tr></table></figure>
+
+<p><strong>autoindex</strong></p>
+<p>用户请求以 &#x2F; 结尾时，列出目录结构，可以用于快速搭建静态资源下载网站。</p>
+<p>autoindex.conf 配置信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  server_name fe.lion-test.club;</span><br><span class="line"></span><br><span class="line">  location /download/ &#123;</span><br><span class="line">    root /opt/source;</span><br><span class="line"></span><br><span class="line">    autoindex on; # 打开 autoindex，，可选参数有 on | off</span><br><span class="line">    autoindex_exact_size on; # 修改为off，以KB、MB、GB显示文件大小，默认为on，以bytes显示出⽂件的确切⼤⼩</span><br><span class="line">    autoindex_format html; # 以html的方式进行格式化，可选参数有 html | json | xml</span><br><span class="line">    autoindex_localtime off; # 显示的⽂件时间为⽂件的服务器时间。默认为off，显示的⽂件时间为GMT时间</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">当访问 fe.lion.com/download/ 时，会把服务器 /opt/source/download/ 路径下的文件展示出来，如下图所示：</span><br></pre></td></tr></table></figure>
+
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>Nginx 提供给使用者的变量非常多，但是终究是一个完整的请求过程所产生数据， Nginx 将这些数据以变量的形式提供给使用者。</p>
+<p>下面列举些项目中常用的变量：</p>
+<p><img src="/post/Nginx-%E8%BF%9B%E9%98%B6/640-16510468622993.png"></p>
+<p>实例演示 var.conf ：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">server&#123;</span><br><span class="line">  listen 8081;</span><br><span class="line">  server_name var.lion-test.club;</span><br><span class="line">  root /usr/share/nginx/html;</span><br><span class="line">  location / &#123;</span><br><span class="line">    return 200 &quot;</span><br><span class="line">remote_addr: $remote_addr</span><br><span class="line">remote_port: $remote_port</span><br><span class="line">server_addr: $server_addr</span><br><span class="line">server_port: $server_port</span><br><span class="line">server_protocol: $server_protocol</span><br><span class="line">binary_remote_addr: $binary_remote_addr</span><br><span class="line">connection: $connection</span><br><span class="line">uri: $uri</span><br><span class="line">request_uri: $request_uri</span><br><span class="line">scheme: $scheme</span><br><span class="line">request_method: $request_method</span><br><span class="line">request_length: $request_length</span><br><span class="line">args: $args</span><br><span class="line">arg_pid: $arg_pid</span><br><span class="line">is_args: $is_args</span><br><span class="line">query_string: $query_string</span><br><span class="line">host: $host</span><br><span class="line">http_user_agent: $http_user_agent</span><br><span class="line">http_referer: $http_referer</span><br><span class="line">http_via: $http_via</span><br><span class="line">request_time: $request_time</span><br><span class="line">https: $https</span><br><span class="line">request_filename: $request_filename</span><br><span class="line">document_root: $document_root</span><br><span class="line">&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​        当我们访问 <span class="exturl" data-url="aHR0cDovL3Zhci5saW9uLXRlc3QuY2x1Yjo4MDgxL3Rlc3Q/cGlkPTEyMTQxNCZhbXA7Y2lkPXNhZGFzZA==">http://var.lion-test.club:8081/test?pid=121414&amp;cid=sadasd<i class="fa fa-external-link-alt"></i></span> 时，由于 Nginx 中写了 return 方法，因此 chrome 浏览器会默认为我们下载一个文件，下面展示的就是下载的文件内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">remote_addr: 27.16.220.84</span><br><span class="line">remote_port: 56838</span><br><span class="line">server_addr: 172.17.0.2</span><br><span class="line">server_port: 8081</span><br><span class="line">server_protocol: HTTP/1.1</span><br><span class="line">binary_remote_addr: 茉</span><br><span class="line">connection: 126</span><br><span class="line">uri: /test/</span><br><span class="line">request_uri: /test/?pid=121414&amp;cid=sadasd</span><br><span class="line">scheme: http</span><br><span class="line">request_method: GET</span><br><span class="line">request_length: 518</span><br><span class="line">args: pid=121414&amp;cid=sadasd</span><br><span class="line">arg_pid: 121414</span><br><span class="line">is_args: ?</span><br><span class="line">query_string: pid=121414&amp;cid=sadasd</span><br><span class="line">host: var.lion-test.club</span><br><span class="line">http_user_agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36</span><br><span class="line">http_referer: </span><br><span class="line">http_via: </span><br><span class="line">request_time: 0.000</span><br><span class="line">https: </span><br><span class="line">request_filename: /usr/share/nginx/html/test/</span><br><span class="line">document_root: /usr/share/nginx/html</span><br></pre></td></tr></table></figure>
+
+<h1 id="Nginx-应用核心概念"><a href="#Nginx-应用核心概念" class="headerlink" title="Nginx 应用核心概念"></a>Nginx 应用核心概念</h1><p>​        代理是在服务器和客户端之间假设的一层服务器，代理将接收客户端的请求并将它转发给服务器，然后将服务端的响应转发给客户端。</p>
+<p>​        不管是正向代理还是反向代理，实现的都是上面的功能。</p>
+<p><img src="/post/Nginx-%E8%BF%9B%E9%98%B6/640-16510469299446.jpeg"></p>
+<h2 id="正向代理"><a href="#正向代理" class="headerlink" title="正向代理"></a>正向代理</h2><p>​        正向代理，意思是一个位于客户端和原始服务器（origin server）之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标（原始服务器），然后代理向原始服务器转交请求并将获得的内容返回给客户端。</p>
+<p>​        正向代理是为我们服务的，即为客户端服务的，客户端可以根据正向代理访问到它本身无法访问到的服务器资源。</p>
+<p>​        正向代理对我们是透明的，对服务端是非透明的，即服务端并不知道自己收到的是来自代理的访问还是来自真实客户端的访问。</p>
+<h2 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h2><p>​        反向代理（Reverse Proxy）方式是指以代理服务器来接受 Internet 上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给 Internet 上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。</p>
+<p>​        反向代理是为服务端服务的，反向代理可以帮助服务器接收来自客户端的请求，帮助服务器做请求转发，负载均衡等。</p>
+<p>​        反向代理对服务端是透明的，对我们是非透明的，即我们并不知道自己访问的是代理服务器，而服务器知道反向代理在为他服务。</p>
+<p>反向代理的优势：</p>
+<blockquote>
+<p>隐藏真实服务器；<br>负载均衡便于横向扩充后端动态服务；<br>动静分离，提升系统健壮性。</p>
+</blockquote>
+<p>那么“动静分离”是什么？负载均衡又是什么？</p>
+<h2 id="动静分离"><a href="#动静分离" class="headerlink" title="动静分离"></a>动静分离</h2><p>​        动静分离是指在 Web 服务器架构中，将静态页面与动态页面或者静态内容接口和动态内容接口分开不同系统访问的架构设计方法，进而提示整个服务的访问性和可维护性。</p>
+<p><img src="/post/Nginx-%E8%BF%9B%E9%98%B6/640-16510470167559.jpeg"></p>
+<p>​        一般来说，都需要将动态资源和静态资源分开，由于 Nginx 的高并发和静态资源缓存等特性，经常将静态资源部署在 Nginx 上。如果请求的是静态资源，直接到静态资源目录获取资源，如果是动态资源的请求，则利用反向代理的原理，把请求转发给对应后台应用去处理，从而实现动静分离。</p>
+<p>​        使用前后端分离后，可以很大程度提升静态资源的访问速度，即使动态服务不可用，静态资源的访问也不会受到影响。</p>
+<h2 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h2><p>​        一般情况下，客户端发送多个请求到服务器，服务器处理请求，其中一部分可能要操作一些资源比如数据库、静态资源等，服务器处理完毕后，再将结果返回给客户端。</p>
+<p>​        这种模式对于早期的系统来说，功能要求不复杂，且并发请求相对较少的情况下还能胜任，成本也低。随着信息数量不断增长，访问量和数据量飞速增长，以及系统业务复杂度持续增加，这种做法已无法满足要求，并发量特别大时，服务器容易崩。</p>
+<p>​        很明显这是由于服务器性能的瓶颈造成的问题，除了堆机器之外，最重要的做法就是负载均衡。</p>
+<p>​        请求爆发式增长的情况下，单个机器性能再强劲也无法满足要求了，这个时候集群的概念产生了，单个服务器解决不了的问题，可以使用多个服务器，然后将请求分发到各个服务器上，将负载分发到不同的服务器，这就是负载均衡，核心是「分摊压力」。Nginx 实现负载均衡，一般来说指的是将请求转发给服务器集群。</p>
+<p>​        举个具体的例子，晚高峰乘坐地铁的时候，入站口经常会有地铁工作人员大喇叭“请走 B 口， B 口人少车空….”，这个工作人员的作用就是负载均衡。</p>
+<p>Nginx 实现负载均衡的策略：</p>
+<ul>
+<li><strong>轮询策略</strong>：默认情况下采用的策略，将所有客户端请求轮询分配给服务端。这种策略是可以正常工作的，但是如果其中某一台服务器压力太大，出现延迟，会影响所有分配在这台服务器下的用户；</li>
+<li><strong>最小连接数策略</strong>：将请求优先分配给压力较小的服务器，它可以平衡每个队列的长度，并避免向压力大的服务器添加更多的请求；</li>
+<li><strong>最快响应时间策略</strong>：优先分配给响应时间最短的服务器；</li>
+<li><strong>客户端 IP 绑定策略</strong>：来自同一个 IP 的请求永远只分配一台服务器，有效解决了动态网页存在的 session 共享问题。</li>
+</ul>
+<h1 id="Nginx-实战配置"><a href="#Nginx-实战配置" class="headerlink" title="Nginx 实战配置"></a>Nginx 实战配置</h1><p>在配置反向代理和负载均衡等等功能之前，有两个核心模块是我们必须要掌握的，这两个模块应该说是 Nginx 应用配置中的核心，它们分别是：<strong>upstream</strong> 、<strong>proxy_pass</strong> 。</p>
+<h2 id="upstream"><a href="#upstream" class="headerlink" title="upstream"></a>upstream</h2><p>用于定义上游服务器（指的就是后台提供的应用服务器）的相关信息。</p>
+<p><img src="/post/Nginx-%E8%BF%9B%E9%98%B6/640-165104713686515.jpeg"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">语法：upstream name &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">上下文：http</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line">upstream back_end_server&#123;</span><br><span class="line">  server 192.168.100.33:8081</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在 upstream 内可使用的指令：</p>
+<ul>
+<li>server 定义上游服务器地址；</li>
+<li>zone 定义共享内存，用于跨 worker 子进程；</li>
+<li>keepalive 对上游服务启用长连接；</li>
+<li>keepalive_requests 一个长连接最多请求 HTTP 的个数；</li>
+<li>keepalive_timeout 空闲情形下，一个长连接的超时时长；</li>
+<li>hash 哈希负载均衡算法；</li>
+<li>ip_hash 依据 IP 进行哈希计算的负载均衡算法；</li>
+<li>least_conn 最少连接数负载均衡算法；</li>
+<li>least_time 最短响应时间负载均衡算法；</li>
+<li>random 随机负载均衡算法。</li>
+</ul>
+<p><strong>server</strong></p>
+<p>定义上游服务器地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">语法：server address [parameters]</span><br><span class="line">上下文：upstream</span><br></pre></td></tr></table></figure>
+
+<p>parameters 可选值：</p>
+<ul>
+<li>weight&#x3D;number 权重值，默认为1；</li>
+<li>max_conns&#x3D;number 上游服务器的最大并发连接数；</li>
+<li>fail_timeout&#x3D;time 服务器不可用的判定时间；</li>
+<li>max_fails&#x3D;numer 服务器不可用的检查次数；</li>
+<li>backup 备份服务器，仅当其他服务器都不可用时才会启用；</li>
+<li>down 标记服务器长期不可用，离线维护。</li>
+</ul>
+<p><strong>keepalive</strong></p>
+<p>限制每个 worker 子进程与上游服务器空闲长连接的最大数量。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">keepalive connections;</span><br><span class="line">上下文：upstream</span><br><span class="line">示例：keepalive 16;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>keepalive_requests</strong></p>
+<p>单个长连接可以处理的最多 HTTP 请求个数。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">语法：keepalive_requests number;</span><br><span class="line"></span><br><span class="line">默认值：keepalive_requests 100;</span><br><span class="line"></span><br><span class="line">上下文：upstream</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>keepalive_timeout</strong></p>
+<p>空闲长连接的最长保持时间。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">语法：keepalive_timeout time;</span><br><span class="line">默认值：keepalive_timeout 60s;</span><br><span class="line">上下文：upstream</span><br></pre></td></tr></table></figure>
+
+<h2 id="proxy-pass"><a href="#proxy-pass" class="headerlink" title="proxy_pass"></a>proxy_pass</h2><p>用于配置代理服务器。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">语法：proxy_pass URL;</span><br><span class="line">上下文：location、if、limit_except</span><br><span class="line">示例：proxy_pass http://127.0.0.1:8081proxy_pass http://127.0.0.1:8081/proxy</span><br></pre></td></tr></table></figure>
+
+<p>URL 参数原则：</p>
+<ol>
+<li>URL 必须以 http 或 https 开头；</li>
+<li>URL 中可以携带变量；</li>
+<li>URL 中是否带 URI ，会直接影响发往上游请求的 URL。</li>
+</ol>
+<p>接下来让我们来看看两种常见的 URL 用法：</p>
+<ol>
+<li>proxy_pass <span class="exturl" data-url="aHR0cDovLzE5Mi4xNjguMTAwLjMzOjgwODEv">http://192.168.100.33:8081<i class="fa fa-external-link-alt"></i></span></li>
+<li>proxy_pass <span class="exturl" data-url="aHR0cDovLzE5Mi4xNjguMTAwLjMzOjgwODEv">http://192.168.100.33:8081/<i class="fa fa-external-link-alt"></i></span></li>
+</ol>
+<p>这两种用法的区别就是带 &#x2F; 和不带 &#x2F; ，在配置代理时它们的区别可大了：</p>
+<ul>
+<li>不带 &#x2F; 意味着 Nginx 不会修改用户 URL ，而是直接透传给上游的应用服务器；</li>
+<li>带 &#x2F; 意味着 Nginx 会修改用户 URL ，修改方法是将 location 后的 URL 从用户 URL 中删除。</li>
+</ul>
+<p>不带 &#x2F; 的用法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">location /bbs/&#123;</span><br><span class="line">  proxy_pass http://127.0.0.1:8080;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>分析：</p>
+<ol>
+<li>用户请求 URL ：&#x2F;bbs&#x2F;abc&#x2F;test.html</li>
+<li>请求到达 Nginx 的 URL ：&#x2F;bbs&#x2F;abc&#x2F;test.html</li>
+<li>请求到达上游应用服务器的 URL ：&#x2F;bbs&#x2F;abc&#x2F;test.html</li>
+</ol>
+<p>带 &#x2F; 的用法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">location /bbs/&#123;</span><br><span class="line">  proxy_pass http://127.0.0.1:8080/;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>分析：</p>
+<ol>
+<li>用户请求 URL ：&#x2F;bbs&#x2F;abc&#x2F;test.html</li>
+<li>请求到达 Nginx 的 URL ：&#x2F;bbs&#x2F;abc&#x2F;test.html</li>
+<li>请求到达上游应用服务器的 URL ：&#x2F;abc&#x2F;test.html</li>
+</ol>
+<p>并没有拼接上 &#x2F;bbs ，这点和 root 与 alias 之间的区别是保持一致的。</p>
+<h2 id="配置反向代理"><a href="#配置反向代理" class="headerlink" title="配置反向代理"></a>配置反向代理</h2><p>这里为了演示更加接近实际，作者准备了两台云服务器，它们的公网 IP 分别是：121.42.11.34 与 121.5.180.193 。</p>
+<p>我们把 121.42.11.34 服务器作为上游服务器，做如下配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"># /etc/nginx/conf.d/proxy.conf</span><br><span class="line">server&#123;</span><br><span class="line">  listen 8080;</span><br><span class="line">  server_name localhost;</span><br><span class="line">  </span><br><span class="line">  location /proxy/ &#123;</span><br><span class="line">    root /usr/share/nginx/html/proxy;</span><br><span class="line">    index index.html;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># /usr/share/nginx/html/proxy/index.html</span><br><span class="line">&lt;h1&gt; 121.42.11.34 proxy html &lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+
+<p>配置完成后重启 Nginx 服务器 nginx -s reload 。</p>
+<p>把 121.5.180.193 服务器作为代理服务器，做如下配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># /etc/nginx/conf.d/proxy.conf</span><br><span class="line">upstream back_end &#123;</span><br><span class="line">  server 121.42.11.34:8080 weight=2 max_conns=1000 fail_timeout=10s max_fails=3;</span><br><span class="line">  keepalive 32;</span><br><span class="line">  keepalive_requests 80;</span><br><span class="line">  keepalive_timeout 20s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  server_name proxy.lion.club;</span><br><span class="line">  location /proxy &#123;</span><br><span class="line">    proxy_pass http://back_end/proxy;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>本地机器要访问 proxy.lion.club 域名，因此需要配置本地 hosts ，通过命令：vim &#x2F;etc&#x2F;hosts 进入配置文件，添加如下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">121.5.180.193 proxy.lion.club</span><br></pre></td></tr></table></figure>
+
+<p><img src="/post/Nginx-%E8%BF%9B%E9%98%B6/640-165104747299518.jpeg"></p>
+<p>分析：</p>
+<ol>
+<li>当访问 proxy.lion.club&#x2F;proxy 时通过 upstream 的配置找到 121.42.11.34:8080 ；</li>
+<li>因此访问地址变为 <span class="exturl" data-url="aHR0cDovLzEyMS40Mi4xMS4zNDo4MDgwL3Byb3h5">http://121.42.11.34:8080/proxy<i class="fa fa-external-link-alt"></i></span> ；</li>
+<li>连接到 121.42.11.34 服务器，找到 8080 端口提供的 server ；</li>
+<li>通过 server 找到 &#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html&#x2F;proxy&#x2F;index.html 资源，最终展示出来。</li>
+</ol>
+<h2 id="配置负载均衡"><a href="#配置负载均衡" class="headerlink" title="配置负载均衡"></a>配置负载均衡</h2><p>配置负载均衡主要是要使用 upstream 指令。</p>
+<p>我们把 121.42.11.34 服务器作为上游服务器，做如下配置（ &#x2F;etc&#x2F;nginx&#x2F;conf.d&#x2F;balance.conf ）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">  listen 8020;</span><br><span class="line">  location / &#123;</span><br><span class="line">    return 200 &#x27;return 8020 \n&#x27;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server&#123;</span><br><span class="line">  listen 8030;</span><br><span class="line">  location / &#123;</span><br><span class="line">    return 200 &#x27;return 8030 \n&#x27;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server&#123;</span><br><span class="line">  listen 8040;</span><br><span class="line">  location / &#123;</span><br><span class="line">    return 200 &#x27;return 8040 \n&#x27;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>配置完成后：</p>
+<ol>
+<li>nginx -t 检测配置是否正确；</li>
+<li>nginx -s reload 重启 Nginx 服务器；</li>
+<li>执行 ss -nlt 命令查看端口是否被占用，从而判断 Nginx 服务是否正确启动。</li>
+</ol>
+<p>把 121.5.180.193 服务器作为代理服务器，做如下配置（ &#x2F;etc&#x2F;nginx&#x2F;conf.d&#x2F;balance.conf ）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">upstream demo_server &#123;</span><br><span class="line">  server 121.42.11.34:8020;</span><br><span class="line">  server 121.42.11.34:8030;</span><br><span class="line">  server 121.42.11.34:8040;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  server_name balance.lion.club;</span><br><span class="line">  </span><br><span class="line">  location /balance/ &#123;</span><br><span class="line">    proxy_pass http://demo_server;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>配置完成后重启 Nginx 服务器。并且在需要访问的客户端配置好 IP 和域名的映射关系。</p>
+<p>在客户端机器执行 curl <span class="exturl" data-url="aHR0cDovL2JhbGFuY2UubGlvbi5jbHViL2JhbGFuY2Uv">http://balance.lion.club/balance/<i class="fa fa-external-link-alt"></i></span> 命令：</p>
+<p><img src="/post/Nginx-%E8%BF%9B%E9%98%B6/640-165104776872721.jpeg"></p>
+<p>不难看出，负载均衡的配置已经生效了，每次给我们分发的上游服务器都不一样。就是通过简单的轮询策略进行上游服务器分发。</p>
+<p>接下来，我们再来了解下 Nginx 的其它分发策略。</p>
+<p><strong>hash 算法</strong></p>
+<p>通过制定关键字作为 hash key ，基于 hash 算法映射到特定的上游服务器中。关键字可以包含有变量、字符串。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">upstream demo_server &#123;</span><br><span class="line">  hash $request_uri;</span><br><span class="line">  server 121.42.11.34:8020;</span><br><span class="line">  server 121.42.11.34:8030;</span><br><span class="line">  server 121.42.11.34:8040;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  server_name balance.lion.club;</span><br><span class="line">  </span><br><span class="line">  location /balance/ &#123;</span><br><span class="line">    proxy_pass http://demo_server;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>hash $request_uri 表示使用 request_uri 变量作为 hash 的 key 值，只要访问的 URI 保持不变，就会一直分发给同一台服务器。</p>
+<p><strong>ip_hash</strong></p>
+<p>根据客户端的请求 IP 进行判断，只要 IP 地址不变就永远分配到同一台主机。它可以有效解决后台服务器 session 保持的问题。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">upstream demo_server &#123;</span><br><span class="line">  ip_hash;</span><br><span class="line">  server 121.42.11.34:8020;</span><br><span class="line">  server 121.42.11.34:8030;</span><br><span class="line">  server 121.42.11.34:8040;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  server_name balance.lion.club;</span><br><span class="line">  </span><br><span class="line">  location /balance/ &#123;</span><br><span class="line">    proxy_pass http://demo_server;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>最少连接数算法</strong></p>
+<p>各个 worker 子进程通过读取共享内存的数据，来获取后端服务器的信息。来挑选一台当前已建立连接数最少的服务器进行分配请求。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">语法：least_conn;</span><br><span class="line"></span><br><span class="line">上下文：upstream;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">示例：</span><br><span class="line">upstream demo_server &#123;</span><br><span class="line">  zone test 10M; # zone可以设置共享内存空间的名字和大小</span><br><span class="line">  least_conn;</span><br><span class="line">  server 121.42.11.34:8020;</span><br><span class="line">  server 121.42.11.34:8030;</span><br><span class="line">  server 121.42.11.34:8040;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  server_name balance.lion.club;</span><br><span class="line">  </span><br><span class="line">  location /balance/ &#123;</span><br><span class="line">    proxy_pass http://demo_server;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="配置缓存"><a href="#配置缓存" class="headerlink" title="配置缓存"></a><strong>配置缓存</strong></h2><p>缓存可以非常有效的提升性能，因此不论是客户端（浏览器），还是代理服务器（ Nginx ），乃至上游服务器都多少会涉及到缓存。可见缓存在每个环节都是非常重要的。下面让我们来学习 Nginx 中如何设置缓存策略。</p>
+<p><strong>proxy_cache</strong></p>
+<p>存储一些之前被访问过、而且可能将要被再次访问的资源，使用户可以直接从代理服务器获得，从而减少上游服务器的压力，加快整个访问速度。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">语法：proxy_cache zone | off ; # zone 是共享内存的名称</span><br><span class="line"></span><br><span class="line">默认值：proxy_cache off;</span><br><span class="line"></span><br><span class="line">上下文：http、server、location</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>proxy_cache_path</strong></p>
+<p>设置缓存文件的存放路径。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">语法：proxy_cache_path path [level=levels] ...可选参数省略，下面会详细列举</span><br><span class="line"></span><br><span class="line">默认值：proxy_cache_path off</span><br><span class="line"></span><br><span class="line">上下文：http</span><br><span class="line"></span><br><span class="line">参数含义：</span><br><span class="line">path 缓存文件的存放路径；</span><br><span class="line">level path 的目录层级；</span><br><span class="line">keys_zone 设置共享内存；</span><br><span class="line">inactive 在指定时间内没有被访问，缓存会被清理，默认10分钟。</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>proxy_cache_key</strong></p>
+<p>设置缓存文件的 key 。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">语法：proxy_cache_key</span><br><span class="line"></span><br><span class="line">默认值：proxy_cache_key $scheme$proxy_host$request_uri;</span><br><span class="line"></span><br><span class="line">上下文：http、server、location</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>proxy_cache_valid</strong></p>
+<p>配置什么状态码可以被缓存，以及缓存时长。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">语法：proxy_cache_valid [code...] time;</span><br><span class="line"></span><br><span class="line">上下文：http、server、location</span><br><span class="line"></span><br><span class="line">配置示例：proxy_cache_valid 200 304 2m;; # 说明对于状态为200和304的缓存文件的缓存时间是2分钟</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>proxy_no_cache</strong></p>
+<p>定义相应保存到缓存的条件，如果字符串参数的至少一个值不为空且不等于“ 0”，则将不保存该响应到缓存。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">语法：proxy_no_cache string;</span><br><span class="line"></span><br><span class="line">上下文：http、server、location</span><br><span class="line"></span><br><span class="line">示例：proxy_no_cache $http_pragma    $http_authorization;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>proxy_cache_bypass</strong></p>
+<p>定义条件，在该条件下将不会从缓存中获取响应。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">语法：proxy_cache_bypass string;</span><br><span class="line"></span><br><span class="line">上下文：http、server、location</span><br><span class="line"></span><br><span class="line">示例：proxy_cache_bypass $http_pragma    $http_authorization;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>upstream_cache_status 变量</strong></p>
+<p>它存储了缓存是否命中的信息，会设置在响应头信息中，在调试中非常有用。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MISS: 未命中缓存</span><br><span class="line">HIT：命中缓存</span><br><span class="line">EXPIRED: 缓存过期</span><br><span class="line">STALE: 命中了陈旧缓存</span><br><span class="line">REVALIDDATED: Nginx验证陈旧缓存依然有效</span><br><span class="line">UPDATING: 内容陈旧，但正在更新</span><br><span class="line">BYPASS: X响应从原始服务器获取</span><br></pre></td></tr></table></figure>
+
+<p><strong>配置实例</strong></p>
+<p>我们把 121.42.11.34 服务器作为上游服务器，做如下配置（ &#x2F;etc&#x2F;nginx&#x2F;conf.d&#x2F;cache.conf ）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  listen 1010;</span><br><span class="line">  root /usr/share/nginx/html/1010;</span><br><span class="line">  location / &#123;</span><br><span class="line">    index index.html;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">  listen 1020;</span><br><span class="line">  root /usr/share/nginx/html/1020;</span><br><span class="line">  location / &#123;</span><br><span class="line">    index index.html;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>把 121.5.180.193 服务器作为代理服务器，做如下配置（ &#x2F;etc&#x2F;nginx&#x2F;conf.d&#x2F;cache.conf ）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">proxy_cache_path /etc/nginx/cache_temp levels=2:2 keys_zone=cache_zone:30m max_size=2g inactive=60m use_temp_path=off;</span><br><span class="line"></span><br><span class="line">upstream cache_server&#123;</span><br><span class="line">  server 121.42.11.34:1010;</span><br><span class="line">  server 121.42.11.34:1020;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  server_name cache.lion.club;</span><br><span class="line">  location / &#123;</span><br><span class="line">    proxy_cache cache_zone; # 设置缓存内存，上面配置中已经定义好的</span><br><span class="line">    proxy_cache_valid 200 5m; # 缓存状态为200的请求，缓存时长为5分钟</span><br><span class="line">    proxy_cache_key $request_uri; # 缓存文件的key为请求的URI</span><br><span class="line">    add_header Nginx-Cache-Status $upstream_cache_status # 把缓存状态设置为头部信息，响应给客户端</span><br><span class="line">    proxy_pass http://cache_server; # 代理转发</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>缓存就是这样配置，我们可以在 &#x2F;etc&#x2F;nginx&#x2F;cache_temp 路径下找到相应的缓存文件。</p>
+<p>对于一些实时性要求非常高的页面或数据来说，就不应该去设置缓存，下面来看看如何配置不缓存的内容。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">...</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  server_name cache.lion.club;</span><br><span class="line">  # URI 中后缀为 .txt 或 .text 的设置变量值为 &quot;no cache&quot;</span><br><span class="line">  if ($request_uri ~ \.(txt|text)$) &#123;</span><br><span class="line">    set $cache_name &quot;no cache&quot;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  location / &#123;</span><br><span class="line">    proxy_no_cache $cache_name; # 判断该变量是否有值，如果有值则不进行缓存，如果没有值则进行缓存</span><br><span class="line">    proxy_cache cache_zone; # 设置缓存内存</span><br><span class="line">    proxy_cache_valid 200 5m; # 缓存状态为200的请求，缓存时长为5分钟</span><br><span class="line">    proxy_cache_key $request_uri; # 缓存文件的key为请求的URI</span><br><span class="line">    add_header Nginx-Cache-Status $upstream_cache_status # 把缓存状态设置为头部信息，响应给客户端</span><br><span class="line">    proxy_pass http://cache_server; # 代理转发</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2><p>在学习如何配置 HTTPS 之前，我们先来简单回顾下 HTTPS 的工作流程是怎么样的？它是如何进行加密保证安全的？</p>
+<p><strong>HTTPS 工作流程</strong></p>
+<ol>
+<li>客户端（浏览器）访问 <span class="exturl" data-url="aHR0cHM6Ly93d3cuYmFpZHUuY29tLw==">https://www.baidu.com<i class="fa fa-external-link-alt"></i></span> 百度网站；</li>
+<li>百度服务器返回 HTTPS 使用的 CA 证书；</li>
+<li>浏览器验证 CA 证书是否为合法证书；</li>
+<li>验证通过，证书合法，生成一串随机数并使用公钥（证书中提供的）进行加密；</li>
+<li>发送公钥加密后的随机数给百度服务器；</li>
+<li>百度服务器拿到密文，通过私钥进行解密，获取到随机数（公钥加密，私钥解密，反之也可以）；</li>
+<li>百度服务器把要发送给浏览器的内容，使用随机数进行加密后传输给浏览器；</li>
+<li>此时浏览器可以使用随机数进行解密，获取到服务器的真实传输内容；</li>
+</ol>
+<p>这就是 HTTPS 的基本运作原理，使用对称加密和非对称机密配合使用，保证传输内容的安全性。</p>
+<p><strong>配置证书</strong></p>
+<p>下载证书的压缩文件，里面有个 Nginx 文件夹，把 xxx.crt 和 xxx.key 文件拷贝到服务器目录，再进行如下配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  listen 443 ssl http2 default_server;   # SSL 访问端口号为 443</span><br><span class="line">  server_name lion.club;         # 填写绑定证书的域名(我这里是随便写的)</span><br><span class="line">  ssl_certificate /etc/nginx/https/lion.club_bundle.crt;   # 证书地址</span><br><span class="line">  ssl_certificate_key /etc/nginx/https/lion.club.key;      # 私钥地址</span><br><span class="line">  ssl_session_timeout 10m;</span><br><span class="line">  ssl_protocols TLSv1 TLSv1.1 TLSv1.2; # 支持ssl协议版本，默认为后三个，主流版本是[TLSv1.2]</span><br><span class="line"> </span><br><span class="line">  location / &#123;</span><br><span class="line">    root         /usr/share/nginx/html;</span><br><span class="line">    index        index.html index.htm;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如此配置后就能正常访问 HTTPS 版的网站了。</p>
+<h2 id="配置跨域-CORS"><a href="#配置跨域-CORS" class="headerlink" title="配置跨域 CORS"></a>配置跨域 CORS</h2><p>先简单回顾下跨域究竟是怎么回事。</p>
+<p><strong>跨域的定义</strong></p>
+<p>同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的重要安全机制。通常不允许不同源间的读操作。</p>
+<p><strong>同源的定义</strong></p>
+<p>如果两个页面的协议，端口（如果有指定）和域名都相同，则两个页面具有相同的源。</p>
+<p>下面给出了与 URL <span class="exturl" data-url="aHR0cDovL3N0b3JlLmNvbXBhbnkuY29tL2Rpci9wYWdlLmh0bWw=">http://store.company.com/dir/page.html<i class="fa fa-external-link-alt"></i></span> 的源进行对比的示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://store.company.com/dir2/other.html 同源</span><br><span class="line">https://store.company.com/secure.html 不同源，协议不同</span><br><span class="line">http://store.company.com:81/dir/etc.html 不同源，端口不同</span><br><span class="line">http://news.company.com/dir/other.html 不同源，主机不同</span><br></pre></td></tr></table></figure>
+
+<p>不同源会有如下限制：</p>
+<ul>
+<li>Web 数据层面，同源策略限制了不同源的站点读取当前站点的 Cookie 、 IndexDB 、 LocalStorage 等数据；</li>
+<li>DOM 层面，同源策略限制了来自不同源的 JavaScript 脚本对当前 DOM 对象读和写的操作；</li>
+<li>网络层面，同源策略限制了通过 XMLHttpRequest 等方式将站点的数据发送给不同源的站点。</li>
+</ul>
+<p> <strong>Nginx 解决跨域的原理</strong></p>
+<p>例如：</p>
+<ul>
+<li>前端 server 的域名为：fe.server.com</li>
+<li>后端服务的域名为：dev.server.com</li>
+</ul>
+<p>​        现在我在 fe.server.com 对 dev.server.com 发起请求一定会出现跨域。</p>
+<p>​        现在我们只需要启动一个 Nginx 服务器，将 server_name 设置为 fe.server.com 然后设置相应的 location 以拦截前端需要跨域的请求，最后将请求代理回 dev.server.com 。如下面的配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  listen        80;</span><br><span class="line">  server_name  fe.server.com;</span><br><span class="line">  location / &#123;</span><br><span class="line">    proxy_pass dev.server.com;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​        这样可以完美绕过浏览器的同源策略：fe.server.com 访问 Nginx 的 fe.server.com 属于同源访问，而 Nginx 对服务端转发的请求不会触发浏览器的同源策略。</p>
+<h2 id="配置开启-gzip-压缩"><a href="#配置开启-gzip-压缩" class="headerlink" title="配置开启 gzip 压缩"></a>配置开启 gzip 压缩</h2><p>​        GZIP 是规定的三种标准 HTTP 压缩格式之一。目前绝大多数的网站都在使用 GZIP 传输 HTML 、CSS 、 JavaScript 等资源文件。</p>
+<p>​        对于文本文件， GZiP 的效果非常明显，开启后传输所需流量大约会降至 1&#x2F;4~1&#x2F;3 。</p>
+<p>​        并不是每个浏览器都支持 gzip 的，如何知道客户端是否支持 gzip 呢，请求头中的 Accept-Encoding 来标识对压缩的支持。</p>
+<p>​        启用 gzip 同时需要客户端和服务端的支持，如果客户端支持 gzip 的解析，那么只要服务端能够返回 gzip 的文件就可以启用 gzip 了,我们可以通过 Nginx 的配置来让服务端支持 gzip 。下面的 respone 中 content-encoding:gzip ，指服务端开启了 gzip 的压缩方式。</p>
+<p>在 &#x2F;etc&#x2F;nginx&#x2F;conf.d&#x2F; 文件夹中新建配置文件 gzip.conf ：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># # 默认off，是否开启gzip</span><br><span class="line">gzip on; </span><br><span class="line"># 要采用 gzip 压缩的 MIME 文件类型，其中 text/html 被系统强制启用；</span><br><span class="line">gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;</span><br><span class="line"></span><br><span class="line"># ---- 以上两个参数开启就可以支持Gzip压缩了 ---- #</span><br><span class="line"></span><br><span class="line"># 默认 off，该模块启用后，Nginx 首先检查是否存在请求静态文件的 gz 结尾的文件，如果有则直接返回该 .gz 文件内容；</span><br><span class="line">gzip_static on;</span><br><span class="line"></span><br><span class="line"># 默认 off，nginx做为反向代理时启用，用于设置启用或禁用从代理服务器上收到相应内容 gzip 压缩；</span><br><span class="line">gzip_proxied any;</span><br><span class="line"></span><br><span class="line"># 用于在响应消息头中添加 Vary：Accept-Encoding，使代理服务器根据请求头中的 Accept-Encoding 识别是否启用 gzip 压缩；</span><br><span class="line">gzip_vary on;</span><br><span class="line"></span><br><span class="line"># gzip 压缩比，压缩级别是 1-9，1 压缩级别最低，9 最高，级别越高压缩率越大，压缩时间越长，建议 4-6；</span><br><span class="line">gzip_comp_level 6;</span><br><span class="line"></span><br><span class="line"># 获取多少内存用于缓存压缩结果，16 8k 表示以 8k*16 为单位获得；</span><br><span class="line">gzip_buffers 16 8k;</span><br><span class="line"></span><br><span class="line"># 允许压缩的页面最小字节数，页面字节数从header头中的 Content-Length 中进行获取。默认值是 0，不管页面多大都压缩。建议设置成大于 1k 的字节数，小于 1k 可能会越压越大；</span><br><span class="line"># gzip_min_length 1k;</span><br><span class="line"></span><br><span class="line"># 默认 1.1，启用 gzip 所需的 HTTP 最低版本；</span><br><span class="line">gzip_http_version 1.1;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Nginx</category>
+      </categories>
+      <tags>
+        <tag>Nginx 学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Nginx 部署安装</title>
     <url>/post/Nginx-%E9%83%A8%E7%BD%B2%E5%AE%89%E8%A3%85/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文介绍Nginx两种部署方式，二进制安装及docker安装</p>
@@ -576,10 +1017,12 @@
 
 
 <h1 id="docker安装"><a href="#docker安装" class="headerlink" title="docker安装"></a>docker安装</h1><p>使用docker-compose进行部署，以下为Nginx启动文件 nginx.yml，可以根据需要修改容器名称、端口、宿主机挂载路径</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">version: &#x27;3.2&#x27;</span><br><span class="line">services:</span><br><span class="line">  nc-ui-portal:</span><br><span class="line">    restart: always</span><br><span class="line">    image: nginx:1.20.1</span><br><span class="line">    ports:</span><br><span class="line">      - 6001:6001</span><br><span class="line">    container_name: nc-ui-portal</span><br><span class="line">    networks:</span><br><span class="line">      - nc-network</span><br><span class="line">    volumes:</span><br><span class="line">      - ./nc-ui-portal/nginx.conf:/etc/nginx/nginx.conf</span><br><span class="line">      - ./nc-ui-portal/conf.d:/etc/nginx/conf.d/</span><br><span class="line">      - ./nc-ui-portal/dist:/home/next/dist/</span><br><span class="line">networks:</span><br><span class="line">  nc-network:</span><br><span class="line">    external: true</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">version: &#x27;3.2&#x27;</span><br><span class="line">services:</span><br><span class="line">  nc-ui-portal:</span><br><span class="line">    restart: always</span><br><span class="line">    image: nginx:1.20.1</span><br><span class="line">    ports:</span><br><span class="line">      - 6001:6001</span><br><span class="line">    container_name: nc-ui-portal</span><br><span class="line">    networks:</span><br><span class="line">      - nc-network</span><br><span class="line">    volumes:</span><br><span class="line">      - ./nc-ui-portal/nginx.conf:/etc/nginx/nginx.conf</span><br><span class="line">      - ./nc-ui-portal/conf.d:/etc/nginx/conf.d/</span><br><span class="line">      - ./nc-ui-portal/dist:/home/next/dist/</span><br><span class="line">      - ./nc-ui-portal/logs:/var/log/nginx</span><br><span class="line">      #- ./nc-ui-portal/Security:/etc/nginx/certs    #配置证书</span><br><span class="line">networks:</span><br><span class="line">  nc-network:</span><br><span class="line">    external: true</span><br></pre></td></tr></table></figure>
 
 <p><img src="/post/Nginx-%E9%83%A8%E7%BD%B2%E5%AE%89%E8%A3%85/1642573814443-7c3a4795-1d5c-437c-8eae-dd08e0681bba.png"></p>
-<p>上图为文件目录结构示例，nginx.conf、default.conf为配置文件，dist为静态文件目录，根据需要自行修改</p>
+<p>上图为文件目录结构示例，nginx.conf、default.conf为配置文件，dist为静态文件目录，根据需要自行修改。</p>
+<p>一般情况下docker启动时进行配置，只要把配置文件的目录挂载出来就可以，简洁方便，但是nginx却是先加载一个主配置文件nginx.conf，在nginx.conf里再加载conf.d目录下的子配置文件（一般最少一个default.conf文件）。这比单独挂载一个目录麻烦了不少，但只要思路清晰，倒也不难。</p>
+<p>&#x2F;etc&#x2F;nginx&#x2F;conf.d&#x2F; 是子配置项存放处，&#x2F;etc&#x2F;nginx&#x2F;nginx.conf 主配置文件会默认把这个文件夹中所有子配置项都引入；</p>
 <p><strong>default.conf</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  listen 6001;</span><br><span class="line">  server_name 11.13.17.58;</span><br><span class="line">  client_max_body_size 50M;</span><br><span class="line">  #地址改为本机dist路径</span><br><span class="line">  root /usr/local/nginx/dist/;  </span><br><span class="line">            # Add for nc-res service</span><br><span class="line">          location ~* ^/api &#123;</span><br><span class="line">                proxy_pass http://gateway;</span><br><span class="line">                proxy_connect_timeout 120s;</span><br><span class="line">                proxy_send_timeout 120s;</span><br><span class="line">                proxy_read_timeout 120s;</span><br><span class="line">                proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">                proxy_set_header REMOTE-HOST $remote_addr;</span><br><span class="line">                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">                rewrite ^/api/(.*)$ /$1 break; </span><br><span class="line">             &#125;</span><br><span class="line">        error_page   500 502 503 504  /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
