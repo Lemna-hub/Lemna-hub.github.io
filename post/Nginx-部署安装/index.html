@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="google-site-verification" content="1wv3Df6eyBy9RAW_7RytkeX7XPyWL0e8Bjabg6MMyeE">
+  <meta name="baidu-site-verification" content="code-HKCppcpIDG">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lemna-hub.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="前言本文介绍Nginx两种部署方式，二进制安装及docker安装">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx 部署安装">
+<meta property="og:url" content="https://lemna-hub.github.io/post/Nginx-%E9%83%A8%E7%BD%B2%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:site_name" content="Lemna&#39;s Blog">
+<meta property="og:description" content="前言本文介绍Nginx两种部署方式，二进制安装及docker安装">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lemna-hub.github.io/post/Nginx-%E9%83%A8%E7%BD%B2%E5%AE%89%E8%A3%85/image-20220427104134433.png">
+<meta property="og:image" content="https://lemna-hub.github.io/post/Nginx-%E9%83%A8%E7%BD%B2%E5%AE%89%E8%A3%85/1642573814443-7c3a4795-1d5c-437c-8eae-dd08e0681bba.png">
+<meta property="article:published_time" content="2022-04-26T08:47:24.000Z">
+<meta property="article:modified_time" content="2022-04-27T02:52:12.227Z">
+<meta property="article:author" content="Kousq">
+<meta property="article:tag" content="Shell 脚本">
+<meta property="article:tag" content="Nginx 安装">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lemna-hub.github.io/post/Nginx-%E9%83%A8%E7%BD%B2%E5%AE%89%E8%A3%85/image-20220427104134433.png">
+
+<link rel="canonical" href="https://lemna-hub.github.io/post/Nginx-%E9%83%A8%E7%BD%B2%E5%AE%89%E8%A3%85/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Nginx 部署安装 | Lemna's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Lemna's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lemna-hub.github.io/post/Nginx-%E9%83%A8%E7%BD%B2%E5%AE%89%E8%A3%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_1.jpg">
+      <meta itemprop="name" content="Kousq">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lemna's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Nginx 部署安装
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-26 16:47:24" itemprop="dateCreated datePublished" datetime="2022-04-26T16:47:24+08:00">2022-04-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-27 10:52:12" itemprop="dateModified" datetime="2022-04-27T10:52:12+08:00">2022-04-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>5.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文介绍Nginx两种部署方式，二进制安装及docker安装</p>
+<span id="more"></span>
+
+<h1 id="二进制安装"><a href="#二进制安装" class="headerlink" title="二进制安装"></a>二进制安装</h1><h2 id="安装脚本"><a href="#安装脚本" class="headerlink" title="安装脚本"></a>安装脚本</h2><p>安装包目录结构</p>
+<p><img src="/post/Nginx-%E9%83%A8%E7%BD%B2%E5%AE%89%E8%A3%85/image-20220427104134433.png" alt="image-20220427104134433"></p>
+<p><strong>nginx_auto_install.sh</strong> 脚本，根据需要修改版本号及安装目录等信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line"></span><br><span class="line">proc_dir=`pwd`;</span><br><span class="line"></span><br><span class="line">#安装包及依赖包名</span><br><span class="line">program_list=&quot;zlib-1.2.11 pcre-8.44 openssl-1.1.1j nginx-1.20.1&quot;;</span><br><span class="line">#安装目录</span><br><span class="line">nginx_install_dir=&quot;/usr/local/nginx&quot;;</span><br><span class="line">nginx_pid=&quot;$&#123;nginx_install_dir&#125;/nginx.pid&quot;;</span><br><span class="line">nginx_tmp_dir=&quot;&quot;;</span><br><span class="line">with_pcre=&quot;&quot;;</span><br><span class="line">with_zlib=&quot;&quot;;</span><br><span class="line">with_openssl=&quot;&quot;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">for sign_program in `echo &quot;$&#123;program_list&#125;&quot;`</span><br><span class="line">   do</span><br><span class="line"></span><br><span class="line">    zip_file=&quot;$&#123;sign_program&#125;.tar.gz&quot;;</span><br><span class="line">    echo &quot;zip_file = $&#123;zip_file&#125;&quot;;</span><br><span class="line">   </span><br><span class="line">    tar zxvf $&#123;zip_file&#125;</span><br><span class="line"></span><br><span class="line">    name=`echo $&#123;sign_program&#125;|awk -F&quot;-&quot; &#x27;&#123;print $1&#125;&#x27;`;</span><br><span class="line"></span><br><span class="line">    case $name in </span><br><span class="line">       zlib)</span><br><span class="line">         with_zlib=&quot;$&#123;proc_dir&#125;/$&#123;sign_program&#125;&quot;;</span><br><span class="line">         ;;</span><br><span class="line"></span><br><span class="line">       pcre)</span><br><span class="line">         with_pcre=&quot;$&#123;proc_dir&#125;/$&#123;sign_program&#125;&quot; ;</span><br><span class="line">         ;;</span><br><span class="line"></span><br><span class="line">       openssl)</span><br><span class="line">         with_openssl=&quot;$&#123;proc_dir&#125;/$&#123;sign_program&#125;&quot;;</span><br><span class="line">         ;;</span><br><span class="line"></span><br><span class="line">       nginx)</span><br><span class="line">         nginx_tmp_dir=&quot;$&#123;proc_dir&#125;/$&#123;sign_program&#125;&quot;; </span><br><span class="line">         ;;</span><br><span class="line"></span><br><span class="line">       *)</span><br><span class="line">         echo &quot;Nothing to match&quot;;</span><br><span class="line">         ;;</span><br><span class="line">    </span><br><span class="line">    esac</span><br><span class="line"></span><br><span class="line">   done</span><br><span class="line"></span><br><span class="line">echo &quot;nginx_tmp_dir=$nginx_tmp_dir&quot;;</span><br><span class="line">echo &quot;with_zlib=$with_zlib&quot;;</span><br><span class="line">echo &quot;with_pcre=$with_pcre&quot;;</span><br><span class="line">echo &quot;with_openssl=$with_openssl&quot;;</span><br><span class="line"></span><br><span class="line">if [ &quot;$&#123;nginx_tmp_dir&#125; == &quot;&quot; ]||[ &quot;$&#123;with_zlib&#125; == &quot;&quot; ] || [ &quot;$&#123;with_pcre&#125; == &quot;&quot; ] || [ &quot;$&#123;with_openssl&#125; == &quot;&quot; ]; then</span><br><span class="line"></span><br><span class="line">   echo &quot;Error : Some parameter not define&quot;;</span><br><span class="line">else</span><br><span class="line">   echo &quot;Start install nginx .............&quot;;</span><br><span class="line">   cd $&#123;nginx_tmp_dir&#125;</span><br><span class="line">   echo &quot;./configure --prefix=$&#123;nginx_install_dir&#125; --pid-path=$&#123;nginx_pid&#125; --with-http_stub_status_module --with-http_ssl_module --with-pcre=$&#123;with_pcre&#125; --with-zlib=$&#123;with_zlib&#125; --with-openssl=$&#123;with_openssl&#125;&quot;;</span><br><span class="line">   echo &quot;&quot;;</span><br><span class="line">   echo &quot;&quot;;</span><br><span class="line">   ./configure --prefix=$&#123;nginx_install_dir&#125; --pid-path=$&#123;nginx_pid&#125; --with-http_stub_status_module --with-http_ssl_module --with-pcre=$&#123;with_pcre&#125; --with-zlib=$&#123;with_zlib&#125; --with-openssl=$&#123;with_openssl&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">install_list=&quot;make make_install&quot;;</span><br><span class="line"></span><br><span class="line">for sign_install in `echo &quot;$&#123;install_list&#125;&quot;`</span><br><span class="line">   do</span><br><span class="line">      sign_install=`echo &quot;$&#123;sign_install&#125;&quot;|sed &#x27;s/_/ /g&#x27;`</span><br><span class="line">      echo -n &quot;Continue execute $&#123;sign_install&#125; ?(y/n)&quot; </span><br><span class="line">      read name</span><br><span class="line">      if [ &quot;$name&quot; == &quot;Y&quot; ]||[ &quot;$name&quot; == &quot;y&quot; ]; then</span><br><span class="line">         echo &quot; Start execute cmd: $sign_install&quot;;</span><br><span class="line">         sleep 5;</span><br><span class="line">         $&#123;sign_install&#125;</span><br><span class="line">         echo &quot;&quot;;</span><br><span class="line">         echo &quot;&quot;;</span><br><span class="line">      fi          </span><br><span class="line">    </span><br><span class="line">   done</span><br><span class="line"></span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li><p>使用<strong>root用户安装</strong></p>
+</li>
+<li><p><code>./nginx_auto_install.sh</code> #执行安装脚本，安装过程一直选择y</p>
+</li>
+<li><p><code>cd /usr/local</code> 安装结束后,进入&#x2F;usr&#x2F;local 目录 </p>
+</li>
+<li><p><code>chown -R puaiuc:puaiuc nginx</code> #根据需要更改nginx属组，如果用root用户使用nginx则可以跳过此步骤</p>
+</li>
+<li><p><code>chmod -R 755 nginx</code>  #赋权</p>
+</li>
+</ol>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p> <code>cd /usr/local/nginx/conf/nginx.conf</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># main段配置信息</span><br><span class="line">user  nginx;                        # 运行用户，默认即是nginx，可以不进行设置</span><br><span class="line">worker_processes  auto;             # Nginx 进程数，一般设置为和 CPU 核数一样</span><br><span class="line">error_log  /var/log/nginx/error.log warn;   # Nginx 的错误日志存放目录</span><br><span class="line">pid        /var/run/nginx.pid;      # Nginx 服务启动时的 pid 存放位置</span><br><span class="line"></span><br><span class="line"># events段配置信息</span><br><span class="line">events &#123;</span><br><span class="line">    use epoll;     # 使用epoll的I/O模型(如果你不知道Nginx该使用哪种轮询方法，会自动选择一个最适合你操作系统的)</span><br><span class="line">    worker_connections 1024;   # 每个进程允许最大并发数</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># http段配置信息</span><br><span class="line"># 配置使用最频繁的部分，代理、缓存、日志定义等绝大多数功能和第三方模块的配置都在这里设置</span><br><span class="line">http &#123; </span><br><span class="line">    # 设置日志模式</span><br><span class="line">    log_format  main  &#x27;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#x27;</span><br><span class="line">                      &#x27;$status $body_bytes_sent &quot;$http_referer&quot; &#x27;</span><br><span class="line">                      &#x27;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#x27;;</span><br><span class="line"></span><br><span class="line">    access_log  /var/log/nginx/access.log  main;   # Nginx访问日志存放位置</span><br><span class="line"></span><br><span class="line">    sendfile            on;   # 开启高效传输模式</span><br><span class="line">    tcp_nopush          on;   # 减少网络报文段的数量</span><br><span class="line">    tcp_nodelay         on;</span><br><span class="line">    keepalive_timeout   65;   # 保持连接的时间，也叫超时时间，单位秒</span><br><span class="line">    types_hash_max_size 2048;</span><br><span class="line"></span><br><span class="line">    include             /etc/nginx/mime.types;      # 文件扩展名与类型映射表</span><br><span class="line">    default_type        application/octet-stream;   # 默认文件类型</span><br><span class="line"></span><br><span class="line">    include /etc/nginx/conf.d/*.conf;   # 加载子配置项</span><br><span class="line"></span><br><span class="line">    # server段配置信息</span><br><span class="line">    server &#123;</span><br><span class="line">      listen       80;       # 配置监听的端口</span><br><span class="line">      server_name  localhost;    # 配置的域名</span><br><span class="line"></span><br><span class="line">      # location段配置信息</span><br><span class="line">      location / &#123;</span><br><span class="line">        root   /usr/share/nginx/html;  # 网站根目录</span><br><span class="line">        index  index.html index.htm;   # 默认首页文件</span><br><span class="line">        deny 172.168.22.11;   # 禁止访问的ip地址，可以为all</span><br><span class="line">        allow 172.168.33.44；# 允许访问的ip地址，可以为all</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      error_page 500 502 503 504 /50x.html;  # 默认50x对应的访问页面</span><br><span class="line">      error_page 400 404 error.html;   # 同上</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/nginx/sbin/</span><br><span class="line">./nginx #启动</span><br><span class="line">./nginx t #检查配置</span><br><span class="line">./nginx -s stop #强制停止</span><br><span class="line">./nginx -s reload #重载配置</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="docker安装"><a href="#docker安装" class="headerlink" title="docker安装"></a>docker安装</h1><p>使用docker-compose进行部署，以下为Nginx启动文件 nginx.yml，可以根据需要修改容器名称、端口、宿主机挂载路径</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">version: &#x27;3.2&#x27;</span><br><span class="line">services:</span><br><span class="line">  nc-ui-portal:</span><br><span class="line">    restart: always</span><br><span class="line">    image: nginx:1.20.1</span><br><span class="line">    ports:</span><br><span class="line">      - 6001:6001</span><br><span class="line">    container_name: nc-ui-portal</span><br><span class="line">    networks:</span><br><span class="line">      - nc-network</span><br><span class="line">    volumes:</span><br><span class="line">      - ./nc-ui-portal/nginx.conf:/etc/nginx/nginx.conf</span><br><span class="line">      - ./nc-ui-portal/conf.d:/etc/nginx/conf.d/</span><br><span class="line">      - ./nc-ui-portal/dist:/home/next/dist/</span><br><span class="line">networks:</span><br><span class="line">  nc-network:</span><br><span class="line">    external: true</span><br></pre></td></tr></table></figure>
+
+<p><img src="/post/Nginx-%E9%83%A8%E7%BD%B2%E5%AE%89%E8%A3%85/1642573814443-7c3a4795-1d5c-437c-8eae-dd08e0681bba.png"></p>
+<p>上图为文件目录结构示例，nginx.conf、default.conf为配置文件，dist为静态文件目录，根据需要自行修改</p>
+<p><strong>default.conf</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  listen 6001;</span><br><span class="line">  server_name 11.13.17.58;</span><br><span class="line">  client_max_body_size 50M;</span><br><span class="line">  #地址改为本机dist路径</span><br><span class="line">  root /usr/local/nginx/dist/;  </span><br><span class="line">            # Add for nc-res service</span><br><span class="line">          location ~* ^/api &#123;</span><br><span class="line">                proxy_pass http://gateway;</span><br><span class="line">                proxy_connect_timeout 120s;</span><br><span class="line">                proxy_send_timeout 120s;</span><br><span class="line">                proxy_read_timeout 120s;</span><br><span class="line">                proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">                proxy_set_header REMOTE-HOST $remote_addr;</span><br><span class="line">                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">                rewrite ^/api/(.*)$ /$1 break; </span><br><span class="line">             &#125;</span><br><span class="line">        error_page   500 502 503 504  /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>nginx.conf</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">user  nginx;</span><br><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line">    #access_log  logs/access.log  main;</span><br><span class="line">    sendfile        on;</span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line">    server_tokens off;</span><br><span class="line">    #gzip  on;</span><br><span class="line">    #负载均衡配置，配置gateway地址</span><br><span class="line">    upstream gateway &#123;</span><br><span class="line">        ip_hash;</span><br><span class="line">        server 11.13.17.48:8005 weight=2;</span><br><span class="line">        server 11.13.17.49:8005 weight=4;</span><br><span class="line">        server 11.13.17.50:8005 weight=4;</span><br><span class="line">    include /etc/nginx/conf.d/*.conf;</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>启动命令：</p>
+<p><code>docker-compose -f nginx.yml up -d</code></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Shell-%E8%84%9A%E6%9C%AC/" rel="tag"># Shell 脚本</a>
+              <a href="/tags/Nginx-%E5%AE%89%E8%A3%85/" rel="tag"># Nginx 安装</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/post/Linux-netstat-ss-lsof-%E5%91%BD%E4%BB%A4/" rel="prev" title="Linux netstat ss lsof 命令">
+      <i class="fa fa-chevron-left"></i> Linux netstat ss lsof 命令
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">二进制安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC"><span class="nav-number">2.1.</span> <span class="nav-text">安装脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.</span> <span class="nav-text">配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8"><span class="nav-number">2.4.</span> <span class="nav-text">启动</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#docker%E5%AE%89%E8%A3%85"><span class="nav-number">3.</span> <span class="nav-text">docker安装</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kousq"
+      src="/images/avatar_1.jpg">
+  <p class="site-author-name" itemprop="name">Kousq</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kousq</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">40k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">36 分钟</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> 强力驱动
+  </div>-->
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
