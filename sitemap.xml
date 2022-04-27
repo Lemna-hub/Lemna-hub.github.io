@@ -124,6 +124,13 @@
   </url>
   
   <url>
+    <loc>https://lemna-hub.github.io/tags/Nginx-%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2022-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://lemna-hub.github.io/tags/MySQL-%E5%AE%89%E8%A3%85/</loc>
     <lastmod>2022-04-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -132,13 +139,6 @@
   
   <url>
     <loc>https://lemna-hub.github.io/tags/Shell-%E8%84%9A%E6%9C%AC/</loc>
-    <lastmod>2022-04-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lemna-hub.github.io/tags/Nginx-%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2022-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -168,14 +168,14 @@
   </url>
   
   <url>
-    <loc>https://lemna-hub.github.io/categories/MySQL/</loc>
+    <loc>https://lemna-hub.github.io/categories/Nginx/</loc>
     <lastmod>2022-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://lemna-hub.github.io/categories/Nginx/</loc>
+    <loc>https://lemna-hub.github.io/categories/MySQL/</loc>
     <lastmod>2022-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
