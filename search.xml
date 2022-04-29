@@ -1,71 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hexo + Github</title>
-    <url>/post/Github%20+%20Hexo%20%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本blog利用 Hexo + Github 搭建个人博客，内容包含基本工具（Node.js、Git、Github、Hexo）、利用Hexo进行发布、修改、删除文章</p>
-<span id="more"></span>
-
-<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>在开始一切之前，你必须已经：</p>
-<ul>
-<li>有一个github账号，没有的话去注册一个</li>
-<li>安装了node.js、npm</li>
-<li>安装了git for windows（或者其它git客户端）</li>
-</ul>
-<p>本文所使用的环境：</p>
-<ul>
-<li>Windows11</li>
-<li><span class="exturl" data-url="bWFpbHRvOiYjeDZlOyYjeDZmOyYjMTAwOyYjMTAxOyYjeDJlOyYjeDZhOyYjeDczOyYjNjQ7JiMxMTg7JiN4MzE7JiM1NDsmI3gyZTsmIzQ5OyYjeDM0OyYjNDY7JiM1MDs=">&#x6e;&#x6f;&#100;&#101;&#x2e;&#x6a;&#x73;&#64;&#118;&#x31;&#54;&#x2e;&#49;&#x34;&#46;&#50;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>node -v</code></li>
-<li><span class="exturl" data-url="bWFpbHRvOiYjMTAzOyYjeDY5OyYjeDc0OyYjNjQ7JiN4MzI7JiN4MmU7JiM1MTsmIzUxOyYjNDY7JiN4MzA7JiM0NjsmI3g3NzsmIzEwNTsmIzExMDsmIzEwMDsmI3g2ZjsmI3g3NzsmI3g3MzsmI3gyZTsmIzUwOw==">&#103;&#x69;&#x74;&#64;&#x32;&#x2e;&#51;&#51;&#46;&#x30;&#46;&#x77;&#105;&#110;&#100;&#x6f;&#x77;&#x73;&#x2e;&#50;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>git version</code></li>
-<li><span class="exturl" data-url="bWFpbHRvOiYjMTA0OyYjeDY1OyYjMTIwOyYjeDZmOyYjNjQ7JiM1NDsmI3gyZTsmI3gzMTsmI3gyZTsmI3gzMDs=">&#104;&#x65;&#120;&#x6f;&#64;&#54;&#x2e;&#x31;&#x2e;&#x30;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>hexo -v</code>或<code>hexo version</code></li>
-<li><span class="exturl" data-url="bWFpbHRvOiYjMTEwOyYjeDY1OyYjMTIwOyYjeDc0OyYjNjQ7JiM1NTsmIzQ2OyYjNTY7JiN4MmU7JiN4MzA7">&#110;&#x65;&#120;&#x74;&#64;&#55;&#46;&#56;&#x2e;&#x30;<i class="fa fa-external-link-alt"></i></span></li>
-</ul>
-<h1 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h1><ul>
-<li>安装Node.js</li>
-<li>添加国内镜像源对npm加速</li>
-<li>安装Git</li>
-<li>注册Github</li>
-<li>安装Hexo</li>
-<li>连接Github与本地</li>
-</ul>
-<h1 id="文章基本操作"><a href="#文章基本操作" class="headerlink" title="文章基本操作"></a>文章基本操作</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 新建文章 </span><br><span class="line">hexo new post &quot;article title&quot; </span><br><span class="line"># 生成静态页面 </span><br><span class="line">hexo g </span><br><span class="line"># 本地预览 </span><br><span class="line">hexo s </span><br><span class="line"># 部署到网站 </span><br><span class="line">hexo d</span><br><span class="line"># 清空缓存并生成新的静态页面 </span><br><span class="line">hexo clean &amp;&amp; hexo g</span><br><span class="line"></span><br><span class="line">修改文章：修改对应文章内容，然后执行命令 </span><br><span class="line">hexo d -g </span><br><span class="line"></span><br><span class="line">删除文章：</span><br><span class="line">删除目录 source\_posts 下对应文章文件，然后执行命令 hexo d -g 即可。</span><br></pre></td></tr></table></figure>
-
-<h1 id="常见配置修改"><a href="#常见配置修改" class="headerlink" title="常见配置修改"></a>常见配置修改</h1><h2 id="字数统计"><a href="#字数统计" class="headerlink" title="字数统计"></a>字数统计</h2><p>在旧版本中的post_wordcount配置似乎已经不可用，因此需要使用symbols_count_time替代</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 卸载原有依赖 不卸载对新插件有影响</span><br><span class="line">npm uninstall hexo-wordcount</span><br><span class="line"># 安装新依赖</span><br><span class="line">npm i hexo-symbols-count-time</span><br><span class="line"></span><br><span class="line">新的配置在symbols_count_time下：配置文件在主题下，themes\next\_config.yml</span><br><span class="line">symbols_count_time:</span><br><span class="line">  # 换行显示字数统计和阅读市场</span><br><span class="line">  separated_meta: true</span><br><span class="line">  # 文章底部显示</span><br><span class="line">  item_text_post: true</span><br><span class="line">  # 博客底部显示 默认为false</span><br><span class="line">  item_text_total: true</span><br></pre></td></tr></table></figure>
-
-<h2 id="隐藏网页底部-powered-By-Hexo-x2F-强力驱动"><a href="#隐藏网页底部-powered-By-Hexo-x2F-强力驱动" class="headerlink" title="隐藏网页底部 powered By Hexo &#x2F; 强力驱动"></a>隐藏网页底部 powered By Hexo &#x2F; 强力驱动</h2><p>打开 themes&#x2F;next&#x2F;layout&#x2F;_partials&#x2F;footer.swig，找到：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% if theme.footer.powered.enable %&#125;</span><br><span class="line">&lt;div class=&quot;powered-by&quot;&gt;&#123;#</span><br><span class="line">#&#125;&#123;&#123; __(&#x27;footer.powered&#x27;, &#x27;&lt;a class=&quot;theme-link&quot; target=&quot;_blank&quot;&#x27; + nofollow + &#x27; href=&quot;https://hexo.io&quot;&gt;Hexo&lt;/a&gt;&#x27;) &#125;&#125;&#123;% if theme.footer.powered.version %&#125; v&#123;&#123; hexo_env(&#x27;version&#x27;) &#125;&#125;&#123;% endif %&#125;&#123;#</span><br><span class="line">#&#125;&lt;/div&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line">&#123;% if theme.footer.powered.enable and theme.footer.theme.enable %&#125;</span><br><span class="line">&lt;span class=&quot;post-meta-divider&quot;&gt;|&lt;/span&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line">&#123;% if theme.footer.theme.enable %&#125;</span><br><span class="line">&lt;div class=&quot;theme-info&quot;&gt;&#123;#</span><br><span class="line">#&#125;&#123;&#123; __(&#x27;footer.theme&#x27;) &#125;&#125; – &#123;#</span><br><span class="line">#&#125;&lt;a class=&quot;theme-link&quot; target=&quot;_blank&quot;&#123;&#123; nofollow &#125;&#125; href=&quot;https://theme-next.org&quot;&gt;&#123;#</span><br><span class="line">#&#125;NexT.&#123;&#123; theme.scheme &#125;&#125;&#123;#</span><br><span class="line">#&#125;&lt;/a&gt;&#123;% if theme.footer.theme.version %&#125; v&#123;&#123; version &#125;&#125;&#123;% endif %&#125;&#123;#</span><br><span class="line">#&#125;&lt;/div&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">把这段代码首尾分别加上：&lt;!-- 和--&gt;，或者直接删除</span><br></pre></td></tr></table></figure>
-
-<h2 id="切换主题"><a href="#切换主题" class="headerlink" title="切换主题"></a>切换主题</h2><p>next 主题自带<strong>四种样式</strong>。<br>在主题配置文件<code>/next/_config.yml</code>中查找：<code>scheme</code>，找到如下代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Schemes</span><br><span class="line">#scheme: Muse</span><br><span class="line">#scheme: Mist</span><br><span class="line">#scheme: Pisces</span><br><span class="line">scheme: Gemini</span><br><span class="line">选择你喜欢的一种样式，去掉前面的 #，其他主题前加上 # 即可</span><br></pre></td></tr></table></figure>
-
-<h2 id="代码块复制选项"><a href="#代码块复制选项" class="headerlink" title="代码块复制选项"></a>代码块复制选项</h2><p>在主题配置文件<code>next/_config.yml</code>中，搜索 codeblock，找到如下配置：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">codeblock:</span><br><span class="line">  highlight_theme: normal</span><br><span class="line">  copy_button:  # 设置是否开启代码块复制按钮</span><br><span class="line">    enable: true</span><br><span class="line">    show_result: true  # 是否显示复制成功信息</span><br><span class="line">    # Available values: default | flat | mac</span><br><span class="line">    style:</span><br></pre></td></tr></table></figure>
-
-<h2 id="草稿-私密博客"><a href="#草稿-私密博客" class="headerlink" title="草稿 私密博客"></a>草稿 私密博客</h2><blockquote>
-<p>草稿相当于很多博客都有的“私密文章”功能。<br>$ hexo new draft “draft”<br>会在source&#x2F;_drafts目录下生成一个new-draft.md文件。但是这个文件不被显示在页面上，链接也访问不到。<br>也就是说如果你想把某一篇文章移除显示，又不舍得删除，可以把它移动到_drafts目录之中。</p>
-</blockquote>
-<h2 id="目录信息"><a href="#目录信息" class="headerlink" title="目录信息"></a>目录信息</h2><p>在主题配置文件<code>next/_config.yml</code>中，可以是设置展开所有目录</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Table of Contents in the Sidebar</span><br><span class="line"># Front-matter variable (unsupport wrap expand_all).</span><br><span class="line">toc:</span><br><span class="line">  enable: true</span><br><span class="line">  # Automatically add list number to toc.</span><br><span class="line">  number: true</span><br><span class="line">  # If true, all words will placed on next lines if header width longer then sidebar width.</span><br><span class="line">  wrap: false</span><br><span class="line">  # If true, all level of TOC in a post will be displayed, rather than the activated part of it.</span><br><span class="line">  expand_all: true</span><br><span class="line">  # Maximum heading depth of generated toc.</span><br><span class="line">  max_depth: 6</span><br></pre></td></tr></table></figure>
-
-<h2 id="提升Hexo-NexT主题加载速度"><a href="#提升Hexo-NexT主题加载速度" class="headerlink" title="提升Hexo NexT主题加载速度"></a>提升Hexo NexT主题加载速度</h2><p>网站加载速度是影响搜索引擎排名的一个重要因素。<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jb20vc3BlZWQvcGFnZXNwZWVkL2luc2lnaHRzLw=="># Google Page Speed Insight<i class="fa fa-external-link-alt"></i></span> 是个很好的网页性能分析工具，可以根据它的分析结果有针对性地对网页进行优化。</p>
-<p><strong>优化方案</strong></p>
-<p>主要尝试了下面几种方案，按效果排列，把无效的放在了后面。 <strong>关闭动效</strong> 减少动画在Mobile上的优化效果最为明显，是肉眼可见的速度提升。关闭的方法也极为简单，修改NexT的配置文件，<code>next/_config.yml</code>中，将<code>motion</code>的<code>enable</code>置为<code>false</code>:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Use Animate.css to animate everything.</span><br><span class="line"># For more information: https://animate.style</span><br><span class="line">motion:</span><br><span class="line">  enable: false</span><br><span class="line">  async: false</span><br></pre></td></tr></table></figure>
-
-<p>在手机上对比测试了一下，加上这个动画，页面加载确实有明显卡顿。猜想原因是多了一个动画js的render-blocking依赖，手机端的算力也偏弱。</p>
-<p>把页脚的icon动效也一并去掉了：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">footer:</span><br><span class="line">  # Specify the year when the site was setup. If not defined, current year will be used.</span><br><span class="line">  #since: 2021</span><br><span class="line"></span><br><span class="line">  # Icon between year and copyright info.</span><br><span class="line">  icon:</span><br><span class="line">    # Icon name in Font Awesome. See: https://fontawesome.com/icons</span><br><span class="line">    name: fa fa-heart</span><br><span class="line">    # If you want to animate the icon, set it to true.</span><br><span class="line">    animated: false</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux find 命令</title>
     <url>/post/Linux-find-%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><strong>find命令</strong>用来在指定目录下查找文件。任何位于参数之前的字符串都将被视为欲查找的目录名。如果使用该命令时，不设置任何参数，则find命令将在当前目录下查找子目录与文件。并且将查找到的子目录和文件全部进行显示。</p>
@@ -213,6 +148,71 @@
       </categories>
       <tags>
         <tag>Linux 命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo + Github</title>
+    <url>/post/Github%20+%20Hexo%20%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本blog利用 Hexo + Github 搭建个人博客，内容包含基本工具（Node.js、Git、Github、Hexo）、利用Hexo进行发布、修改、删除文章</p>
+<span id="more"></span>
+
+<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>在开始一切之前，你必须已经：</p>
+<ul>
+<li>有一个github账号，没有的话去注册一个</li>
+<li>安装了node.js、npm</li>
+<li>安装了git for windows（或者其它git客户端）</li>
+</ul>
+<p>本文所使用的环境：</p>
+<ul>
+<li>Windows11</li>
+<li><span class="exturl" data-url="bWFpbHRvOiYjMTEwOyYjMTExOyYjMTAwOyYjMTAxOyYjeDJlOyYjMTA2OyYjMTE1OyYjeDQwOyYjMTE4OyYjeDMxOyYjeDM2OyYjeDJlOyYjeDMxOyYjeDM0OyYjeDJlOyYjNTA7">&#110;&#111;&#100;&#101;&#x2e;&#106;&#115;&#x40;&#118;&#x31;&#x36;&#x2e;&#x31;&#x34;&#x2e;&#50;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>node -v</code></li>
+<li><span class="exturl" data-url="bWFpbHRvOiYjMTAzOyYjMTA1OyYjeDc0OyYjNjQ7JiM1MDsmIzQ2OyYjeDMzOyYjeDMzOyYjNDY7JiM0ODsmIzQ2OyYjeDc3OyYjMTA1OyYjMTEwOyYjMTAwOyYjMTExOyYjMTE5OyYjeDczOyYjNDY7JiN4MzI7">&#103;&#105;&#x74;&#64;&#50;&#46;&#x33;&#x33;&#46;&#48;&#46;&#x77;&#105;&#110;&#100;&#111;&#119;&#x73;&#46;&#x32;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>git version</code></li>
+<li><span class="exturl" data-url="bWFpbHRvOiYjeDY4OyYjeDY1OyYjeDc4OyYjMTExOyYjNjQ7JiM1NDsmI3gyZTsmI3gzMTsmIzQ2OyYjNDg7">&#x68;&#x65;&#x78;&#111;&#64;&#54;&#x2e;&#x31;&#46;&#48;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>hexo -v</code>或<code>hexo version</code></li>
+<li><span class="exturl" data-url="bWFpbHRvOiYjMTEwOyYjeDY1OyYjMTIwOyYjeDc0OyYjNjQ7JiM1NTsmIzQ2OyYjNTY7JiN4MmU7JiN4MzA7">&#110;&#x65;&#120;&#x74;&#64;&#55;&#46;&#56;&#x2e;&#x30;<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+<h1 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h1><ul>
+<li>安装Node.js</li>
+<li>添加国内镜像源对npm加速</li>
+<li>安装Git</li>
+<li>注册Github</li>
+<li>安装Hexo</li>
+<li>连接Github与本地</li>
+</ul>
+<h1 id="文章基本操作"><a href="#文章基本操作" class="headerlink" title="文章基本操作"></a>文章基本操作</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 新建文章 </span><br><span class="line">hexo new post &quot;article title&quot; </span><br><span class="line"># 生成静态页面 </span><br><span class="line">hexo g </span><br><span class="line"># 本地预览 </span><br><span class="line">hexo s </span><br><span class="line"># 部署到网站 </span><br><span class="line">hexo d</span><br><span class="line"># 清空缓存并生成新的静态页面 </span><br><span class="line">hexo clean &amp;&amp; hexo g</span><br><span class="line"></span><br><span class="line">修改文章：修改对应文章内容，然后执行命令 </span><br><span class="line">hexo d -g </span><br><span class="line"></span><br><span class="line">删除文章：</span><br><span class="line">删除目录 source\_posts 下对应文章文件，然后执行命令 hexo d -g 即可。</span><br></pre></td></tr></table></figure>
+
+<h1 id="常见配置修改"><a href="#常见配置修改" class="headerlink" title="常见配置修改"></a>常见配置修改</h1><h2 id="字数统计"><a href="#字数统计" class="headerlink" title="字数统计"></a>字数统计</h2><p>在旧版本中的post_wordcount配置似乎已经不可用，因此需要使用symbols_count_time替代</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 卸载原有依赖 不卸载对新插件有影响</span><br><span class="line">npm uninstall hexo-wordcount</span><br><span class="line"># 安装新依赖</span><br><span class="line">npm i hexo-symbols-count-time</span><br><span class="line"></span><br><span class="line">新的配置在symbols_count_time下：配置文件在主题下，themes\next\_config.yml</span><br><span class="line">symbols_count_time:</span><br><span class="line">  # 换行显示字数统计和阅读市场</span><br><span class="line">  separated_meta: true</span><br><span class="line">  # 文章底部显示</span><br><span class="line">  item_text_post: true</span><br><span class="line">  # 博客底部显示 默认为false</span><br><span class="line">  item_text_total: true</span><br></pre></td></tr></table></figure>
+
+<h2 id="隐藏网页底部-powered-By-Hexo-x2F-强力驱动"><a href="#隐藏网页底部-powered-By-Hexo-x2F-强力驱动" class="headerlink" title="隐藏网页底部 powered By Hexo &#x2F; 强力驱动"></a>隐藏网页底部 powered By Hexo &#x2F; 强力驱动</h2><p>打开 themes&#x2F;next&#x2F;layout&#x2F;_partials&#x2F;footer.swig，找到：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% if theme.footer.powered.enable %&#125;</span><br><span class="line">&lt;div class=&quot;powered-by&quot;&gt;&#123;#</span><br><span class="line">#&#125;&#123;&#123; __(&#x27;footer.powered&#x27;, &#x27;&lt;a class=&quot;theme-link&quot; target=&quot;_blank&quot;&#x27; + nofollow + &#x27; href=&quot;https://hexo.io&quot;&gt;Hexo&lt;/a&gt;&#x27;) &#125;&#125;&#123;% if theme.footer.powered.version %&#125; v&#123;&#123; hexo_env(&#x27;version&#x27;) &#125;&#125;&#123;% endif %&#125;&#123;#</span><br><span class="line">#&#125;&lt;/div&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line">&#123;% if theme.footer.powered.enable and theme.footer.theme.enable %&#125;</span><br><span class="line">&lt;span class=&quot;post-meta-divider&quot;&gt;|&lt;/span&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line">&#123;% if theme.footer.theme.enable %&#125;</span><br><span class="line">&lt;div class=&quot;theme-info&quot;&gt;&#123;#</span><br><span class="line">#&#125;&#123;&#123; __(&#x27;footer.theme&#x27;) &#125;&#125; – &#123;#</span><br><span class="line">#&#125;&lt;a class=&quot;theme-link&quot; target=&quot;_blank&quot;&#123;&#123; nofollow &#125;&#125; href=&quot;https://theme-next.org&quot;&gt;&#123;#</span><br><span class="line">#&#125;NexT.&#123;&#123; theme.scheme &#125;&#125;&#123;#</span><br><span class="line">#&#125;&lt;/a&gt;&#123;% if theme.footer.theme.version %&#125; v&#123;&#123; version &#125;&#125;&#123;% endif %&#125;&#123;#</span><br><span class="line">#&#125;&lt;/div&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">把这段代码首尾分别加上：&lt;!-- 和--&gt;，或者直接删除</span><br></pre></td></tr></table></figure>
+
+<h2 id="切换主题"><a href="#切换主题" class="headerlink" title="切换主题"></a>切换主题</h2><p>next 主题自带<strong>四种样式</strong>。<br>在主题配置文件<code>/next/_config.yml</code>中查找：<code>scheme</code>，找到如下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Schemes</span><br><span class="line">#scheme: Muse</span><br><span class="line">#scheme: Mist</span><br><span class="line">#scheme: Pisces</span><br><span class="line">scheme: Gemini</span><br><span class="line">选择你喜欢的一种样式，去掉前面的 #，其他主题前加上 # 即可</span><br></pre></td></tr></table></figure>
+
+<h2 id="代码块复制选项"><a href="#代码块复制选项" class="headerlink" title="代码块复制选项"></a>代码块复制选项</h2><p>在主题配置文件<code>next/_config.yml</code>中，搜索 codeblock，找到如下配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">codeblock:</span><br><span class="line">  highlight_theme: normal</span><br><span class="line">  copy_button:  # 设置是否开启代码块复制按钮</span><br><span class="line">    enable: true</span><br><span class="line">    show_result: true  # 是否显示复制成功信息</span><br><span class="line">    # Available values: default | flat | mac</span><br><span class="line">    style:</span><br></pre></td></tr></table></figure>
+
+<h2 id="草稿-私密博客"><a href="#草稿-私密博客" class="headerlink" title="草稿 私密博客"></a>草稿 私密博客</h2><blockquote>
+<p>草稿相当于很多博客都有的“私密文章”功能。<br>$ hexo new draft “draft”<br>会在source&#x2F;_drafts目录下生成一个new-draft.md文件。但是这个文件不被显示在页面上，链接也访问不到。<br>也就是说如果你想把某一篇文章移除显示，又不舍得删除，可以把它移动到_drafts目录之中。</p>
+</blockquote>
+<h2 id="目录信息"><a href="#目录信息" class="headerlink" title="目录信息"></a>目录信息</h2><p>在主题配置文件<code>next/_config.yml</code>中，可以是设置展开所有目录</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Table of Contents in the Sidebar</span><br><span class="line"># Front-matter variable (unsupport wrap expand_all).</span><br><span class="line">toc:</span><br><span class="line">  enable: true</span><br><span class="line">  # Automatically add list number to toc.</span><br><span class="line">  number: true</span><br><span class="line">  # If true, all words will placed on next lines if header width longer then sidebar width.</span><br><span class="line">  wrap: false</span><br><span class="line">  # If true, all level of TOC in a post will be displayed, rather than the activated part of it.</span><br><span class="line">  expand_all: true</span><br><span class="line">  # Maximum heading depth of generated toc.</span><br><span class="line">  max_depth: 6</span><br></pre></td></tr></table></figure>
+
+<h2 id="提升Hexo-NexT主题加载速度"><a href="#提升Hexo-NexT主题加载速度" class="headerlink" title="提升Hexo NexT主题加载速度"></a>提升Hexo NexT主题加载速度</h2><p>网站加载速度是影响搜索引擎排名的一个重要因素。<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jb20vc3BlZWQvcGFnZXNwZWVkL2luc2lnaHRzLw=="># Google Page Speed Insight<i class="fa fa-external-link-alt"></i></span> 是个很好的网页性能分析工具，可以根据它的分析结果有针对性地对网页进行优化。</p>
+<p><strong>优化方案</strong></p>
+<p>主要尝试了下面几种方案，按效果排列，把无效的放在了后面。 <strong>关闭动效</strong> 减少动画在Mobile上的优化效果最为明显，是肉眼可见的速度提升。关闭的方法也极为简单，修改NexT的配置文件，<code>next/_config.yml</code>中，将<code>motion</code>的<code>enable</code>置为<code>false</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Use Animate.css to animate everything.</span><br><span class="line"># For more information: https://animate.style</span><br><span class="line">motion:</span><br><span class="line">  enable: false</span><br><span class="line">  async: false</span><br></pre></td></tr></table></figure>
+
+<p>在手机上对比测试了一下，加上这个动画，页面加载确实有明显卡顿。猜想原因是多了一个动画js的render-blocking依赖，手机端的算力也偏弱。</p>
+<p>把页脚的icon动效也一并去掉了：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">footer:</span><br><span class="line">  # Specify the year when the site was setup. If not defined, current year will be used.</span><br><span class="line">  #since: 2021</span><br><span class="line"></span><br><span class="line">  # Icon between year and copyright info.</span><br><span class="line">  icon:</span><br><span class="line">    # Icon name in Font Awesome. See: https://fontawesome.com/icons</span><br><span class="line">    name: fa fa-heart</span><br><span class="line">    # If you want to animate the icon, set it to true.</span><br><span class="line">    animated: false</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -375,6 +375,172 @@
       </categories>
       <tags>
         <tag>Linux 命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MySQL InnoDB Cluster 部署手册</title>
+    <url>/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本次部署在IPV6和IPV4双栈网络环境下部署。采用InnoDB Cluster，每台服务器实例都运行MySQL Group Replication。MGR有两种模式，一种是Single-Primary，一种是Multi-Primary，即单主或者多主，本文使用的是Single-Primary模式</p>
+<span id="more"></span>
+
+<h1 id="逻辑部署图"><a href="#逻辑部署图" class="headerlink" title="逻辑部署图"></a>逻辑部署图</h1><p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/1637581706651-129d00f6-1a4f-46d8-b0d0-84f3500efc09.jpeg"></p>
+<ol>
+<li>上面这张图看着比较清楚，通过MySQL Shell可以配置出一个高可用自动进行故障转移的MySQL InnoDB Cluster，在后续运维过程中也可以通过MySQL Shell对集群进行状态监控及管理维护。通过MySQL Router向应用层屏蔽底层集群的细节，以应用层将普通的MySQL协议访问集群。</li>
+<li>MySQL Group Replication 是最新GA的同步复制方式，具有以下特点：</li>
+</ol>
+<ul>
+<li><p>支持单主和多主模式</p>
+</li>
+<li><p>基于Paxos算法，实现数据复制的一致性</p>
+</li>
+<li><p>插件化设计，支持插件检测，新增节点小于集群当前节点主版本号，拒绝加入集群，大于则加入，但无法作为主节点</p>
+</li>
+<li><p>没有第三方组件依赖</p>
+</li>
+<li><p>支持全链路SSL通讯</p>
+</li>
+<li><p>支持IP白名单</p>
+</li>
+<li><p>不依赖网络多播</p>
+</li>
+</ul>
+<h1 id="搭建MySQL-InnoDB-Cluster"><a href="#搭建MySQL-InnoDB-Cluster" class="headerlink" title="搭建MySQL InnoDB Cluster"></a>搭建MySQL InnoDB Cluster</h1><h2 id="部署环境"><a href="#部署环境" class="headerlink" title="部署环境"></a>部署环境</h2><table>
+<thead>
+<tr>
+<th>主机名</th>
+<th>主机名称</th>
+<th>操作系统</th>
+<th>MySQL版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10.19.36.42</td>
+<td>t1</td>
+<td>CentOS Linux release 7.6.1810 (Core)</td>
+<td>mysql-8.0.25-linux-glibc2.12-x86_64、mysql-router-8.0.25-linux-glibc2.12-x86_64、mysql-shell-8.0.25-linux-glibc2.12-x86-64bit</td>
+</tr>
+<tr>
+<td>10.19.36.43</td>
+<td>t2</td>
+<td>CentOS Linux release 7.6.1810 (Core)</td>
+<td>mysql-8.0.25-linux-glibc2.12-x86_64</td>
+</tr>
+<tr>
+<td>10.19.36.44</td>
+<td>t3</td>
+<td>CentOS Linux release 7.6.1810 (Core)</td>
+<td>mysql-8.0.25-linux-glibc2.12-x86_64</td>
+</tr>
+</tbody></table>
+<h2 id="网络环境"><a href="#网络环境" class="headerlink" title="网络环境"></a>网络环境</h2><p>默认已具备IPV6网络的环境，此次部署三台服务器为IPV4和IPV6双栈网络，IPV6的子网掩码为fec0::&#x2F;48</p>
+<table>
+<thead>
+<tr>
+<th>IPV4</th>
+<th>IPV6</th>
+<th>Hostname</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10.19.36.42</td>
+<td>fec0::a13:242a</td>
+<td>t1</td>
+</tr>
+<tr>
+<td>10.19.36.43</td>
+<td>fec0::a13:242b</td>
+<td>t2</td>
+</tr>
+<tr>
+<td>10.19.36.44</td>
+<td>fec0::a13:242c</td>
+<td>t3</td>
+</tr>
+</tbody></table>
+<h2 id="配置主机名称映射"><a href="#配置主机名称映射" class="headerlink" title="配置主机名称映射"></a>配置主机名称映射</h2><p>为保证三台虚拟机上可正常通过名称解析到对方的IP，这里将<strong>主机名称映射必做写入三台主机的hosts文件中</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cat &lt;&lt; EOF &gt;&gt; /etc/hosts</span><br><span class="line">fec0::a13:242a t1</span><br><span class="line">fec0::a13:242b t2</span><br><span class="line">fec0::a13:242c t3</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<p><strong>注：</strong>如果不配置此项，后续将节点添加至集群中，会报无法解析IP对应的主机名，从而未配置的主机无法添加至集群中。</p>
+<h2 id="MySQL-部署"><a href="#MySQL-部署" class="headerlink" title="MySQL 部署"></a>MySQL 部署</h2><p>可以参考上一篇文章<span class="exturl" data-url="aHR0cDovL2xlbW5hLmNjL3Bvc3QvU2hlbGwlRTglODQlOUElRTYlOUMlQUMlRTglODclQUElRTUlOEElQTglRTklODMlQTglRTclQkQlQjIlRTQlQkElOEMlRTglQkYlOUIlRTUlODglQjZNeVNRTCVFNiU5NSVCMCVFNiU4RCVBRSVFNSVCQSU5My8=">Shell脚本自动部署二进制MySQL数据库<i class="fa fa-external-link-alt"></i></span></p>
+<p>需要注意的是需要将<strong>my.cnf</strong>文件中做略微修改来适配IPV6环境</p>
+<p>1、添加  <strong>bind_address&#x3D; ::</strong>   匹配IPV6和IPV4双栈</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[client]</span><br><span class="line">port=3336</span><br><span class="line">socket=/home/mysqlg1/mysql-8.0.25-linux-glibc2.12-x86_64/mysqld.sock</span><br><span class="line"><span class="comment">#default-character-set=utf8</span></span><br><span class="line">[mysqld]</span><br><span class="line"><span class="comment">#匹配双栈</span></span><br><span class="line">bind_address= ::</span><br><span class="line">port= 3336</span><br><span class="line"><span class="comment">#数据库最大连接数</span></span><br><span class="line">max_connections = 3000 </span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>2、将之前IPV4的地址改成IPV6；打开访问数据库白名单，配置为IPV6的子网掩码</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">##########################mgr set##############################</span></span><br><span class="line"><span class="comment">#数据库会根据port自动生成，在port后面增加0；不建议随便改</span></span><br><span class="line">mysqlx_port=33660</span><br><span class="line">mysqlx_socket=/home/mysqlg1/mysql-8.0.25-linux-glibc2.12-x86_64/mysqlx.sock</span><br><span class="line">loose-group_replication_group_name=<span class="string">&quot;aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa&quot;</span></span><br><span class="line">loose-group_replication_start_on_boot=off</span><br><span class="line"><span class="comment">#数据组复制端口，建议在port后面加1；此为IP为本机IP地址</span></span><br><span class="line">loose-group_replication_local_address= <span class="string">&quot;[fec0::a13:242a]:33661&quot;</span></span><br><span class="line"><span class="comment">#复制组的集群信息</span></span><br><span class="line"><span class="comment">#集群中所有数据库节点需要配置（此处无须配置本机的端口）</span></span><br><span class="line">loose-group_replication_group_seeds= <span class="string">&quot;[fec0::a13:242b]:33661,[fec0::a13:242c]:33661&quot;</span></span><br><span class="line">loose-group_replication_bootstrap_group= off</span><br><span class="line"><span class="comment">#访问数据库白名单，配置IPV6的子网掩码</span></span><br><span class="line">loose-group_replication_ip_whitelist=<span class="string">&quot;fec0::/48&quot;</span> </span><br><span class="line">loose-group_replication_single_primary_mode = on</span><br><span class="line">loose-group_replication_transaction_size_limit=1500000000</span><br></pre></td></tr></table></figure>
+
+<h2 id="MySQL-Shell配置集群"><a href="#MySQL-Shell配置集群" class="headerlink" title="MySQL Shell配置集群"></a>MySQL Shell配置集群</h2><p>此处默认您已将三个服务器的MySQL数据库都已搭建完成，MySQL数据库端口为3366，root密码为123456</p>
+<p>MYSQL CLUSTER集群通过MYSQL SHELL进行初始化，并创建集群</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tar –vxf mysql-shell-8.0.25-linux-glibc2.12-x86-64bit.tar.gz</span><br><span class="line">cd mysql-shell-8.0.25-linux-glibc2.12-x86-64bit</span><br></pre></td></tr></table></figure>
+
+<h3 id="通过MYSQL-SHELL检查主机状态"><a href="#通过MYSQL-SHELL检查主机状态" class="headerlink" title="通过MYSQL SHELL检查主机状态"></a>通过MYSQL SHELL检查主机状态</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./bin/mysqlsh --no-password</span><br><span class="line">dba.checkInstanceConfiguration(<span class="string">&#x27;root@t1:3366&#x27;</span>,&#123;<span class="string">&#x27;password&#x27;</span>: <span class="string">&#x27;123456&#x27;</span>, <span class="string">&#x27;interactive&#x27;</span>: <span class="literal">false</span>&#125;)</span><br><span class="line">dba.checkInstanceConfiguration(<span class="string">&#x27;root@t2:3366&#x27;</span>,&#123;<span class="string">&#x27;password&#x27;</span>: <span class="string">&#x27;123456&#x27;</span>, <span class="string">&#x27;interactive&#x27;</span>: <span class="literal">false</span>&#125;)</span><br><span class="line">dba.checkInstanceConfiguration(<span class="string">&#x27;root@t3:3366&#x27;</span>,&#123;<span class="string">&#x27;password&#x27;</span>: <span class="string">&#x27;123456&#x27;</span>, <span class="string">&#x27;interactive&#x27;</span>: <span class="literal">false</span>&#125;)</span><br><span class="line">node: 返回 ok说明实例正常</span><br></pre></td></tr></table></figure>
+
+<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420153656973.png"></p>
+<h3 id="创建MYSQL-Cluster名称"><a href="#创建MYSQL-Cluster名称" class="headerlink" title="创建MYSQL Cluster名称"></a>创建MYSQL Cluster名称</h3><p>MYSQL SHELL只需要在任意一塔主机机上进行操作就可以了。</p>
+<p>创建MYSQL CLUSTER集群</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./bin/mysqlsh --no-password</span><br><span class="line">#登录任意一台主机MYSQL服务</span><br><span class="line">shell.connect(&#x27;root@[fec0::a13:242a]:3366&#x27;, &#x27;123456&#x27;)  </span><br><span class="line">dba.createCluster(&#x27;mycluster&#x27;, &#123;&#x27;localAddress&#x27;: &#x27;[fec0::a13:242a]&#x27;&#125;) </span><br><span class="line">#创建集群名称为&#x27;mycluster&#x27;，指定MYSQL的IP地址</span><br></pre></td></tr></table></figure>
+
+<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420153806063.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#进入&#x27; mycluster &#x27;集群 执行该命令以后才能配置集群</span><br><span class="line">var cluster=dba.getCluster(&#x27;mycluster&#x27;)</span><br><span class="line">#检查集群状态</span><br><span class="line">cluster.status();</span><br></pre></td></tr></table></figure>
+
+<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420153845769.png"></p>
+<h3 id="增加slave1节点"><a href="#增加slave1节点" class="headerlink" title="增加slave1节点"></a>增加slave1节点</h3><p>节点加入的时候会导致原来的数据库shutdown，如果没有设置全局环境变量，就需要手动启动下</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./bin/mysqlsh --no-password</span><br><span class="line"><span class="comment">#需要连接到主节点进行操作</span></span><br><span class="line">var cluster=dba.getCluster(<span class="string">&#x27;mycluster&#x27;</span>)</span><br><span class="line">shell.connect(<span class="string">&#x27;root@[fec0::a13:242a]:3366&#x27;</span>, <span class="string">&#x27;123456&#x27;</span>)</span><br><span class="line"><span class="comment">#（秒，默认60），在恢复操作期间等待事务应用的时间，如果向运行一段时间的集群中新增节点时，建议此时间设置大点，否则如下节点增加集群会报超时错误。</span></span><br><span class="line">shell.options[<span class="string">&#x27;dba.restartWaitTimeout&#x27;</span>]=7200 </span><br><span class="line">cluster.addInstance(<span class="string">&#x27;root@[fec0::a13:242b]:3366&#x27;</span>, &#123;<span class="string">&#x27;localAddress&#x27;</span>: <span class="string">&#x27;[fec0::a13:242b]&#x27;</span>, <span class="string">&#x27;password&#x27;</span>: <span class="string">&#x27;123456&#x27;</span>,<span class="string">&#x27;recoveryMethod&#x27;</span>:<span class="string">&#x27;clone&#x27;</span>,<span class="string">&#x27;waitRecovery&#x27;</span>:<span class="string">&#x27;1&#x27;</span>&#125;)</span><br><span class="line">cluster.status();</span><br></pre></td></tr></table></figure>
+
+<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420154002968.png"></p>
+<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420154018985.png"></p>
+<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420154025830.png"></p>
+<h3 id="增加slave2节点"><a href="#增加slave2节点" class="headerlink" title="增加slave2节点"></a>增加slave2节点</h3><p>节点加入的时候会导致原来的数据库shutdown，如果没有设置全局环境变量，就需要手动启动下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./bin/mysqlsh --no-password</span><br><span class="line">#需要连接到主节点进行操作</span><br><span class="line">var cluster=dba.getCluster(&#x27;mycluster&#x27;)</span><br><span class="line">shell.connect(&#x27;root@[fec0::a13:242a]:3366&#x27;, &#x27;123456&#x27;)</span><br><span class="line">#（秒，默认60），在恢复操作期间等待事务应用的时间，如果向运行一段时间的集群中新增节点时，建议此时间设置大点，否则如下节点增加集群会报超时错误。</span><br><span class="line">shell.options[&#x27;dba.restartWaitTimeout&#x27;]=7200 </span><br><span class="line">cluster.addInstance(&#x27;root@[fec0::a13:242c]:3366&#x27;, &#123;&#x27;localAddress&#x27;: &#x27;[fec0::a13:242c]&#x27;, &#x27;password&#x27;: &#x27;123456&#x27;,&#x27;recoveryMethod&#x27;:&#x27;clone&#x27;,&#x27;waitRecovery&#x27;:&#x27;1&#x27;&#125;)</span><br><span class="line">cluster.status();</span><br></pre></td></tr></table></figure>
+
+<h3 id="检查集群状态"><a href="#检查集群状态" class="headerlink" title="检查集群状态"></a>检查集群状态</h3><p><code>cluster.status();</code></p>
+<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420154253447.png"></p>
+<h2 id="MySQL-Router"><a href="#MySQL-Router" class="headerlink" title="MySQL Router"></a>MySQL Router</h2><h3 id="MySQL-Router-说明"><a href="#MySQL-Router-说明" class="headerlink" title="MySQL Router 说明"></a>MySQL Router 说明</h3><p>​        MySQL Router是MySQL官方推出的一个轻量级MySQL中间件是处于应用client和dbserver之间的轻量级代理程序，它能检测，分析和转发查询到后端数据库实例，并把结果返回给client。是mysql-proxy的一个替代品.但是和mysql-proxy有区别。mysqlroute使用了两个端口进行读写分离</p>
+<table>
+<thead>
+<tr>
+<th>默认端口号</th>
+<th>作用</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>6446</td>
+<td>默认是读写端口</td>
+<td>mode  &#x3D; read-write默认情况下第一台主数据库为写主库，当第一台主数据库DOWN机后，第二台数据库被提升为主库,如果第一台不出问题，第二台是不会被使用的。可以作高可用使用</td>
+</tr>
+<tr>
+<td>6447</td>
+<td>默认是读端口</td>
+<td>如果设置以后，根据设置的列表进行轮询使用</td>
+</tr>
+</tbody></table>
+<p>​        MySQL Router接受前端应用程序请求后，根据不同的端口来区分读写，把连接读写端口的所有写和查询发往主库，把连接只读端口的查询以轮询方式发往多个从库，从而实现读写分离的目的。读写返回的结果会交给MySQL Router,由MySQL Router返回给客户端的应用程序。<br>​        我理解的是mysql-proxy在使用的时候与连接单台数据库操作一样，而mysql route则是把多台主机的读写集中在一起，进行读写分离，在使用的时候还是需要程序进行改动。</p>
+<h3 id="初始化MySQL-Router"><a href="#初始化MySQL-Router" class="headerlink" title="初始化MySQL Router"></a>初始化MySQL Router</h3><p>​        MYSQL router是基于MYSQL服务之上的路由层，用于应用程序来访问数据库，向应用层屏蔽底层集群的细节，可以实现读写分析，我们还可以在三台虚拟机上均部署mysql-router，用于高可用。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 以当前集群信息创建mysql-router的配置信息，注意这里密码 123456</span><br><span class="line">$tar –vxf mysql-router-8.0.25-linux-glibc2.12-x86_64.tar</span><br><span class="line">$ cd mysql-router-8.0.25-linux-glibc2.12-x86_64</span><br></pre></td></tr></table></figure>
+
+<p>初始化router的配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">在当前用户下生产router的启动脚本和配置文件</span><br><span class="line">./bin/mysqlrouter --bootstrap root:123456@[fec0::a13:242a]:3366 --directory=$&#123;MYSQLRT_HOME&#125;/aiclster1 --conf-use-sockets --force --user=$&#123;USER&#125;</span><br><span class="line">注：</span><br><span class="line">如上root为MYSQL MGR数据库的管理员账号，123456为数据库管理员密码。</span><br><span class="line">如上的[fec0::a13:242a]数据库MGR的主节点的IP地址，3366为数据库MGR主节点的服务端口；</span><br><span class="line">如上的aiclster1建议设置为数据库MGR的的集群名称，方便后续应用识别使用；</span><br><span class="line">执行如上命令后，如果能够正常连接到MYSQL MGR的主节点，则会显示如下的信息，至少会在指定目录中生成mysqlrouter.conf文件；否则会提示连接数据库失败；</span><br></pre></td></tr></table></figure>
+
+<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420162628768.png"></p>
+<h3 id="修改MySQL-Router配置"><a href="#修改MySQL-Router配置" class="headerlink" title="修改MySQL Router配置"></a>修改MySQL Router配置</h3><p><strong>添加双栈</strong></p>
+<p><strong>mysql-router-8.0.25-linux-glibc2.12-x86_64&#x2F;aiclster1&#x2F;mysqlrouter.conf</strong>  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">........  </span><br><span class="line">bind_address = ::</span><br><span class="line">........  </span><br><span class="line"># 修改mysqlrouter.conf原文件中bind_address=0.0.0.0为::</span><br><span class="line">即 %s/bind_address=0.0.0.0/bind_address=::/g  </span><br></pre></td></tr></table></figure>
+
+<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420162833513.png"></p>
+<h3 id="启动-MySQL-Router"><a href="#启动-MySQL-Router" class="headerlink" title="启动 MySQL Router"></a>启动 MySQL Router</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cd /home/mysqlg1/mysql-router</span><br><span class="line">$ ./start.sh</span><br><span class="line">检查端口和进程</span><br><span class="line">ps -ef |grep router</span><br></pre></td></tr></table></figure>
+
+<h3 id="部署验证"><a href="#部署验证" class="headerlink" title="部署验证"></a>部署验证</h3><p>至此整套MySQL InnoDB Cluster就部署好了，我们在其它节点以MySQL协议即可访问该MySQL集群。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql -hfec0::a13:242a -P6446 -uroot -p123456</span><br><span class="line">或者</span><br><span class="line">mysql -h10.19.36.42 -P6446 -uroot -p123456</span><br></pre></td></tr></table></figure>
+
+<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420162953966.png"></p>
+]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>MySQL 安装</tag>
+        <tag>Shell 脚本</tag>
       </tags>
   </entry>
   <entry>
@@ -615,7 +781,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">语法：keepalive_timeout time;</span><br><span class="line">默认值：keepalive_timeout 60s;</span><br><span class="line">上下文：upstream</span><br></pre></td></tr></table></figure>
 
 <h2 id="proxy-pass"><a href="#proxy-pass" class="headerlink" title="proxy_pass"></a>proxy_pass</h2><p>用于配置代理服务器。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">语法：proxy_pass URL;</span><br><span class="line">上下文：location、if、limit_except</span><br><span class="line">示例：proxy_pass http://127.0.0.1:8081proxy_pass http://127.0.0.1:8081/proxy</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">语法：proxy_pass URL;</span><br><span class="line">上下文：location、if、limit_except</span><br><span class="line">示例：</span><br><span class="line">proxy_pass http://127.0.0.1:8081</span><br><span class="line">proxy_pass http://127.0.0.1:8081/proxy</span><br></pre></td></tr></table></figure>
 
 <p>URL 参数原则：</p>
 <ol>
@@ -816,172 +982,6 @@
       </categories>
       <tags>
         <tag>Nginx 学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MySQL InnoDB Cluster 部署手册</title>
-    <url>/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本次部署在IPV6和IPV4双栈网络环境下部署。采用InnoDB Cluster，每台服务器实例都运行MySQL Group Replication。MGR有两种模式，一种是Single-Primary，一种是Multi-Primary，即单主或者多主，本文使用的是Single-Primary模式</p>
-<span id="more"></span>
-
-<h1 id="逻辑部署图"><a href="#逻辑部署图" class="headerlink" title="逻辑部署图"></a>逻辑部署图</h1><p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/1637581706651-129d00f6-1a4f-46d8-b0d0-84f3500efc09.jpeg"></p>
-<ol>
-<li>上面这张图看着比较清楚，通过MySQL Shell可以配置出一个高可用自动进行故障转移的MySQL InnoDB Cluster，在后续运维过程中也可以通过MySQL Shell对集群进行状态监控及管理维护。通过MySQL Router向应用层屏蔽底层集群的细节，以应用层将普通的MySQL协议访问集群。</li>
-<li>MySQL Group Replication 是最新GA的同步复制方式，具有以下特点：</li>
-</ol>
-<ul>
-<li><p>支持单主和多主模式</p>
-</li>
-<li><p>基于Paxos算法，实现数据复制的一致性</p>
-</li>
-<li><p>插件化设计，支持插件检测，新增节点小于集群当前节点主版本号，拒绝加入集群，大于则加入，但无法作为主节点</p>
-</li>
-<li><p>没有第三方组件依赖</p>
-</li>
-<li><p>支持全链路SSL通讯</p>
-</li>
-<li><p>支持IP白名单</p>
-</li>
-<li><p>不依赖网络多播</p>
-</li>
-</ul>
-<h1 id="搭建MySQL-InnoDB-Cluster"><a href="#搭建MySQL-InnoDB-Cluster" class="headerlink" title="搭建MySQL InnoDB Cluster"></a>搭建MySQL InnoDB Cluster</h1><h2 id="部署环境"><a href="#部署环境" class="headerlink" title="部署环境"></a>部署环境</h2><table>
-<thead>
-<tr>
-<th>主机名</th>
-<th>主机名称</th>
-<th>操作系统</th>
-<th>MySQL版本</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>10.19.36.42</td>
-<td>t1</td>
-<td>CentOS Linux release 7.6.1810 (Core)</td>
-<td>mysql-8.0.25-linux-glibc2.12-x86_64、mysql-router-8.0.25-linux-glibc2.12-x86_64、mysql-shell-8.0.25-linux-glibc2.12-x86-64bit</td>
-</tr>
-<tr>
-<td>10.19.36.43</td>
-<td>t2</td>
-<td>CentOS Linux release 7.6.1810 (Core)</td>
-<td>mysql-8.0.25-linux-glibc2.12-x86_64</td>
-</tr>
-<tr>
-<td>10.19.36.44</td>
-<td>t3</td>
-<td>CentOS Linux release 7.6.1810 (Core)</td>
-<td>mysql-8.0.25-linux-glibc2.12-x86_64</td>
-</tr>
-</tbody></table>
-<h2 id="网络环境"><a href="#网络环境" class="headerlink" title="网络环境"></a>网络环境</h2><p>默认已具备IPV6网络的环境，此次部署三台服务器为IPV4和IPV6双栈网络，IPV6的子网掩码为fec0::&#x2F;48</p>
-<table>
-<thead>
-<tr>
-<th>IPV4</th>
-<th>IPV6</th>
-<th>Hostname</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>10.19.36.42</td>
-<td>fec0::a13:242a</td>
-<td>t1</td>
-</tr>
-<tr>
-<td>10.19.36.43</td>
-<td>fec0::a13:242b</td>
-<td>t2</td>
-</tr>
-<tr>
-<td>10.19.36.44</td>
-<td>fec0::a13:242c</td>
-<td>t3</td>
-</tr>
-</tbody></table>
-<h2 id="配置主机名称映射"><a href="#配置主机名称映射" class="headerlink" title="配置主机名称映射"></a>配置主机名称映射</h2><p>为保证三台虚拟机上可正常通过名称解析到对方的IP，这里将<strong>主机名称映射必做写入三台主机的hosts文件中</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cat &lt;&lt; EOF &gt;&gt; /etc/hosts</span><br><span class="line">fec0::a13:242a t1</span><br><span class="line">fec0::a13:242b t2</span><br><span class="line">fec0::a13:242c t3</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
-
-<p><strong>注：</strong>如果不配置此项，后续将节点添加至集群中，会报无法解析IP对应的主机名，从而未配置的主机无法添加至集群中。</p>
-<h2 id="MySQL-部署"><a href="#MySQL-部署" class="headerlink" title="MySQL 部署"></a>MySQL 部署</h2><p>可以参考上一篇文章<span class="exturl" data-url="aHR0cDovL2xlbW5hLmNjL3Bvc3QvU2hlbGwlRTglODQlOUElRTYlOUMlQUMlRTglODclQUElRTUlOEElQTglRTklODMlQTglRTclQkQlQjIlRTQlQkElOEMlRTglQkYlOUIlRTUlODglQjZNeVNRTCVFNiU5NSVCMCVFNiU4RCVBRSVFNSVCQSU5My8=">Shell脚本自动部署二进制MySQL数据库<i class="fa fa-external-link-alt"></i></span></p>
-<p>需要注意的是需要将<strong>my.cnf</strong>文件中做略微修改来适配IPV6环境</p>
-<p>1、添加  <strong>bind_address&#x3D; ::</strong>   匹配IPV6和IPV4双栈</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[client]</span><br><span class="line">port=3336</span><br><span class="line">socket=/home/mysqlg1/mysql-8.0.25-linux-glibc2.12-x86_64/mysqld.sock</span><br><span class="line"><span class="comment">#default-character-set=utf8</span></span><br><span class="line">[mysqld]</span><br><span class="line"><span class="comment">#匹配双栈</span></span><br><span class="line">bind_address= ::</span><br><span class="line">port= 3336</span><br><span class="line"><span class="comment">#数据库最大连接数</span></span><br><span class="line">max_connections = 3000 </span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<p>2、将之前IPV4的地址改成IPV6；打开访问数据库白名单，配置为IPV6的子网掩码</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">##########################mgr set##############################</span></span><br><span class="line"><span class="comment">#数据库会根据port自动生成，在port后面增加0；不建议随便改</span></span><br><span class="line">mysqlx_port=33660</span><br><span class="line">mysqlx_socket=/home/mysqlg1/mysql-8.0.25-linux-glibc2.12-x86_64/mysqlx.sock</span><br><span class="line">loose-group_replication_group_name=<span class="string">&quot;aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa&quot;</span></span><br><span class="line">loose-group_replication_start_on_boot=off</span><br><span class="line"><span class="comment">#数据组复制端口，建议在port后面加1；此为IP为本机IP地址</span></span><br><span class="line">loose-group_replication_local_address= <span class="string">&quot;[fec0::a13:242a]:33661&quot;</span></span><br><span class="line"><span class="comment">#复制组的集群信息</span></span><br><span class="line"><span class="comment">#集群中所有数据库节点需要配置（此处无须配置本机的端口）</span></span><br><span class="line">loose-group_replication_group_seeds= <span class="string">&quot;[fec0::a13:242b]:33661,[fec0::a13:242c]:33661&quot;</span></span><br><span class="line">loose-group_replication_bootstrap_group= off</span><br><span class="line"><span class="comment">#访问数据库白名单，配置IPV6的子网掩码</span></span><br><span class="line">loose-group_replication_ip_whitelist=<span class="string">&quot;fec0::/48&quot;</span> </span><br><span class="line">loose-group_replication_single_primary_mode = on</span><br><span class="line">loose-group_replication_transaction_size_limit=1500000000</span><br></pre></td></tr></table></figure>
-
-<h2 id="MySQL-Shell配置集群"><a href="#MySQL-Shell配置集群" class="headerlink" title="MySQL Shell配置集群"></a>MySQL Shell配置集群</h2><p>此处默认您已将三个服务器的MySQL数据库都已搭建完成，MySQL数据库端口为3366，root密码为123456</p>
-<p>MYSQL CLUSTER集群通过MYSQL SHELL进行初始化，并创建集群</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tar –vxf mysql-shell-8.0.25-linux-glibc2.12-x86-64bit.tar.gz</span><br><span class="line">cd mysql-shell-8.0.25-linux-glibc2.12-x86-64bit</span><br></pre></td></tr></table></figure>
-
-<h3 id="通过MYSQL-SHELL检查主机状态"><a href="#通过MYSQL-SHELL检查主机状态" class="headerlink" title="通过MYSQL SHELL检查主机状态"></a>通过MYSQL SHELL检查主机状态</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./bin/mysqlsh --no-password</span><br><span class="line">dba.checkInstanceConfiguration(<span class="string">&#x27;root@t1:3366&#x27;</span>,&#123;<span class="string">&#x27;password&#x27;</span>: <span class="string">&#x27;123456&#x27;</span>, <span class="string">&#x27;interactive&#x27;</span>: <span class="literal">false</span>&#125;)</span><br><span class="line">dba.checkInstanceConfiguration(<span class="string">&#x27;root@t2:3366&#x27;</span>,&#123;<span class="string">&#x27;password&#x27;</span>: <span class="string">&#x27;123456&#x27;</span>, <span class="string">&#x27;interactive&#x27;</span>: <span class="literal">false</span>&#125;)</span><br><span class="line">dba.checkInstanceConfiguration(<span class="string">&#x27;root@t3:3366&#x27;</span>,&#123;<span class="string">&#x27;password&#x27;</span>: <span class="string">&#x27;123456&#x27;</span>, <span class="string">&#x27;interactive&#x27;</span>: <span class="literal">false</span>&#125;)</span><br><span class="line">node: 返回 ok说明实例正常</span><br></pre></td></tr></table></figure>
-
-<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420153656973.png"></p>
-<h3 id="创建MYSQL-Cluster名称"><a href="#创建MYSQL-Cluster名称" class="headerlink" title="创建MYSQL Cluster名称"></a>创建MYSQL Cluster名称</h3><p>MYSQL SHELL只需要在任意一塔主机机上进行操作就可以了。</p>
-<p>创建MYSQL CLUSTER集群</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./bin/mysqlsh --no-password</span><br><span class="line">#登录任意一台主机MYSQL服务</span><br><span class="line">shell.connect(&#x27;root@[fec0::a13:242a]:3366&#x27;, &#x27;123456&#x27;)  </span><br><span class="line">dba.createCluster(&#x27;mycluster&#x27;, &#123;&#x27;localAddress&#x27;: &#x27;[fec0::a13:242a]&#x27;&#125;) </span><br><span class="line">#创建集群名称为&#x27;mycluster&#x27;，指定MYSQL的IP地址</span><br></pre></td></tr></table></figure>
-
-<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420153806063.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#进入&#x27; mycluster &#x27;集群 执行该命令以后才能配置集群</span><br><span class="line">var cluster=dba.getCluster(&#x27;mycluster&#x27;)</span><br><span class="line">#检查集群状态</span><br><span class="line">cluster.status();</span><br></pre></td></tr></table></figure>
-
-<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420153845769.png"></p>
-<h3 id="增加slave1节点"><a href="#增加slave1节点" class="headerlink" title="增加slave1节点"></a>增加slave1节点</h3><p>节点加入的时候会导致原来的数据库shutdown，如果没有设置全局环境变量，就需要手动启动下</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./bin/mysqlsh --no-password</span><br><span class="line"><span class="comment">#需要连接到主节点进行操作</span></span><br><span class="line">var cluster=dba.getCluster(<span class="string">&#x27;mycluster&#x27;</span>)</span><br><span class="line">shell.connect(<span class="string">&#x27;root@[fec0::a13:242a]:3366&#x27;</span>, <span class="string">&#x27;123456&#x27;</span>)</span><br><span class="line"><span class="comment">#（秒，默认60），在恢复操作期间等待事务应用的时间，如果向运行一段时间的集群中新增节点时，建议此时间设置大点，否则如下节点增加集群会报超时错误。</span></span><br><span class="line">shell.options[<span class="string">&#x27;dba.restartWaitTimeout&#x27;</span>]=7200 </span><br><span class="line">cluster.addInstance(<span class="string">&#x27;root@[fec0::a13:242b]:3366&#x27;</span>, &#123;<span class="string">&#x27;localAddress&#x27;</span>: <span class="string">&#x27;[fec0::a13:242b]&#x27;</span>, <span class="string">&#x27;password&#x27;</span>: <span class="string">&#x27;123456&#x27;</span>,<span class="string">&#x27;recoveryMethod&#x27;</span>:<span class="string">&#x27;clone&#x27;</span>,<span class="string">&#x27;waitRecovery&#x27;</span>:<span class="string">&#x27;1&#x27;</span>&#125;)</span><br><span class="line">cluster.status();</span><br></pre></td></tr></table></figure>
-
-<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420154002968.png"></p>
-<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420154018985.png"></p>
-<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420154025830.png"></p>
-<h3 id="增加slave2节点"><a href="#增加slave2节点" class="headerlink" title="增加slave2节点"></a>增加slave2节点</h3><p>节点加入的时候会导致原来的数据库shutdown，如果没有设置全局环境变量，就需要手动启动下</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./bin/mysqlsh --no-password</span><br><span class="line">#需要连接到主节点进行操作</span><br><span class="line">var cluster=dba.getCluster(&#x27;mycluster&#x27;)</span><br><span class="line">shell.connect(&#x27;root@[fec0::a13:242a]:3366&#x27;, &#x27;123456&#x27;)</span><br><span class="line">#（秒，默认60），在恢复操作期间等待事务应用的时间，如果向运行一段时间的集群中新增节点时，建议此时间设置大点，否则如下节点增加集群会报超时错误。</span><br><span class="line">shell.options[&#x27;dba.restartWaitTimeout&#x27;]=7200 </span><br><span class="line">cluster.addInstance(&#x27;root@[fec0::a13:242c]:3366&#x27;, &#123;&#x27;localAddress&#x27;: &#x27;[fec0::a13:242c]&#x27;, &#x27;password&#x27;: &#x27;123456&#x27;,&#x27;recoveryMethod&#x27;:&#x27;clone&#x27;,&#x27;waitRecovery&#x27;:&#x27;1&#x27;&#125;)</span><br><span class="line">cluster.status();</span><br></pre></td></tr></table></figure>
-
-<h3 id="检查集群状态"><a href="#检查集群状态" class="headerlink" title="检查集群状态"></a>检查集群状态</h3><p><code>cluster.status();</code></p>
-<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420154253447.png"></p>
-<h2 id="MySQL-Router"><a href="#MySQL-Router" class="headerlink" title="MySQL Router"></a>MySQL Router</h2><h3 id="MySQL-Router-说明"><a href="#MySQL-Router-说明" class="headerlink" title="MySQL Router 说明"></a>MySQL Router 说明</h3><p>​        MySQL Router是MySQL官方推出的一个轻量级MySQL中间件是处于应用client和dbserver之间的轻量级代理程序，它能检测，分析和转发查询到后端数据库实例，并把结果返回给client。是mysql-proxy的一个替代品.但是和mysql-proxy有区别。mysqlroute使用了两个端口进行读写分离</p>
-<table>
-<thead>
-<tr>
-<th>默认端口号</th>
-<th>作用</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>6446</td>
-<td>默认是读写端口</td>
-<td>mode  &#x3D; read-write默认情况下第一台主数据库为写主库，当第一台主数据库DOWN机后，第二台数据库被提升为主库,如果第一台不出问题，第二台是不会被使用的。可以作高可用使用</td>
-</tr>
-<tr>
-<td>6447</td>
-<td>默认是读端口</td>
-<td>如果设置以后，根据设置的列表进行轮询使用</td>
-</tr>
-</tbody></table>
-<p>​        MySQL Router接受前端应用程序请求后，根据不同的端口来区分读写，把连接读写端口的所有写和查询发往主库，把连接只读端口的查询以轮询方式发往多个从库，从而实现读写分离的目的。读写返回的结果会交给MySQL Router,由MySQL Router返回给客户端的应用程序。<br>​        我理解的是mysql-proxy在使用的时候与连接单台数据库操作一样，而mysql route则是把多台主机的读写集中在一起，进行读写分离，在使用的时候还是需要程序进行改动。</p>
-<h3 id="初始化MySQL-Router"><a href="#初始化MySQL-Router" class="headerlink" title="初始化MySQL Router"></a>初始化MySQL Router</h3><p>​        MYSQL router是基于MYSQL服务之上的路由层，用于应用程序来访问数据库，向应用层屏蔽底层集群的细节，可以实现读写分析，我们还可以在三台虚拟机上均部署mysql-router，用于高可用。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 以当前集群信息创建mysql-router的配置信息，注意这里密码 123456</span><br><span class="line">$tar –vxf mysql-router-8.0.25-linux-glibc2.12-x86_64.tar</span><br><span class="line">$ cd mysql-router-8.0.25-linux-glibc2.12-x86_64</span><br></pre></td></tr></table></figure>
-
-<p>初始化router的配置</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">在当前用户下生产router的启动脚本和配置文件</span><br><span class="line">./bin/mysqlrouter --bootstrap root:123456@[fec0::a13:242a]:3366 --directory=$&#123;MYSQLRT_HOME&#125;/aiclster1 --conf-use-sockets --force --user=$&#123;USER&#125;</span><br><span class="line">注：</span><br><span class="line">如上root为MYSQL MGR数据库的管理员账号，123456为数据库管理员密码。</span><br><span class="line">如上的[fec0::a13:242a]数据库MGR的主节点的IP地址，3366为数据库MGR主节点的服务端口；</span><br><span class="line">如上的aiclster1建议设置为数据库MGR的的集群名称，方便后续应用识别使用；</span><br><span class="line">执行如上命令后，如果能够正常连接到MYSQL MGR的主节点，则会显示如下的信息，至少会在指定目录中生成mysqlrouter.conf文件；否则会提示连接数据库失败；</span><br></pre></td></tr></table></figure>
-
-<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420162628768.png"></p>
-<h3 id="修改MySQL-Router配置"><a href="#修改MySQL-Router配置" class="headerlink" title="修改MySQL Router配置"></a>修改MySQL Router配置</h3><p><strong>添加双栈</strong></p>
-<p><strong>mysql-router-8.0.25-linux-glibc2.12-x86_64&#x2F;aiclster1&#x2F;mysqlrouter.conf</strong>  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">........  </span><br><span class="line">bind_address = ::</span><br><span class="line">........  </span><br><span class="line"># 修改mysqlrouter.conf原文件中bind_address=0.0.0.0为::</span><br><span class="line">即 %s/bind_address=0.0.0.0/bind_address=::/g  </span><br></pre></td></tr></table></figure>
-
-<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420162833513.png"></p>
-<h3 id="启动-MySQL-Router"><a href="#启动-MySQL-Router" class="headerlink" title="启动 MySQL Router"></a>启动 MySQL Router</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cd /home/mysqlg1/mysql-router</span><br><span class="line">$ ./start.sh</span><br><span class="line">检查端口和进程</span><br><span class="line">ps -ef |grep router</span><br></pre></td></tr></table></figure>
-
-<h3 id="部署验证"><a href="#部署验证" class="headerlink" title="部署验证"></a>部署验证</h3><p>至此整套MySQL InnoDB Cluster就部署好了，我们在其它节点以MySQL协议即可访问该MySQL集群。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql -hfec0::a13:242a -P6446 -uroot -p123456</span><br><span class="line">或者</span><br><span class="line">mysql -h10.19.36.42 -P6446 -uroot -p123456</span><br></pre></td></tr></table></figure>
-
-<p><img src="/post/MySQL-InnoDB-Cluster-%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/image-20220420162953966.png"></p>
-]]></content>
-      <categories>
-        <category>MySQL</category>
-      </categories>
-      <tags>
-        <tag>MySQL 安装</tag>
-        <tag>Shell 脚本</tag>
       </tags>
   </entry>
   <entry>
