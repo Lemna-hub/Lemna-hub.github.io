@@ -1,71 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hexo + Github</title>
-    <url>/post/Github%20+%20Hexo%20%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本blog利用 Hexo + Github 搭建个人博客，内容包含基本工具（Node.js、Git、Github、Hexo）、利用Hexo进行发布、修改、删除文章</p>
-<span id="more"></span>
-
-<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>在开始一切之前，你必须已经：</p>
-<ul>
-<li>有一个github账号，没有的话去注册一个</li>
-<li>安装了node.js、npm</li>
-<li>安装了git for windows（或者其它git客户端）</li>
-</ul>
-<p>本文所使用的环境：</p>
-<ul>
-<li>Windows11</li>
-<li><span class="exturl" data-url="bWFpbHRvOiYjMTEwOyYjMTExOyYjeDY0OyYjeDY1OyYjNDY7JiN4NmE7JiMxMTU7JiN4NDA7JiMxMTg7JiN4MzE7JiN4MzY7JiN4MmU7JiN4MzE7JiM1MjsmI3gyZTsmIzUwOw==">&#110;&#111;&#x64;&#x65;&#46;&#x6a;&#115;&#x40;&#118;&#x31;&#x36;&#x2e;&#x31;&#52;&#x2e;&#50;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>node -v</code></li>
-<li><span class="exturl" data-url="bWFpbHRvOiYjMTAzOyYjeDY5OyYjMTE2OyYjeDQwOyYjNTA7JiM0NjsmIzUxOyYjeDMzOyYjNDY7JiN4MzA7JiN4MmU7JiN4Nzc7JiN4Njk7JiN4NmU7JiMxMDA7JiMxMTE7JiN4Nzc7JiMxMTU7JiM0NjsmI3gzMjs=">&#103;&#x69;&#116;&#x40;&#50;&#46;&#51;&#x33;&#46;&#x30;&#x2e;&#x77;&#x69;&#x6e;&#100;&#111;&#x77;&#115;&#46;&#x32;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>git version</code></li>
-<li><span class="exturl" data-url="bWFpbHRvOiYjeDY4OyYjeDY1OyYjeDc4OyYjMTExOyYjNjQ7JiM1NDsmI3gyZTsmIzQ5OyYjeDJlOyYjeDMwOw==">&#x68;&#x65;&#x78;&#111;&#64;&#54;&#x2e;&#49;&#x2e;&#x30;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>hexo -v</code>或<code>hexo version</code></li>
-<li><span class="exturl" data-url="bWFpbHRvOiYjeDZlOyYjeDY1OyYjeDc4OyYjMTE2OyYjeDQwOyYjeDM3OyYjNDY7JiM1NjsmI3gyZTsmI3gzMDs=">&#x6e;&#x65;&#x78;&#116;&#x40;&#x37;&#46;&#56;&#x2e;&#x30;<i class="fa fa-external-link-alt"></i></span></li>
-</ul>
-<h1 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h1><ul>
-<li>安装Node.js</li>
-<li>添加国内镜像源对npm加速</li>
-<li>安装Git</li>
-<li>注册Github</li>
-<li>安装Hexo</li>
-<li>连接Github与本地</li>
-</ul>
-<h1 id="文章基本操作"><a href="#文章基本操作" class="headerlink" title="文章基本操作"></a>文章基本操作</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 新建文章 </span><br><span class="line">hexo new post &quot;article title&quot; </span><br><span class="line"># 生成静态页面 </span><br><span class="line">hexo g </span><br><span class="line"># 本地预览 </span><br><span class="line">hexo s </span><br><span class="line"># 部署到网站 </span><br><span class="line">hexo d</span><br><span class="line"># 清空缓存并生成新的静态页面 </span><br><span class="line">hexo clean &amp;&amp; hexo g</span><br><span class="line"></span><br><span class="line">修改文章：修改对应文章内容，然后执行命令 </span><br><span class="line">hexo d -g </span><br><span class="line"></span><br><span class="line">删除文章：</span><br><span class="line">删除目录 source\_posts 下对应文章文件，然后执行命令 hexo d -g 即可。</span><br></pre></td></tr></table></figure>
-
-<h1 id="常见配置修改"><a href="#常见配置修改" class="headerlink" title="常见配置修改"></a>常见配置修改</h1><h2 id="字数统计"><a href="#字数统计" class="headerlink" title="字数统计"></a>字数统计</h2><p>在旧版本中的post_wordcount配置似乎已经不可用，因此需要使用symbols_count_time替代</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 卸载原有依赖 不卸载对新插件有影响</span><br><span class="line">npm uninstall hexo-wordcount</span><br><span class="line"># 安装新依赖</span><br><span class="line">npm i hexo-symbols-count-time</span><br><span class="line"></span><br><span class="line">新的配置在symbols_count_time下：配置文件在主题下，themes\next\_config.yml</span><br><span class="line">symbols_count_time:</span><br><span class="line">  # 换行显示字数统计和阅读市场</span><br><span class="line">  separated_meta: true</span><br><span class="line">  # 文章底部显示</span><br><span class="line">  item_text_post: true</span><br><span class="line">  # 博客底部显示 默认为false</span><br><span class="line">  item_text_total: true</span><br></pre></td></tr></table></figure>
-
-<h2 id="隐藏网页底部-powered-By-Hexo-x2F-强力驱动"><a href="#隐藏网页底部-powered-By-Hexo-x2F-强力驱动" class="headerlink" title="隐藏网页底部 powered By Hexo &#x2F; 强力驱动"></a>隐藏网页底部 powered By Hexo &#x2F; 强力驱动</h2><p>打开 themes&#x2F;next&#x2F;layout&#x2F;_partials&#x2F;footer.swig，找到：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% if theme.footer.powered.enable %&#125;</span><br><span class="line">&lt;div class=&quot;powered-by&quot;&gt;&#123;#</span><br><span class="line">#&#125;&#123;&#123; __(&#x27;footer.powered&#x27;, &#x27;&lt;a class=&quot;theme-link&quot; target=&quot;_blank&quot;&#x27; + nofollow + &#x27; href=&quot;https://hexo.io&quot;&gt;Hexo&lt;/a&gt;&#x27;) &#125;&#125;&#123;% if theme.footer.powered.version %&#125; v&#123;&#123; hexo_env(&#x27;version&#x27;) &#125;&#125;&#123;% endif %&#125;&#123;#</span><br><span class="line">#&#125;&lt;/div&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line">&#123;% if theme.footer.powered.enable and theme.footer.theme.enable %&#125;</span><br><span class="line">&lt;span class=&quot;post-meta-divider&quot;&gt;|&lt;/span&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line">&#123;% if theme.footer.theme.enable %&#125;</span><br><span class="line">&lt;div class=&quot;theme-info&quot;&gt;&#123;#</span><br><span class="line">#&#125;&#123;&#123; __(&#x27;footer.theme&#x27;) &#125;&#125; – &#123;#</span><br><span class="line">#&#125;&lt;a class=&quot;theme-link&quot; target=&quot;_blank&quot;&#123;&#123; nofollow &#125;&#125; href=&quot;https://theme-next.org&quot;&gt;&#123;#</span><br><span class="line">#&#125;NexT.&#123;&#123; theme.scheme &#125;&#125;&#123;#</span><br><span class="line">#&#125;&lt;/a&gt;&#123;% if theme.footer.theme.version %&#125; v&#123;&#123; version &#125;&#125;&#123;% endif %&#125;&#123;#</span><br><span class="line">#&#125;&lt;/div&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">把这段代码首尾分别加上：&lt;!-- 和--&gt;，或者直接删除</span><br></pre></td></tr></table></figure>
-
-<h2 id="切换主题"><a href="#切换主题" class="headerlink" title="切换主题"></a>切换主题</h2><p>next 主题自带<strong>四种样式</strong>。<br>在主题配置文件<code>/next/_config.yml</code>中查找：<code>scheme</code>，找到如下代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Schemes</span><br><span class="line">#scheme: Muse</span><br><span class="line">#scheme: Mist</span><br><span class="line">#scheme: Pisces</span><br><span class="line">scheme: Gemini</span><br><span class="line">选择你喜欢的一种样式，去掉前面的 #，其他主题前加上 # 即可</span><br></pre></td></tr></table></figure>
-
-<h2 id="代码块复制选项"><a href="#代码块复制选项" class="headerlink" title="代码块复制选项"></a>代码块复制选项</h2><p>在主题配置文件<code>next/_config.yml</code>中，搜索 codeblock，找到如下配置：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">codeblock:</span><br><span class="line">  highlight_theme: normal</span><br><span class="line">  copy_button:  # 设置是否开启代码块复制按钮</span><br><span class="line">    enable: true</span><br><span class="line">    show_result: true  # 是否显示复制成功信息</span><br><span class="line">    # Available values: default | flat | mac</span><br><span class="line">    style:</span><br></pre></td></tr></table></figure>
-
-<h2 id="草稿-私密博客"><a href="#草稿-私密博客" class="headerlink" title="草稿 私密博客"></a>草稿 私密博客</h2><blockquote>
-<p>草稿相当于很多博客都有的“私密文章”功能。<br>$ hexo new draft “draft”<br>会在source&#x2F;_drafts目录下生成一个new-draft.md文件。但是这个文件不被显示在页面上，链接也访问不到。<br>也就是说如果你想把某一篇文章移除显示，又不舍得删除，可以把它移动到_drafts目录之中。</p>
-</blockquote>
-<h2 id="目录信息"><a href="#目录信息" class="headerlink" title="目录信息"></a>目录信息</h2><p>在主题配置文件<code>next/_config.yml</code>中，可以是设置展开所有目录</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Table of Contents in the Sidebar</span><br><span class="line"># Front-matter variable (unsupport wrap expand_all).</span><br><span class="line">toc:</span><br><span class="line">  enable: true</span><br><span class="line">  # Automatically add list number to toc.</span><br><span class="line">  number: true</span><br><span class="line">  # If true, all words will placed on next lines if header width longer then sidebar width.</span><br><span class="line">  wrap: false</span><br><span class="line">  # If true, all level of TOC in a post will be displayed, rather than the activated part of it.</span><br><span class="line">  expand_all: true</span><br><span class="line">  # Maximum heading depth of generated toc.</span><br><span class="line">  max_depth: 6</span><br></pre></td></tr></table></figure>
-
-<h2 id="提升Hexo-NexT主题加载速度"><a href="#提升Hexo-NexT主题加载速度" class="headerlink" title="提升Hexo NexT主题加载速度"></a>提升Hexo NexT主题加载速度</h2><p>网站加载速度是影响搜索引擎排名的一个重要因素。<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jb20vc3BlZWQvcGFnZXNwZWVkL2luc2lnaHRzLw=="># Google Page Speed Insight<i class="fa fa-external-link-alt"></i></span> 是个很好的网页性能分析工具，可以根据它的分析结果有针对性地对网页进行优化。</p>
-<p><strong>优化方案</strong></p>
-<p>主要尝试了下面几种方案，按效果排列，把无效的放在了后面。 <strong>关闭动效</strong> 减少动画在Mobile上的优化效果最为明显，是肉眼可见的速度提升。关闭的方法也极为简单，修改NexT的配置文件，<code>next/_config.yml</code>中，将<code>motion</code>的<code>enable</code>置为<code>false</code>:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Use Animate.css to animate everything.</span><br><span class="line"># For more information: https://animate.style</span><br><span class="line">motion:</span><br><span class="line">  enable: false</span><br><span class="line">  async: false</span><br></pre></td></tr></table></figure>
-
-<p>在手机上对比测试了一下，加上这个动画，页面加载确实有明显卡顿。猜想原因是多了一个动画js的render-blocking依赖，手机端的算力也偏弱。</p>
-<p>把页脚的icon动效也一并去掉了：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">footer:</span><br><span class="line">  # Specify the year when the site was setup. If not defined, current year will be used.</span><br><span class="line">  #since: 2021</span><br><span class="line"></span><br><span class="line">  # Icon between year and copyright info.</span><br><span class="line">  icon:</span><br><span class="line">    # Icon name in Font Awesome. See: https://fontawesome.com/icons</span><br><span class="line">    name: fa fa-heart</span><br><span class="line">    # If you want to animate the icon, set it to true.</span><br><span class="line">    animated: false</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux find 命令</title>
     <url>/post/Linux-find-%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><strong>find命令</strong>用来在指定目录下查找文件。任何位于参数之前的字符串都将被视为欲查找的目录名。如果使用该命令时，不设置任何参数，则find命令将在当前目录下查找子目录与文件。并且将查找到的子目录和文件全部进行显示。</p>
@@ -213,6 +148,71 @@
       </categories>
       <tags>
         <tag>Linux 命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo + Github</title>
+    <url>/post/Github%20+%20Hexo%20%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本blog利用 Hexo + Github 搭建个人博客，内容包含基本工具（Node.js、Git、Github、Hexo）、利用Hexo进行发布、修改、删除文章</p>
+<span id="more"></span>
+
+<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>在开始一切之前，你必须已经：</p>
+<ul>
+<li>有一个github账号，没有的话去注册一个</li>
+<li>安装了node.js、npm</li>
+<li>安装了git for windows（或者其它git客户端）</li>
+</ul>
+<p>本文所使用的环境：</p>
+<ul>
+<li>Windows11</li>
+<li><span class="exturl" data-url="bWFpbHRvOiYjMTEwOyYjMTExOyYjeDY0OyYjMTAxOyYjNDY7JiN4NmE7JiN4NzM7JiM2NDsmIzExODsmIzQ5OyYjeDM2OyYjeDJlOyYjeDMxOyYjNTI7JiM0NjsmIzUwOw==">&#110;&#111;&#x64;&#101;&#46;&#x6a;&#x73;&#64;&#118;&#49;&#x36;&#x2e;&#x31;&#52;&#46;&#50;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>node -v</code></li>
+<li><span class="exturl" data-url="bWFpbHRvOiYjMTAzOyYjeDY5OyYjMTE2OyYjNjQ7JiM1MDsmI3gyZTsmI3gzMzsmI3gzMzsmI3gyZTsmIzQ4OyYjNDY7JiN4Nzc7JiN4Njk7JiN4NmU7JiN4NjQ7JiN4NmY7JiMxMTk7JiMxMTU7JiM0NjsmI3gzMjs=">&#103;&#x69;&#116;&#64;&#50;&#x2e;&#x33;&#x33;&#x2e;&#48;&#46;&#x77;&#x69;&#x6e;&#x64;&#x6f;&#119;&#115;&#46;&#x32;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>git version</code></li>
+<li><span class="exturl" data-url="bWFpbHRvOiYjeDY4OyYjeDY1OyYjeDc4OyYjeDZmOyYjeDQwOyYjNTQ7JiM0NjsmI3gzMTsmIzQ2OyYjeDMwOw==">&#x68;&#x65;&#x78;&#x6f;&#x40;&#54;&#46;&#x31;&#46;&#x30;<i class="fa fa-external-link-alt"></i></span> —— git命令行输入<code>hexo -v</code>或<code>hexo version</code></li>
+<li><span class="exturl" data-url="bWFpbHRvOiYjMTEwOyYjMTAxOyYjeDc4OyYjMTE2OyYjeDQwOyYjNTU7JiM0NjsmI3gzODsmI3gyZTsmI3gzMDs=">&#110;&#101;&#x78;&#116;&#x40;&#55;&#46;&#x38;&#x2e;&#x30;<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+<h1 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h1><ul>
+<li>安装Node.js</li>
+<li>添加国内镜像源对npm加速</li>
+<li>安装Git</li>
+<li>注册Github</li>
+<li>安装Hexo</li>
+<li>连接Github与本地</li>
+</ul>
+<h1 id="文章基本操作"><a href="#文章基本操作" class="headerlink" title="文章基本操作"></a>文章基本操作</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 新建文章 </span><br><span class="line">hexo new post &quot;article title&quot; </span><br><span class="line"># 生成静态页面 </span><br><span class="line">hexo g </span><br><span class="line"># 本地预览 </span><br><span class="line">hexo s </span><br><span class="line"># 部署到网站 </span><br><span class="line">hexo d</span><br><span class="line"># 清空缓存并生成新的静态页面 </span><br><span class="line">hexo clean &amp;&amp; hexo g</span><br><span class="line"></span><br><span class="line">修改文章：修改对应文章内容，然后执行命令 </span><br><span class="line">hexo d -g </span><br><span class="line"></span><br><span class="line">删除文章：</span><br><span class="line">删除目录 source\_posts 下对应文章文件，然后执行命令 hexo d -g 即可。</span><br></pre></td></tr></table></figure>
+
+<h1 id="常见配置修改"><a href="#常见配置修改" class="headerlink" title="常见配置修改"></a>常见配置修改</h1><h2 id="字数统计"><a href="#字数统计" class="headerlink" title="字数统计"></a>字数统计</h2><p>在旧版本中的post_wordcount配置似乎已经不可用，因此需要使用symbols_count_time替代</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 卸载原有依赖 不卸载对新插件有影响</span><br><span class="line">npm uninstall hexo-wordcount</span><br><span class="line"># 安装新依赖</span><br><span class="line">npm i hexo-symbols-count-time</span><br><span class="line"></span><br><span class="line">新的配置在symbols_count_time下：配置文件在主题下，themes\next\_config.yml</span><br><span class="line">symbols_count_time:</span><br><span class="line">  # 换行显示字数统计和阅读市场</span><br><span class="line">  separated_meta: true</span><br><span class="line">  # 文章底部显示</span><br><span class="line">  item_text_post: true</span><br><span class="line">  # 博客底部显示 默认为false</span><br><span class="line">  item_text_total: true</span><br></pre></td></tr></table></figure>
+
+<h2 id="隐藏网页底部-powered-By-Hexo-x2F-强力驱动"><a href="#隐藏网页底部-powered-By-Hexo-x2F-强力驱动" class="headerlink" title="隐藏网页底部 powered By Hexo &#x2F; 强力驱动"></a>隐藏网页底部 powered By Hexo &#x2F; 强力驱动</h2><p>打开 themes&#x2F;next&#x2F;layout&#x2F;_partials&#x2F;footer.swig，找到：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% if theme.footer.powered.enable %&#125;</span><br><span class="line">&lt;div class=&quot;powered-by&quot;&gt;&#123;#</span><br><span class="line">#&#125;&#123;&#123; __(&#x27;footer.powered&#x27;, &#x27;&lt;a class=&quot;theme-link&quot; target=&quot;_blank&quot;&#x27; + nofollow + &#x27; href=&quot;https://hexo.io&quot;&gt;Hexo&lt;/a&gt;&#x27;) &#125;&#125;&#123;% if theme.footer.powered.version %&#125; v&#123;&#123; hexo_env(&#x27;version&#x27;) &#125;&#125;&#123;% endif %&#125;&#123;#</span><br><span class="line">#&#125;&lt;/div&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line">&#123;% if theme.footer.powered.enable and theme.footer.theme.enable %&#125;</span><br><span class="line">&lt;span class=&quot;post-meta-divider&quot;&gt;|&lt;/span&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line">&#123;% if theme.footer.theme.enable %&#125;</span><br><span class="line">&lt;div class=&quot;theme-info&quot;&gt;&#123;#</span><br><span class="line">#&#125;&#123;&#123; __(&#x27;footer.theme&#x27;) &#125;&#125; – &#123;#</span><br><span class="line">#&#125;&lt;a class=&quot;theme-link&quot; target=&quot;_blank&quot;&#123;&#123; nofollow &#125;&#125; href=&quot;https://theme-next.org&quot;&gt;&#123;#</span><br><span class="line">#&#125;NexT.&#123;&#123; theme.scheme &#125;&#125;&#123;#</span><br><span class="line">#&#125;&lt;/a&gt;&#123;% if theme.footer.theme.version %&#125; v&#123;&#123; version &#125;&#125;&#123;% endif %&#125;&#123;#</span><br><span class="line">#&#125;&lt;/div&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">把这段代码首尾分别加上：&lt;!-- 和--&gt;，或者直接删除</span><br></pre></td></tr></table></figure>
+
+<h2 id="切换主题"><a href="#切换主题" class="headerlink" title="切换主题"></a>切换主题</h2><p>next 主题自带<strong>四种样式</strong>。<br>在主题配置文件<code>/next/_config.yml</code>中查找：<code>scheme</code>，找到如下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Schemes</span><br><span class="line">#scheme: Muse</span><br><span class="line">#scheme: Mist</span><br><span class="line">#scheme: Pisces</span><br><span class="line">scheme: Gemini</span><br><span class="line">选择你喜欢的一种样式，去掉前面的 #，其他主题前加上 # 即可</span><br></pre></td></tr></table></figure>
+
+<h2 id="代码块复制选项"><a href="#代码块复制选项" class="headerlink" title="代码块复制选项"></a>代码块复制选项</h2><p>在主题配置文件<code>next/_config.yml</code>中，搜索 codeblock，找到如下配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">codeblock:</span><br><span class="line">  highlight_theme: normal</span><br><span class="line">  copy_button:  # 设置是否开启代码块复制按钮</span><br><span class="line">    enable: true</span><br><span class="line">    show_result: true  # 是否显示复制成功信息</span><br><span class="line">    # Available values: default | flat | mac</span><br><span class="line">    style:</span><br></pre></td></tr></table></figure>
+
+<h2 id="草稿-私密博客"><a href="#草稿-私密博客" class="headerlink" title="草稿 私密博客"></a>草稿 私密博客</h2><blockquote>
+<p>草稿相当于很多博客都有的“私密文章”功能。<br>$ hexo new draft “draft”<br>会在source&#x2F;_drafts目录下生成一个new-draft.md文件。但是这个文件不被显示在页面上，链接也访问不到。<br>也就是说如果你想把某一篇文章移除显示，又不舍得删除，可以把它移动到_drafts目录之中。</p>
+</blockquote>
+<h2 id="目录信息"><a href="#目录信息" class="headerlink" title="目录信息"></a>目录信息</h2><p>在主题配置文件<code>next/_config.yml</code>中，可以是设置展开所有目录</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Table of Contents in the Sidebar</span><br><span class="line"># Front-matter variable (unsupport wrap expand_all).</span><br><span class="line">toc:</span><br><span class="line">  enable: true</span><br><span class="line">  # Automatically add list number to toc.</span><br><span class="line">  number: true</span><br><span class="line">  # If true, all words will placed on next lines if header width longer then sidebar width.</span><br><span class="line">  wrap: false</span><br><span class="line">  # If true, all level of TOC in a post will be displayed, rather than the activated part of it.</span><br><span class="line">  expand_all: true</span><br><span class="line">  # Maximum heading depth of generated toc.</span><br><span class="line">  max_depth: 6</span><br></pre></td></tr></table></figure>
+
+<h2 id="提升Hexo-NexT主题加载速度"><a href="#提升Hexo-NexT主题加载速度" class="headerlink" title="提升Hexo NexT主题加载速度"></a>提升Hexo NexT主题加载速度</h2><p>网站加载速度是影响搜索引擎排名的一个重要因素。<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jb20vc3BlZWQvcGFnZXNwZWVkL2luc2lnaHRzLw=="># Google Page Speed Insight<i class="fa fa-external-link-alt"></i></span> 是个很好的网页性能分析工具，可以根据它的分析结果有针对性地对网页进行优化。</p>
+<p><strong>优化方案</strong></p>
+<p>主要尝试了下面几种方案，按效果排列，把无效的放在了后面。 <strong>关闭动效</strong> 减少动画在Mobile上的优化效果最为明显，是肉眼可见的速度提升。关闭的方法也极为简单，修改NexT的配置文件，<code>next/_config.yml</code>中，将<code>motion</code>的<code>enable</code>置为<code>false</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Use Animate.css to animate everything.</span><br><span class="line"># For more information: https://animate.style</span><br><span class="line">motion:</span><br><span class="line">  enable: false</span><br><span class="line">  async: false</span><br></pre></td></tr></table></figure>
+
+<p>在手机上对比测试了一下，加上这个动画，页面加载确实有明显卡顿。猜想原因是多了一个动画js的render-blocking依赖，手机端的算力也偏弱。</p>
+<p>把页脚的icon动效也一并去掉了：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">footer:</span><br><span class="line">  # Specify the year when the site was setup. If not defined, current year will be used.</span><br><span class="line">  #since: 2021</span><br><span class="line"></span><br><span class="line">  # Icon between year and copyright info.</span><br><span class="line">  icon:</span><br><span class="line">    # Icon name in Font Awesome. See: https://fontawesome.com/icons</span><br><span class="line">    name: fa fa-heart</span><br><span class="line">    # If you want to animate the icon, set it to true.</span><br><span class="line">    animated: false</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -375,6 +375,58 @@
       </categories>
       <tags>
         <tag>Linux 命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MySQL 集群故障处理</title>
+    <url>/post/MySQL-%E9%9B%86%E7%BE%A4%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>昨天发现生产环境的MySQL InnoDB Cluster 集群突然宕掉，导致系统不可用</p>
+<span id="more"></span>
+
+<h1 id="故障分析"><a href="#故障分析" class="headerlink" title="故障分析"></a>故障分析</h1><p>使用MySQL Shell 链接MySQL Router发现，主节点从原来的173漂到了154，目前两个从节点173和174在集群中显示报错。</p>
+<p>登陆173服务器，发现MySQL实例进程已经消失，当重启该实例时发现有报错，启动不成功，发现是由于配置文件<code>my.cnf</code>的权限被修成了777，导致启动失败，将其权限改为默认的644之后启动成功</p>
+<h1 id="MySQL集群恢复步骤"><a href="#MySQL集群恢复步骤" class="headerlink" title="MySQL集群恢复步骤"></a>MySQL集群恢复步骤</h1><table>
+<thead>
+<tr>
+<th>数据库</th>
+<th>当前状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10.29.17.173:3066</td>
+<td>故障</td>
+</tr>
+<tr>
+<td>10.29.17.174:3066</td>
+<td>故障</td>
+</tr>
+<tr>
+<td>10.29.17.154:3066</td>
+<td>正常，主节点</td>
+</tr>
+</tbody></table>
+<h2 id="备份数据库数据"><a href="#备份数据库数据" class="headerlink" title="备份数据库数据"></a>备份数据库数据</h2><p>备份10.29.17.154:3066数据库数据</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysqldump -uroot -p123456  --single-transaction --set-gtid-purged=OFF --hex-blob 库名 &gt; 保存路径/库名-备份时间.sql</span><br></pre></td></tr></table></figure>
+
+<h2 id="重新初始化故障节点"><a href="#重新初始化故障节点" class="headerlink" title="重新初始化故障节点"></a>重新初始化故障节点</h2><h3 id="停掉数据库实例"><a href="#停掉数据库实例" class="headerlink" title="停掉数据库实例"></a>停掉数据库实例</h3><h3 id="删除数据库数据data目录下所数据"><a href="#删除数据库数据data目录下所数据" class="headerlink" title="删除数据库数据data目录下所数据"></a>删除数据库数据data目录下所数据</h3><h3 id="初始化数据库"><a href="#初始化数据库" class="headerlink" title="初始化数据库"></a>初始化数据库</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">source ~/.bash_profile</span><br><span class="line"></span><br><span class="line">mysqld --initialize-insecure  --user=mysqlg1 --basedir=$&#123;MYSQL_HOME&#125; --datadir=$&#123;MYSQL_HOME&#125;/data --log_error=$&#123;MYSQL_HOME&#125;/mysql-error.log</span><br><span class="line"></span><br><span class="line">./mysqld start</span><br><span class="line">./mysql.server start</span><br></pre></td></tr></table></figure>
+
+<h2 id="启动新初始化的数据库"><a href="#启动新初始化的数据库" class="headerlink" title="启动新初始化的数据库"></a>启动新初始化的数据库</h2><p>以root身份登录mysql【初始root密码为空】，设置root密码，并赋权</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql -uroot -A</span><br><span class="line">CREATE USER &#x27;root&#x27;@&#x27;%&#x27; IDENTIFIED WITH mysql_native_password BY &#x27;123456&#x27;;</span><br><span class="line">ALTER USER &#x27;root&#x27;@&#x27;%&#x27; IDENTIFIED WITH mysql_native_password BY &#x27;123456&#x27;;</span><br><span class="line">GRANT ALL ON *.* TO &#x27;root&#x27;@&#x27;%&#x27; WITH GRANT OPTION; </span><br><span class="line">alter user &#x27;root&#x27;@&#x27;localhost&#x27; identified by &#x27;123456&#x27;;</span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+
+<h2 id="进入-MySQL-Shell-，连接当前主节点"><a href="#进入-MySQL-Shell-，连接当前主节点" class="headerlink" title="进入 MySQL-Shell ，连接当前主节点"></a>进入 MySQL-Shell ，连接当前主节点</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#在10.29.17.173服务器上，用MySQL-Shell连接上集群</span><br><span class="line">mysqlsh        										 #链接mysqlshell</span><br><span class="line">shell.connect(&#x27;root@10.29.17.154:3066&#x27;, &#x27;123456&#x27;);  #连接到154节点</span><br><span class="line">var cluster=dba.getCluster(&#x27;sxmycluster&#x27;);     					 #获取当前集群</span><br><span class="line">cluster.status() 								     #查看节点状态</span><br><span class="line">重新扫描节点，在提示节点丢失删除时，选择yes删除丢失或异常的节点</span><br><span class="line">cluster.rescan()</span><br></pre></td></tr></table></figure>
+
+<h2 id="将从节点加入至集群中"><a href="#将从节点加入至集群中" class="headerlink" title="将从节点加入至集群中"></a>将从节点加入至集群中</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#在10.29.17.173服务器上，用MySQL-Shell连接上集群</span><br><span class="line">mysqlsh        										 #链接mysqlshell</span><br><span class="line">shell.connect(&#x27;root@10.29.17.154:3066&#x27;,&#x27;123456&#x27;)   #连接到154节点</span><br><span class="line">var cluster=dba.getCluster()     					 #获取当前集群</span><br><span class="line">cluster.status() 								     #查看节点状态</span><br><span class="line">#（秒，默认60），在恢复操作期间等待事务应用的时间，如果向运行一段时间的集群中新增节点时，建议此时间设置大点，否则如下节点增加集群会报超时错误。</span><br><span class="line">shell.options[&#x27;dba.restartWaitTimeout&#x27;]=7200</span><br><span class="line">#增加173从节点,此时加入集群会从主节点同步数据至从节点</span><br><span class="line">cluster.addInstance(&#x27;root@10.29.17.173:3066&#x27;, &#123;&#x27;localAddress&#x27;: &#x27;10.29.17.173&#x27;, &#x27;password&#x27;: &#x27;123456&#x27;,&#x27;recoveryMethod&#x27;:&#x27;clone&#x27;,&#x27;waitRecovery&#x27;:&#x27;1&#x27;&#125;)</span><br><span class="line">cluster.status();     #查看节点状态</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">#在10.29.17.174服务器上，用MySQL-Shell连接上集群</span><br><span class="line">mysqlsh        										 #链接mysqlshell</span><br><span class="line">shell.connect(&#x27;root@10.29.17.154:3066&#x27;,&#x27;123456&#x27;)   #连接到154节点</span><br><span class="line">var cluster=dba.getCluster()     					 #获取当前集群</span><br><span class="line">cluster.status() 								     #查看节点状态</span><br><span class="line">#（秒，默认60），在恢复操作期间等待事务应用的时间，如果向运行一段时间的集群中新增节点时，建议此时间设置大点，否则如下节点增加集群会报超时错误。</span><br><span class="line">shell.options[&#x27;dba.restartWaitTimeout&#x27;]=7200</span><br><span class="line">#增加174从节点,此时加入集群会从主节点同步数据至从节点</span><br><span class="line">cluster.addInstance(&#x27;root@10.29.17.174:3066&#x27;, &#123;&#x27;localAddress&#x27;: &#x27;10.29.17.174&#x27;, &#x27;password&#x27;: &#x27;123456&#x27;,&#x27;recoveryMethod&#x27;:&#x27;clone&#x27;,&#x27;waitRecovery&#x27;:&#x27;1&#x27;&#125;)</span><br><span class="line">cluster.status();     #查看节点状态</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看集群状态"><a href="#查看集群状态" class="headerlink" title="查看集群状态"></a>查看集群状态</h2><p>链接三个数据库可查看到集群状态</p>
+<p><code>mysql -h10.29.17.154 -P3066 -uroot -p123456;</code></p>
+<p><code>SELECT * FROM performance_schema.replication_group_members;</code></p>
+]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>MySQL 故障处理</tag>
+        <tag>运维</tag>
       </tags>
   </entry>
   <entry>
@@ -541,57 +593,6 @@
       <tags>
         <tag>MySQL 安装</tag>
         <tag>Shell 脚本</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MySQL 集群故障处理</title>
-    <url>/post/MySQL-%E9%9B%86%E7%BE%A4%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>昨天发现生产环境的MySQL InnoDB Cluster 集群突然宕掉，导致系统不可用</p>
-<span id="more"></span>
-
-<h1 id="故障分析"><a href="#故障分析" class="headerlink" title="故障分析"></a>故障分析</h1><p>使用MySQL Shell 链接MySQL Router发现，主节点从原来的173漂到了154，目前两个从节点173和174在集群中显示报错。</p>
-<p>登陆173服务器，发现MySQL实例进程已经消失，当重启该实例时发现有报错，启动不成功，发现是由于配置文件<code>my.cnf</code>的权限被修成了777，导致启动失败，将其权限改为默认的644之后启动成功</p>
-<h1 id="MySQL集群恢复步骤"><a href="#MySQL集群恢复步骤" class="headerlink" title="MySQL集群恢复步骤"></a>MySQL集群恢复步骤</h1><table>
-<thead>
-<tr>
-<th>数据库</th>
-<th>当前状态</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>10.29.17.173:3066</td>
-<td>故障</td>
-</tr>
-<tr>
-<td>10.29.17.174:3066</td>
-<td>故障</td>
-</tr>
-<tr>
-<td>10.29.17.154:3066</td>
-<td>正常，主节点</td>
-</tr>
-</tbody></table>
-<h2 id="备份数据库数据"><a href="#备份数据库数据" class="headerlink" title="备份数据库数据"></a>备份数据库数据</h2><p>备份10.29.17.154:3066数据库数据</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysqldump -uroot -p123456  --single-transaction --set-gtid-purged=OFF --hex-blob 库名 &gt; 保存路径/库名-备份时间.sql</span><br></pre></td></tr></table></figure>
-
-<h2 id="重新初始化故障节点"><a href="#重新初始化故障节点" class="headerlink" title="重新初始化故障节点"></a>重新初始化故障节点</h2><h3 id="停掉数据库实例"><a href="#停掉数据库实例" class="headerlink" title="停掉数据库实例"></a>停掉数据库实例</h3><h3 id="删除数据库数据data目录下所数据"><a href="#删除数据库数据data目录下所数据" class="headerlink" title="删除数据库数据data目录下所数据"></a>删除数据库数据data目录下所数据</h3><h3 id="初始化数据库"><a href="#初始化数据库" class="headerlink" title="初始化数据库"></a>初始化数据库</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">source ~/.bash_profile</span><br><span class="line"></span><br><span class="line">mysqld --initialize-insecure  --user=mysqlg1 --basedir=$&#123;MYSQL_HOME&#125; --datadir=$&#123;MYSQL_HOME&#125;/data --log_error=$&#123;MYSQL_HOME&#125;/mysql-error.log</span><br><span class="line"></span><br><span class="line">./mysqld start</span><br><span class="line">./mysql.server start</span><br></pre></td></tr></table></figure>
-
-<h2 id="启动新初始化的数据库"><a href="#启动新初始化的数据库" class="headerlink" title="启动新初始化的数据库"></a>启动新初始化的数据库</h2><p>以root身份登录mysql【初始root密码为空】，设置root密码，并赋权</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql -uroot -A</span><br><span class="line">CREATE USER &#x27;root&#x27;@&#x27;%&#x27; IDENTIFIED WITH mysql_native_password BY &#x27;123456&#x27;;</span><br><span class="line">ALTER USER &#x27;root&#x27;@&#x27;%&#x27; IDENTIFIED WITH mysql_native_password BY &#x27;123456&#x27;;</span><br><span class="line">GRANT ALL ON *.* TO &#x27;root&#x27;@&#x27;%&#x27; WITH GRANT OPTION; </span><br><span class="line">alter user &#x27;root&#x27;@&#x27;localhost&#x27; identified by &#x27;123456&#x27;;</span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
-
-<h2 id="进入-MySQL-Shell-，连接当前主节点"><a href="#进入-MySQL-Shell-，连接当前主节点" class="headerlink" title="进入 MySQL-Shell ，连接当前主节点"></a>进入 MySQL-Shell ，连接当前主节点</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#在10.29.17.173服务器上，用MySQL-Shell连接上集群</span><br><span class="line">mysqlsh        										 #链接mysqlshell</span><br><span class="line">shell.connect(&#x27;root@10.29.17.154:3066&#x27;, &#x27;123456&#x27;);  #连接到154节点</span><br><span class="line">var cluster=dba.getCluster(&#x27;sxmycluster&#x27;);     					 #获取当前集群</span><br><span class="line">cluster.status() 								     #查看节点状态</span><br><span class="line">重新扫描节点，在提示节点丢失删除时，选择yes删除丢失或异常的节点</span><br><span class="line">cluster.rescan()</span><br></pre></td></tr></table></figure>
-
-<h2 id="将从节点加入至集群中"><a href="#将从节点加入至集群中" class="headerlink" title="将从节点加入至集群中"></a>将从节点加入至集群中</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#在10.29.17.173服务器上，用MySQL-Shell连接上集群</span><br><span class="line">mysqlsh        										 #链接mysqlshell</span><br><span class="line">shell.connect(&#x27;root@10.29.17.154:3066&#x27;,&#x27;123456&#x27;)   #连接到154节点</span><br><span class="line">var cluster=dba.getCluster()     					 #获取当前集群</span><br><span class="line">cluster.status() 								     #查看节点状态</span><br><span class="line">#（秒，默认60），在恢复操作期间等待事务应用的时间，如果向运行一段时间的集群中新增节点时，建议此时间设置大点，否则如下节点增加集群会报超时错误。</span><br><span class="line">shell.options[&#x27;dba.restartWaitTimeout&#x27;]=7200</span><br><span class="line">#增加173从节点</span><br><span class="line">cluster.addInstance(&#x27;root@10.29.17.173:3066&#x27;, &#123;&#x27;localAddress&#x27;: &#x27;10.29.17.173&#x27;, &#x27;password&#x27;: &#x27;123456&#x27;,&#x27;recoveryMethod&#x27;:&#x27;clone&#x27;,&#x27;waitRecovery&#x27;:&#x27;1&#x27;&#125;)</span><br><span class="line">cluster.status();     #查看节点状态</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">#在10.29.17.174服务器上，用MySQL-Shell连接上集群</span><br><span class="line">mysqlsh        										 #链接mysqlshell</span><br><span class="line">shell.connect(&#x27;root@10.29.17.154:3066&#x27;,&#x27;123456&#x27;)   #连接到154节点</span><br><span class="line">var cluster=dba.getCluster()     					 #获取当前集群</span><br><span class="line">cluster.status() 								     #查看节点状态</span><br><span class="line">#（秒，默认60），在恢复操作期间等待事务应用的时间，如果向运行一段时间的集群中新增节点时，建议此时间设置大点，否则如下节点增加集群会报超时错误。</span><br><span class="line">shell.options[&#x27;dba.restartWaitTimeout&#x27;]=7200</span><br><span class="line">#增加174从节点</span><br><span class="line">cluster.addInstance(&#x27;root@10.29.17.174:3066&#x27;, &#123;&#x27;localAddress&#x27;: &#x27;10.29.17.174&#x27;, &#x27;password&#x27;: &#x27;123456&#x27;,&#x27;recoveryMethod&#x27;:&#x27;clone&#x27;,&#x27;waitRecovery&#x27;:&#x27;1&#x27;&#125;)</span><br><span class="line">cluster.status();     #查看节点状态</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看集群状态"><a href="#查看集群状态" class="headerlink" title="查看集群状态"></a>查看集群状态</h2><p>mysql -h10.29.17.154 -P3066 -uroot -p123456;</p>
-<p>SELECT * FROM performance_schema.replication_group_members;</p>
-]]></content>
-      <categories>
-        <category>MySQL</category>
-      </categories>
-      <tags>
-        <tag>MySQL 故障处理</tag>
-        <tag>运维</tag>
       </tags>
   </entry>
   <entry>
